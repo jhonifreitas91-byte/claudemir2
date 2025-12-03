@@ -1,1 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Streaming Total – Visual Explosivo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --roxo:#8a2be2;
+    --azul:#0052d4;
+    --preto:#0a0a0a;
+    --cinza:#121212;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
+  body{background:var(--preto)}
+  img{max-width:100%;display:block}
+  .btn{
+    padding:14px 32px;
+    border:none;
+    border-radius:30px;
+    font-size:1.1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .btn-roxo{background:var(--roxo)}
+  .btn-roxo:hover{background:var(--azul);transform:scale(1.05)}
+  .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
+  .btn-ghost:hover{background:#fff;color:#111}
+
+  /* HERO FULL-IMAGE */
+  .hero{
+    width:100%;
+    height:100vh;
+    background:url("https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,#8a2be2cc 0%,#0052d4cc 100%);
+  }
+  .hero-content{z-index:2}
+  .hero h1{font-size:clamp(2.2rem,5vw,4rem);text-shadow:0 4px 12px rgba(0,0,0,.7)}
+  .hero p{font-size:1.3rem;margin:1rem 0 2rem}
+  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+  /* PRODUTOS EM GRADE */
+  .produtos{
+    padding:4rem 1rem;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:2rem;
+  }
+  .card{
+    background:var(--cinza);
+    border-radius:14px;
+    overflow:hidden;
+    border:2px solid transparent;
+    transition:.4s;
+    position:relative;
+  }
+  .card:hover{
+    border-color:var(--roxo);
+    transform:translateY(-8px);
+    box-shadow:0 12px 30px #8a2be299
+  }
+  .card img{height:180px;object-fit:cover;width:100%}
+  .card-body{padding:1.2rem}
+  .card-body h3{font-size:1.3rem;margin-bottom:.5rem}
+  .card-body p{color:#ccc;margin-bottom:1rem}
+  .preco{font-size:1.6rem;color:#0f0;font-weight:700;margin-bottom:.8rem}
+  .tags{
+    display:flex;
+    gap:.4rem;
+    flex-wrap:wrap;
+    margin-bottom:1rem
+  }
+  .tag{
+    background:#8a2be244;
+    padding:4px 10px;
+    border-radius:20px;
+    font-size:.75rem
+  }
+  .card-buttons{
+    display:flex;
+    gap:.5rem;
+    flex-wrap:wrap;
+  }
+  .card-buttons .btn{flex:1;font-size:.95rem;text-align:center}
+
+  /* BANNER ESTREITO COM IMAGEM */
+  .banner{
+    margin:3rem 0;
+    height:200px;
+    background:url("https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1600&q=80") center/cover;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .banner::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,var(--roxo) 0%,var(--azul) 100%);
+    opacity:.85;
+  }
+  .banner-content{z-index:2;text-align:center}
+  .banner h3{font-size:1.8rem;margin-bottom:.5rem}
+  .banner p{margin-bottom:1rem}
+
+  /* DEPOIMENTOS COM IMAGENS */
+  .depoimentos{
+    padding:3rem 1rem;
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:2rem;
+  }
+  .depo{
+    background:var(--cinza);
+    border-radius:12px;
+    padding:1.6rem;
+    text-align:center;
+    border:2px solid transparent;
+    transition:.3s;
+  }
+  .depo:hover{border-color:var(--azul)}
+  .depo img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:0 auto 1rem;
+    border:3px solid var(--roxo)
+  }
+  .depo-text{font-style:italic;color:#ddd;margin-bottom:.8rem}
+  .depo-stars{color:#ffd700;margin-bottom:.5rem}
+  .depo-name{color:var(--roxo);font-weight:700}
+
+  /* RODAPÉ COLORIDO */
+  footer{
+    margin-top:4rem;
+    background:linear-gradient(45deg,var(--roxo),var(--azul));
+    padding:3rem 1rem;
+    text-align:center;
+  }
+  footer p{color:#000;font-weight:600;margin-bottom:1rem}
+  footer .btn{background:#000;color:#fff;margin:.3rem}
+  footer .btn:hover{background:#fff;color:#000}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Todos os Streamings. Um Só Preço.</h1>
+    <p>Combine Netflix, HBO, Disney, Paramount e mais – economia de até 70%</p>
+    <div class="hero-actions">
+      <button class="btn btn-roxo">Ver Planos</button>
+      <button class="btn btn-ghost">Teste 7 Dias</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<div class="produtos">
+
+  <!-- CARD 1 -->
+  <article class="card">
+    <img src="https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=800&q=80" alt="Combo Família">
+    <div class="card-body">
+      <h3>Combo Família 4K</h3>
+      <div class="tags">
+        <span class="tag">4 Telas</span>
+        <span class="tag">4K/HDR</span>
+        <span class="tag">Downloads</span>
+      </div>
+      <p>Netflix + Disney+ + HBO Max + Paramount</p>
+      <div class="preco">R$ 39,90/mês</div>
+      <div class="card-buttons">
+        <a href="assinar-familia-4k.html" target="_blank" class="btn btn-roxo">Assinar</a>
+        <button class="btn btn-ghost">Detalhes</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- CARD 2 -->
+  <article class="card">
+    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&q=80" alt="Solo Premium">
+    <div class="card-body">
+      <h3>Netflix Solo 4K</h3>
+      <div class="tags">
+        <span class="tag">1 Tela</span>
+        <span class="tag">4K</span>
+        <span class="tag">Originals</span>
+      </div>
+      <p>O melhor do catálogo original Netflix</p>
+      <div class="preco">R$ 14,90/mês</div>
+      <div class="card-buttons">
+        <a href="assinar-solo-4k.html" target="_blank" class="btn btn-roxo">Assinar</a>
+        <button class="btn btn-ghost">Detalhes</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- CARD 3 -->
+  <article class="card">
+    <img src="https://images.unsplash.com/photo-1611599637843-05e1d455a1a5?auto=format&fit=crop&w=800&q=80" alt="Esportes">
+    <div class="card-body">
+      <h3>Combo Esportes</h3>
+      <div class="tags">
+        <span class="tag">Champions</span>
+        <span class="tag">NFL</span>
+        <span class="tag">F1</span>
+      </div>
+      <p>Paramount + HBO Max – jogos ao vivo e séries</p>
+      <div class="preco">R$ 34,90/mês</div>
+      <div class="card-buttons">
+        <a href="assinar-esportes.html" target="_blank" class="btn btn-roxo">Assinar</a>
+        <button class="btn btn-ghost">Detalhes</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- CARD 4 -->
+  <article class="card">
+    <img src="https://images.unsplash.com/photo-1611787640592-6dafa28b566?auto=format&fit=crop&w=800&q=80" alt="Super Pack">
+    <div class="card-body">
+      <h3>Super Pack Premium</h3>
+      <div class="tags">
+        <span class="tag">5 Telas</span>
+        <span class="tag">4K/HDR</span>
+        <span class="tag">Tudo</span>
+      </div>
+      <p>Todos os streamings em um só lugar</p>
+      <div class="preco">R$ 59,90/mês</div>
+      <div class="card-buttons">
+        <a href="assinar-super-pack.html" target="_blank" class="btn btn-roxo">Assinar</a>
+        <button class="btn btn-ghost">Detalhes</button>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<!-- BANNER INTERMÉDIO -->
+<div class="banner">
+  <div class="banner-content">
+    <h3>7 Dias de Teste</h3>
+    <p>Experimente qualquer combo sem pagar nada</p>
+    <button class="btn btn-ghost">Ativar Teste</button>
+  </div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<div class="depoimentos">
+  <div class="depo">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Depo 1">
+    <div class="depo-stars">★★★★★</div>
+    <p class="depo-text">"Economizo mais de R$ 100 por mês e tenho acesso a todos os conteúdos que amo!"</p>
+    <p class="depo-name">Maria S.</p>
+  </div>
+  <div class="depo">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Depo 2">
+    <div class="depo-stars">★★★★★</div>
+    <p class="depo-text">"Ativação super rápida, em 3 minutos já estava assistindo meu seriado favorito."</p>
+    <p class="depo-name">João P.</p>
+  </div>
+  <div class="depo">
+    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Depo 3">
+    <div class="depo-stars">★★★★★</div>
+    <p class="depo-text">"O combo família é perfeito, meus filhos assistem desenhos e eu vejo meus esportes."</p>
+    <p class="depo-name">Ana C.</p>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+  <p>Streaming Total © 2025 | Todos os direitos reservados</p>
+  <button class="btn">Whatsapp</button>
+  <button class="btn">Central de Ajuda</button>
+</footer>
+
+</body>
+</html>
 
