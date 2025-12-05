@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --roxo:#E50914;   /* trocado para vermelho Netflix */
+    --roxo:#E50914;   /* vermelho Netflix */
     --azul:#0052d4;
     --preto:#0a0a0a;
     --cinza:#121212;
-    --rosa:#E50914;   /* trocado para vermelho Netflix */
+    --rosa:#E50914;   /* vermelho Netflix */
     --amarelo:#ffd600;
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
@@ -136,6 +136,15 @@
 
   /* AÇÕES */
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+
+  /* FUNDO SEMI-TRANSPARENTE ATRÁS DO TÍTULO */
+  .titulo-wrapper{
+    background:rgba(18,18,18,.65);
+    border-radius:12px;
+    padding:1.5rem 2rem;
+    display:inline-block;
+    backdrop-filter:blur(4px);
+  }
 </style>
 </head>
 <body>
@@ -143,10 +152,10 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Netflix Solo 4K</h1>
-    <p>1 tela em 4K/HDR com todo catálogo original</p>
-    <div class="hero-actions">
-      <span class="preco-pulse">R$ 14,90/mês</span>
+    <div class="titulo-wrapper">
+      <h1>Netflix Solo 4K</h1>
+      <p>1 tela em 4K/HDR com todo catálogo original</p>
+      <div class="preco-pulse">R$ 14,90/mês</div>
     </div>
   </div>
 </section>
