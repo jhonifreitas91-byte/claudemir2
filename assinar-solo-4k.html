@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Netflix Solo 4K – Streaming Total</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --roxo:#8a2be2;
+    --azul:#0052d4;
+    --preto:#0a0a0a;
+    --cinza:#121212;
+    --rosa:#ff0057;
+    --amarelo:#ffd600;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
+  body{background:var(--preto)}
+  img{max-width:100%;display:block}
+  .btn{
+    padding:14px 32px;
+    border:none;
+    border-radius:30px;
+    font-size:1.1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .btn-roxo{background:var(--roxo)}
+  .btn-roxo:hover{background:var(--azul);transform:scale(1.05)}
+  .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
+  .btn-ghost:hover{background:#fff;color:#111}
 
+  /* HERO */
+  .hero{
+    width:100%;
+    height:100vh;
+    background:url("https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,#8a2be2cc 0%,#0052d4cc 100%);
+  }
+  .hero-content{z-index:2}
+  .hero h1{font-size:clamp(2.2rem,5vw,4rem);text-shadow:0 4px 12px rgba(0,0,0,.7)}
+  .hero p{font-size:1.3rem;margin:1rem 0 2rem}
+  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+  /* DETALHES */
+  .detalhes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1.5rem;
+    margin:2rem 0;
+  }
+  .detalhe-card{
+    background:#1a1a1a;
+    border-radius:12px;
+    padding:1.2rem;
+    text-align:center;
+    border:2px solid transparent;
+    transition:.3s;
+  }
+  .detalhe-card:hover{border-color:var(--rosa)}
+  .detalhe-card img{margin:0 auto .8rem}
+  .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
+  .detalhe-card p{font-size:.85rem;color:#ccc}
+
+  /* CRONÔMETRO */
+  .cronometro{
+    text-align:center;
+    margin:2rem 0;
+    font-size:2.2rem;
+    color:var(--amarelo);
+    font-weight:900;
+    animation:pulse 1.2s infinite;
+  }
+  @keyframes pulse{
+    0%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
+    50%{transform:scale(1.05);text-shadow:0 0 20px var(--rosa)}
+    100%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
+  }
+
+  /* AÇÕES */
+  .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Netflix Solo 4K</h1>
+    <p>1 tela em 4K/HDR com todo catálogo original</p>
+    <div class="hero-actions">
+      <button class="btn btn-roxo">R$ 14,90/mês</button>
+    </div>
+  </div>
+</section>
+
+<!-- DETALHES -->
+<section style="padding:4rem 1rem;max-width:1200px;margin:auto">
+  <h2 style="text-align:center;margin-bottom:2rem">Por que escolher o Netflix Solo?</h2>
+
+  <div class="detalhes-grid">
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+      <h3>4K + HDR</h3>
+      <p>Resolução máxima e cores vibrantes</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/color/96/000000/tv.png" alt="1 Tela">
+      <h3>1 Tela</h3>
+      <p>Perfeito para uso individual</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
+      <h3>Downloads</h3>
+      <p>Assista offline onde quiser</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+      <h3>Economia 65%</h3>
+      <p>Menos de R$ 0,50 por dia</p>
+    </div>
+  </div>
+
+  <!-- CRONÔMETRO -->
+  <div class="cronometro">
+    ⏱️ Oferta termina em: <span id="timer">30:00</span>
+  </div>
+
+  <!-- AÇÕES -->
+  <div class="actions">
+    <button class="btn btn-roxo">Assinar Netflix Solo</button>
+    <a href="index.html" class="btn btn-ghost">Voltar</a>
+  </div>
+</section>
+
+<script>
+  // cronômetro 30:00
+  let tempo = 30 * 60;
+  const timer = document.getElementById('timer');
+  const interval = setInterval(() => {
+    const min = Math.floor(tempo / 60);
+    const seg = tempo % 60;
+    timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
+    tempo--;
+    if (tempo < 0) clearInterval(interval);
+  }, 1000);
+</script>
+
+</body>
+</html>
