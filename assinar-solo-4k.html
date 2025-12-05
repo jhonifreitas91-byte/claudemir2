@@ -38,7 +38,7 @@
   .hero{
     width:100%;
     height:100vh;
-    background:url("pipoca1.jpg") center/cover no-repeat;
+    background:url("bannernetflix.jpg") center/cover no-repeat;
     position:relative;
     display:flex;
     align-items:center;
@@ -251,6 +251,16 @@
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
   .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
   .fade-in.show{opacity:1;transform:translateY(0);}
+
+  /* Animação de contorno vermelho nos tópicos */
+  @keyframes borderRed{
+    0%{border-color:transparent;}
+    50%{border-color:var(--vermelho);}
+    100%{border-color:transparent;}
+  }
+  .icone-card{
+    animation:borderRed 2s infinite;
+  }
 </style>
 </head>
 <body>
