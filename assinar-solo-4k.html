@@ -38,7 +38,7 @@
   .hero{
     width:100%;
     height:100vh;
-    background:url("bannernetflix.jpg") center/cover no-repeat;
+    background:url("pipoca1.jpg") center/cover no-repeat;
     position:relative;
     display:flex;
     align-items:center;
@@ -101,7 +101,7 @@
 
   .descricao-icones{
     max-width:900px;
-    margin:2rem auto 3rem;
+    margin:2rem auto 1.5rem;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
     gap:1.5rem;
@@ -185,9 +185,41 @@
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
 
+  .divisoria-icones{
+    height:3px;
+    background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
+    border:none;
+    margin:2.5rem auto 1.5rem;
+    max-width:220px;
+    border-radius:3px;
+    opacity:0;
+    transform:scaleX(0);
+    transition:all .6s;
+  }
+  .divisoria-icones.show{
+    opacity:1;
+    transform:scaleX(1);
+  }
+
+  .divisoria-topico{
+    height:3px;
+    background:linear-gradient(90deg,var(--azul),var(--amarelo));
+    border:none;
+    margin:2.5rem auto 1.5rem;
+    max-width:220px;
+    border-radius:3px;
+    opacity:0;
+    transform:scaleX(0);
+    transition:all .6s;
+  }
+  .divisoria-topico.show{
+    opacity:1;
+    transform:scaleX(1);
+  }
+
   .texto-chamativo{
     max-width:800px;
-    margin:2rem auto 3rem;
+    margin:1.5rem auto 2rem;
     text-align:center;
     opacity:0;
     transform:translateY(40px);
@@ -268,6 +300,8 @@
     </div>
   </div>
 
+  <hr class="divisoria-icones">
+
   <div class="detalhes-grid">
     <div class="detalhe-card">
       <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
@@ -290,6 +324,8 @@
       <p>Menos de R$ 0,50 por dia</p>
     </div>
   </div>
+
+  <hr class="divisoria-topico">
 
   <div class="texto-chamativo">
     <h2>Cinema em casa por menos de R$ 0,50 por dia</h2>
@@ -318,7 +354,7 @@
     });
   },{threshold:0.15});
 
-  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-icones, .divisoria-topico').forEach(el=>observer.observe(el));
 
   const hero=document.querySelector('.hero');
   const heroObserver=new IntersectionObserver((entries)=>{
@@ -333,4 +369,4 @@
 </script>
 
 </body>
-</html
+</html>
