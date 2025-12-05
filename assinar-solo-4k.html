@@ -17,7 +17,7 @@
     src:url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2') format('woff2');
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Netflix','Segoe UI',Helvetica,sans-serif;color:#fff}
-  body{background:var(--preto)}
+  body{background:#181818}
   img{max-width:100%;display:block}
   .btn{
     padding:14px 32px;
@@ -35,7 +35,6 @@
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
-  /* HERO COM BACKGROUND ANIMADO */
   .hero{
     width:100%;
     height:100vh;
@@ -63,7 +62,6 @@
   .hero-content{z-index:2;opacity:0;transform:translateY(40px);transition:all .8s .4s;}
   .hero.in-view .hero-content{opacity:1;transform:translateY(0);}
 
-  /* TÍTULO ANIMADO */
   .titulo-wrapper{
     background:rgba(18,18,18,.65);
     border-radius:12px;
@@ -89,7 +87,6 @@
     to{text-shadow:0 0 8px #fff,0 0 16px var(--vermelho);}
   }
 
-  /* PREÇO PULSANTE VERMELHO */
   .preco-pulse{
     font-size:2.4rem;
     color:var(--vermelho);
@@ -102,69 +99,37 @@
     100%{transform:scale(1);}
   }
 
-  /* DESCRIÇÃO COM ICONES */
-  .descricao-icones{
-    max-width:900px;
+  .descricao-chamativa{
+    max-width:800px;
     margin:2rem auto 3rem;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:1.5rem;
+    text-align:center;
     opacity:0;
     transform:translateY(40px);
     transition:all .8s;
   }
-  .descricao-icones.show{
+  .descricao-chamativa.show{
     opacity:1;
     transform:translateY(0);
   }
-  .icone-card{
-    background:#1a1a1a;
-    border-radius:14px;
-    padding:1.2rem .8rem;
-    text-align:center;
-    border:2px solid transparent;
-    transition:.3s;
-    position:relative;
-    overflow:hidden;
+  .descricao-chamativa h2{
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    margin-bottom:1rem;
+    background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradient 3s ease infinite;
   }
-  .icone-card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(45deg,var(--vermelho),var(--amarelo));
-    opacity:0;
-    transition:opacity .4s;
-    z-index:0;
+  @keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
   }
-  .icone-card:hover::before{opacity:.08;}
-  .icone-card:hover{
-    border-color:var(--vermelho);
-    transform:translateY(-6px) scale(1.03);
-  }
-  .icone-card img{
-    width:64px;
-    height:64px;
-    margin:0 auto .6rem;
-    position:relative;
-    z-index:1;
-    transition:transform .4s;
-  }
-  .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
-  .icone-card h3{
-    font-size:.95rem;
-    color:var(--amarelo);
-    margin-bottom:.3rem;
-    position:relative;
-    z-index:1;
-  }
-  .icone-card p{
-    font-size:.8rem;
+  .descricao-chamativa p{
+    font-size:clamp(1rem,2.5vw,1.3rem);
     color:#ccc;
-    position:relative;
-    z-index:1;
+    line-height:1.6;
   }
 
-  /* DETALHES */
   .detalhes-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -190,7 +155,6 @@
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
 
-  /* REVIEWS COM ANIMAÇÃO CRIATIVA */
   .reviews{
     padding:4rem 1rem;
     max-width:1200px;
@@ -236,18 +200,13 @@
     color:#fff;
   }
 
-  /* AÇÕES - ESPAÇAMENTO REDUZIDO */
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
   .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
   .fade-in.show{opacity:1;transform:translateY(0);}
-
-  /* FUNDO MENOS OPACO */
-  body{background:#181818}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
@@ -259,39 +218,18 @@
   </div>
 </section>
 
-<!-- DESCRIÇÃO COM ICONES -->
 <section style="padding:4rem 1rem;max-width:1200px;margin:auto">
-  <div class="descricao-icones">
-    <div class="icone-card">
-      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
-      <h3>4K + HDR</h3>
-      <p>Qualidade máxima</p>
-    </div>
-    <div class="icone-card">
-      <img src="https://img.icons8.com/color/96/000000/tv.png" alt="1 Tela">
-      <h3>1 Tela</h3>
-      <p>Só pra você</p>
-    </div>
-    <div class="icone-card">
-      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
-      <h3>Downloads</h3>
-      <p>Offline livre</p>
-    </div>
-    <div class="icone-card">
-      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
-      <h3>65% mais barato</h3>
-      <p>Economia real</p>
-    </div>
-    <div class="icone-card">
-      <img src="https://img.icons8.com/fluency/96/000000/no-hidden-fee.png" alt="Sem fidelidade">
-      <h3>Sem fidelidade</h3>
-      <p>Cancela quando quiser</p>
-    </div>
-    <div class="icone-card">
-      <img src="https://img.icons8.com/color/96/000000/clock.png" alt="Ativação">
-      <h3>Ativação imediata</h3>
-      <p>Começa agora</p>
-    </div>
+  <div class="descricao-chamativa">
+    <h2>Por que escolher o Netflix Solo 4K?</h2>
+    <p>
+      A única opção que entrega <strong>cinema em casa</strong> por menos de R$ 0,50 por dia. 
+      Somos o <span style="color:var(--amarelo)">único plano individual</span> com resolução 4K e HDR, 
+      downloads ilimitados e acesso ao <span style="color:var(--vermelho)">catálogo completo</span> de séries, filmes e documentários. 
+      Economize até <strong>65%</strong> em relação aos planos tradicionais sem perder qualidade. 
+      Ativação imediata, sem fidelidade e com suporte 24/7. 
+      <span style="color:var(--amarelo)">Perfeito para quem mora sozinho</span> e quer o melhor entretenimento do mundo, 
+      onde e quando quiser, <strong>sem pagar por telas que não usa</strong>.
+    </p>
   </div>
 
   <div class="detalhes-grid">
@@ -317,37 +255,34 @@
     </div>
   </div>
 
-  <!-- AÇÕES -->
+  <div class="reviews">
+    <div class="review-card">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Review 1">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Imagem incrível em 4K, vale cada centavo!"</p>
+      <p class="review-name">Carla M.</p>
+    </div>
+    <div class="review-card">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Review 2">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Ativação rápida, assisto no meu celular sem travar."</p>
+      <p class="review-name">Lucas R.</p>
+    </div>
+    <div class="review-card">
+      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Review 3">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Perfeito para quem mora sozinho e quer economizar."</p>
+      <p class="review-name">Fernanda K.</p>
+    </div>
+  </div>
+
   <div class="actions fade-in">
     <button class="btn btn-vermelho">Assinar Netflix Solo</button>
     <a href="index.html" class="btn btn-ghost">Voltar</a>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<div class="reviews">
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Review 1">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Imagem incrível em 4K, vale cada centavo!"</p>
-    <p class="review-name">Carla M.</p>
-  </div>
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Review 2">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Ativação rápida, assisto no meu celular sem travar."</p>
-    <p class="review-name">Lucas R.</p>
-  </div>
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Review 3">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Perfeito para quem mora sozinho e quer economizar."</p>
-    <p class="review-name">Fernanda K.</p>
-  </div>
-</div>
-
 <script>
-  // Revela elementos ao scroll
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
@@ -356,9 +291,8 @@
     });
   },{threshold:0.15});
 
-  document.querySelectorAll('.detalhe-card, .review-card, .fade-in, .descricao-icones').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.detalhe-card, .review-card, .fade-in, .descricao-chamativa').forEach(el=>observer.observe(el));
 
-  // Anima hero ao entrar na viewport
   const hero=document.querySelector('.hero');
   const heroObserver=new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
