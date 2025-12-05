@@ -12,7 +12,11 @@
     --cinza:#121212;
     --amarelo:#ffd600;
   }
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
+  @font-face{
+    font-family:'Netflix';
+    src:url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2') format('woff2');
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Netflix','Segoe UI',Helvetica,sans-serif;color:#fff}
   body{background:var(--preto)}
   img{max-width:100%;display:block}
   .btn{
@@ -51,6 +55,32 @@
   .hero h1{font-size:clamp(2.2rem,5vw,4rem);}
   .hero p{font-size:1.3rem;margin:1rem 0 2rem}
   .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+  /* TÍTULO ANIMADO */
+  .titulo-wrapper{
+    background:rgba(18,18,18,.65);
+    border-radius:12px;
+    padding:1.5rem 2rem;
+    display:inline-block;
+  }
+  .titulo-wrapper h1{
+    font-size:clamp(2.5rem,6vw,5rem);
+    letter-spacing:2px;
+    animation:fadeIn 1.5s ease-out, glow 2s infinite alternate;
+  }
+  .titulo-wrapper h1::first-letter{
+    font-size:110%;
+    color:var(--vermelho);
+    text-shadow:0 0 8px var(--vermelho);
+  }
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(-20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes glow{
+    from{text-shadow:0 0 4px #fff,0 0 8px var(--vermelho);}
+    to{text-shadow:0 0 8px #fff,0 0 16px var(--vermelho);}
+  }
 
   /* PREÇO PULSANTE VERMELHO */
   .preco-pulse{
@@ -135,14 +165,6 @@
 
   /* AÇÕES */
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
-
-  /* FUNDO SEMI-TRANSPARENTE ATRÁS DO TÍTULO */
-  .titulo-wrapper{
-    background:rgba(18,18,18,.65);
-    border-radius:12px;
-    padding:1.5rem 2rem;
-    display:inline-block;
-  }
 </style>
 </head>
 <body>
