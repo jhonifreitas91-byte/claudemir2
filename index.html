@@ -10,6 +10,8 @@
     --azul:#0052d4;
     --preto:#0a0a0a;
     --cinza:#121212;
+    --rosa:#ff0057;
+    --amarelo:#ffd600;
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
   body{background:var(--preto)}
@@ -98,69 +100,88 @@
   }
   .card-buttons .btn{flex:1;font-size:.95rem;text-align:center}
 
-  /* BANNER ESTREITO COM IMAGEM */
-  .banner{
-    margin:3rem 0;
-    height:200px;
-    background:url("https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1600&q=80") center/cover;
-    position:relative;
+  /* MODAL ESTILOS */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:14px;
-    overflow:hidden;
+    padding:1rem;
+    z-index:999;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
   }
-  .banner::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(90deg,var(--roxo) 0%,var(--azul) 100%);
-    opacity:.85;
+  .modal-overlay.ativo{
+    opacity:1;
+    visibility:visible;
   }
-  .banner-content{z-index:2;text-align:center}
-  .banner h3{font-size:1.8rem;margin-bottom:.5rem}
-  .banner p{margin-bottom:1rem}
-
-  /* DEPOIMENTOS COM IMAGENS */
-  .depoimentos{
-    padding:3rem 1rem;
-    max-width:1000px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:2rem;
-  }
-  .depo{
+  .modal-content{
     background:var(--cinza);
+    border-radius:16px;
+    max-width:700px;
+    width:100%;
+    padding:2rem;
+    position:relative;
+    animation:slideUp .4s ease;
+  }
+  @keyframes slideUp{
+    from{transform:translateY(40px);opacity:0}
+    to{transform:translateY(0);opacity:1}
+  }
+  .close-btn{
+    position:absolute;
+    top:1rem;right:1rem;
+    background:none;border:none;font-size:2rem;color:#fff;cursor:pointer;
+  }
+  .modal-content h2{margin-bottom:.5rem;font-size:2rem}
+  .subtitulo{color:var(--amarelo);margin-bottom:2rem}
+  .detalhes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1.5rem;
+    margin:2rem 0;
+  }
+  .detalhe-card{
+    background:#1a1a1a;
     border-radius:12px;
-    padding:1.6rem;
+    padding:1.2rem;
     text-align:center;
     border:2px solid transparent;
     transition:.3s;
   }
-  .depo:hover{border-color:var(--azul)}
-  .depo img{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    object-fit:cover;
-    margin:0 auto 1rem;
-    border:3px solid var(--roxo)
-  }
-  .depo-text{font-style:italic;color:#ddd;margin-bottom:.8rem}
-  .depo-stars{color:#ffd700;margin-bottom:.5rem}
-  .depo-name{color:var(--roxo);font-weight:700}
+  .detalhe-card:hover{border-color:var(--rosa)}
+  .detalhe-card img{margin:0 auto .8rem}
+  .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
+  .detalhe-card p{font-size:.85rem;color:#ccc}
 
-  /* RODAPÉ COLORIDO */
-  footer{
-    margin-top:4rem;
-    background:linear-gradient(45deg,var(--roxo),var(--azul));
-    padding:3rem 1rem;
-    text-align:center;
+  /* VÍDEO DEMO */
+  .video-demo{
+    margin:2rem 0;
+    border-radius:12px;
+    overflow:hidden;
+    border:2px solid var(--rosa);
   }
-  footer p{color:#000;font-weight:600;margin-bottom:1rem}
-  footer .btn{background:#000;color:#fff;margin:.3rem}
-  footer .btn:hover{background:#fff;color:#000}
+  .video-demo video{width:100%;display:block}
+
+  /* CRONÔMETRO */
+  .cronometro{
+    text-align:center;
+    margin:1.5rem 0;
+    font-size:1.2rem;
+    color:var(--amarelo);
+    font-weight:700;
+  }
+
+  .modal-actions{
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:2rem;
+  }
 </style>
 </head>
 <body>
@@ -194,7 +215,7 @@
     <div class="preco">R$ 39,90/mês</div>
     <div class="card-buttons">
       <a href="familia4k.html" class="btn btn-roxo">Assinar</a>
-      <button class="btn btn-ghost">Detalhes</button>
+      <button class="btn btn-ghost" onclick="abrirModal()">Detalhes</button>
     </div>
   </div>
 </article>
@@ -289,12 +310,84 @@
   </div>
 </div>
 
+<!-- MODAL DETALHES COMBO FAMÍLIA 4K -->
+<div id="modalFamilia" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="fecharModal()">&times;</button>
+    <h2>Combo Família 4K</h2>
+    <p class="subtitulo">Toda diversão da casa em um só lugar.</p>
+
+    <div class="detalhes-grid">
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+        <h3>4K + HDR</h3>
+        <p>Resolução ultra alta com cores reais e brilho dinâmico.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/family.png" alt="Família">
+        <h3>4 Telas Simultâneas</h3>
+        <p>Cada um assiste ao que quiser, onde estiver.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
+        <h3>Downloads Ilimitados</h3>
+        <p>Assista offline sem gastar dados.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+        <h3>Economia de 70%</h3>
+        <p>Menos de R$ 1,33 por dia por todo esse conteúdo.</p>
+      </div>
+    </div>
+
+    <!-- VÍDEO DEMO -->
+    <div class="video-demo">
+      <video controls poster="https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=800&q=80">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos HTML5.
+      </video>
+    </div>
+
+    <!-- CRONÔMETRO -->
+    <div class="cronometro">
+      ⏱️ Oferta termina em: <span id="timer">15:00</span>
+    </div>
+
+    <div class="modal-actions">
+      <a href="familia4k.html" class="btn btn-roxo">Assinar Agora</a>
+      <button class="btn btn-ghost" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+</div>
+
 <!-- RODAPÉ -->
 <footer>
   <p>Streaming Total © 2025 | Todos os direitos reservados</p>
   <button class="btn">Whatsapp</button>
   <button class="btn">Central de Ajuda</button>
 </footer>
+
+<script>
+  function abrirModal() {
+    document.getElementById('modalFamilia').classList.add('ativo');
+    iniciarCronometro();
+  }
+  function fecharModal() {
+    document.getElementById('modalFamilia').classList.remove('ativo');
+  }
+
+  function iniciarCronometro() {
+    let tempo = 15 * 60; // 15 minutos
+    const timer = document.getElementById('timer');
+    const interval = setInterval(() => {
+      const min = Math.floor(tempo / 60);
+      const seg = tempo % 60;
+      timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
+      tempo--;
+      if (tempo < 0) clearInterval(interval);
+    }, 1000);
+  }
+</script>
 
 </body>
 </html>
