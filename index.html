@@ -54,7 +54,7 @@
   .hero p{font-size:1.3rem;margin:1rem 0 2rem}
   .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
-  /* PRODUTOS EM GRADE */
+  /* PRODUTOS */
   .produtos{
     padding:4rem 1rem;
     max-width:1200px;
@@ -237,23 +237,23 @@
 <div class="produtos">
 
   <!-- CARD 1 -->
-<article class="card">
-  <img src="https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=800&q=80" alt="Combo Família">
-  <div class="card-body">
-    <h3>Combo Família 4K</h3>
-    <div class="tags">
-      <span class="tag">4 Telas</span>
-      <span class="tag">4K/HDR</span>
-      <span class="tag">Downloads</span>
+  <article class="card">
+    <img src="https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=800&q=80" alt="Combo Família">
+    <div class="card-body">
+      <h3>Combo Família 4K</h3>
+      <div class="tags">
+        <span class="tag">4 Telas</span>
+        <span class="tag">4K/HDR</span>
+        <span class="tag">Downloads</span>
+      </div>
+      <p>Netflix + Disney+ + HBO Max + Paramount</p>
+      <div class="preco">R$ 39,90/mês</div>
+      <div class="card-buttons">
+        <a href="familia4k.html" class="btn btn-roxo">Assinar</a>
+        <button class="btn btn-ghost" onclick="abrirModal()">Detalhes</button>
+      </div>
     </div>
-    <p>Netflix + Disney+ + HBO Max + Paramount</p>
-    <div class="preco">R$ 39,90/mês</div>
-    <div class="card-buttons">
-      <a href="familia4k.html" class="btn btn-roxo">Assinar</a>
-      <button class="btn btn-ghost" onclick="abrirModal()">Detalhes</button>
-    </div>
-  </div>
-</article>
+  </article>
 
   <!-- CARD 2 -->
   <article class="card">
@@ -269,7 +269,7 @@
       <div class="preco">R$ 14,90/mês</div>
       <div class="card-buttons">
         <a href="assinar-solo-4k.html" target="_blank" class="btn btn-roxo">Assinar</a>
-        <button class="btn btn-ghost">Detalhes</button>
+        <button class="btn btn-ghost" onclick="abrirModalSolo()">Detalhes</button>
       </div>
     </div>
   </article>
@@ -378,6 +378,48 @@
   </div>
 </div>
 
+<!-- MODAL DETALHES NETFLIX SOLO -->
+<div id="modalSolo" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="fecharModalSolo()">&times;</button>
+    <h2>Netflix Solo 4K</h2>
+    <p class="subtitulo">Perfil único, preço mínimo.</p>
+
+    <div class="detalhes-grid">
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+        <h3>4K + HDR</h3>
+        <p>Resolução ultra alta com cores reais e brilho dinâmico.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/1.png" alt="1 tela">
+        <h3>1 Tela Simultânea</h3>
+        <p>Perfil único, sem interferência.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/dusk/96/000000/no-ads.png" alt="Sem anúncios">
+        <h3>Sem Anúncios</h3>
+        <p>Filmes e séries sem interrupções.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+        <h3>Menor preço</h3>
+        <p>Menos de R$ 0,50 por dia por todo catálogo Netflix.</p>
+      </div>
+    </div>
+
+    <!-- CRONÔMETRO PULSANTE -->
+    <div class="cronometro">
+      ⏱️ Oferta termina em: <span id="timerSolo">30:00</span>
+    </div>
+
+    <div class="modal-actions">
+      <a href="assinar-solo-4k.html" target="_blank" class="btn btn-roxo">Assinar Agora</a>
+      <button class="btn btn-ghost" onclick="fecharModalSolo()">Fechar</button>
+    </div>
+  </div>
+</div>
+
 <!-- RODAPÉ -->
 <footer>
   <p>Streaming Total © 2025 | Todos os direitos reservados</p>
@@ -396,9 +438,31 @@
     document.body.style.overflow = '';
   }
 
+  function abrirModalSolo() {
+    document.getElementById('modalSolo').classList.add('ativo');
+    document.body.style.overflow = 'hidden';
+    iniciarCronometroSolo();
+  }
+  function fecharModalSolo() {
+    document.getElementById('modalSolo').classList.remove('ativo');
+    document.body.style.overflow = '';
+  }
+
   function iniciarCronometro() {
     let tempo = 30 * 60; // 30 minutos
     const timer = document.getElementById('timer');
+    const interval = setInterval(() => {
+      const min = Math.floor(tempo / 60);
+      const seg = tempo % 60;
+      timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
+      tempo--;
+      if (tempo < 0) clearInterval(interval);
+    }, 1000);
+  }
+
+  function iniciarCronometroSolo() {
+    let tempo = 30 * 60; // 30 minutos
+    const timer = document.getElementById('timerSolo');
     const interval = setInterval(() => {
       const min = Math.floor(tempo / 60);
       const seg = tempo % 60;
