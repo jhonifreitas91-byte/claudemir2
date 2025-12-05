@@ -102,36 +102,66 @@
     100%{transform:scale(1);}
   }
 
-  /* DESCRIÇÃO CHAMATIVA */
-  .descricao-chamativa{
-    max-width:800px;
+  /* DESCRIÇÃO COM ICONES */
+  .descricao-icones{
+    max-width:900px;
     margin:2rem auto 3rem;
-    text-align:center;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1.5rem;
     opacity:0;
     transform:translateY(40px);
     transition:all .8s;
   }
-  .descricao-chamativa.show{
+  .descricao-icones.show{
     opacity:1;
     transform:translateY(0);
   }
-  .descricao-chamativa h2{
-    font-size:clamp(1.8rem,4vw,2.8rem);
-    margin-bottom:1rem;
-    background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:gradient 3s ease infinite;
+  .icone-card{
+    background:#1a1a1a;
+    border-radius:14px;
+    padding:1.2rem .8rem;
+    text-align:center;
+    border:2px solid transparent;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
   }
-  @keyframes gradient{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+  .icone-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--vermelho),var(--amarelo));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
   }
-  .descricao-chamativa p{
-    font-size:clamp(1rem,2.5vw,1.3rem);
+  .icone-card:hover::before{opacity:.08;}
+  .icone-card:hover{
+    border-color:var(--vermelho);
+    transform:translateY(-6px) scale(1.03);
+  }
+  .icone-card img{
+    width:64px;
+    height:64px;
+    margin:0 auto .6rem;
+    position:relative;
+    z-index:1;
+    transition:transform .4s;
+  }
+  .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
+  .icone-card h3{
+    font-size:.95rem;
+    color:var(--amarelo);
+    margin-bottom:.3rem;
+    position:relative;
+    z-index:1;
+  }
+  .icone-card p{
+    font-size:.8rem;
     color:#ccc;
-    line-height:1.6;
+    position:relative;
+    z-index:1;
   }
 
   /* DETALHES */
@@ -226,19 +256,39 @@
   </div>
 </section>
 
-<!-- DESCRIÇÃO CHAMATIVA -->
+<!-- DESCRIÇÃO COM ICONES -->
 <section style="padding:4rem 1rem;max-width:1200px;margin:auto">
-  <div class="descricao-chamativa">
-    <h2>Por que escolher o Netflix Solo 4K?</h2>
-    <p>
-      A única opção que entrega <strong>cinema em casa</strong> por menos de R$ 0,50 por dia. 
-      Somos o <span style="color:var(--amarelo)">único plano individual</span> com resolução 4K e HDR, 
-      downloads ilimitados e acesso ao <span style="color:var(--vermelho)">catálogo completo</span> de séries, filmes e documentários. 
-      Economize até <strong>65%</strong> em relação aos planos tradicionais sem perder qualidade. 
-      Ativação imediata, sem fidelidade e com suporte 24/7. 
-      <span style="color:var(--amarelo)">Perfeito para quem mora sozinho</span> e quer o melhor entretenimento do mundo, 
-      onde e quando quiser, <strong>sem pagar por telas que não usa</strong>.
-    </p>
+  <div class="descricao-icones">
+    <div class="icone-card">
+      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+      <h3>4K + HDR</h3>
+      <p>Qualidade máxima</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/color/96/000000/tv.png" alt="1 Tela">
+      <h3>1 Tela</h3>
+      <p>Só pra você</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
+      <h3>Downloads</h3>
+      <p>Offline livre</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+      <h3>65% mais barato</h3>
+      <p>Economia real</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/fluency/96/000000/no-hidden-fee.png" alt="Sem fidelidade">
+      <h3>Sem fidelidade</h3>
+      <p>Cancela quando quiser</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/color/96/000000/clock.png" alt="Ativação">
+      <h3>Ativação imediata</h3>
+      <p>Começa agora</p>
+    </div>
   </div>
 
   <div class="detalhes-grid">
@@ -303,7 +353,7 @@
     });
   },{threshold:0.15});
 
-  document.querySelectorAll('.detalhe-card, .review-card, .fade-in, .descricao-chamativa').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.detalhe-card, .review-card, .fade-in, .descricao-icones').forEach(el=>observer.observe(el));
 
   // Anima hero ao entrar na viewport
   const hero=document.querySelector('.hero');
