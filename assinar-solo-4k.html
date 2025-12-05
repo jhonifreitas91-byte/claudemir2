@@ -99,35 +99,65 @@
     100%{transform:scale(1);}
   }
 
-  .descricao-chamativa{
-    max-width:800px;
+  .descricao-icones{
+    max-width:900px;
     margin:2rem auto 3rem;
-    text-align:center;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1.5rem;
     opacity:0;
     transform:translateY(40px);
     transition:all .8s;
   }
-  .descricao-chamativa.show{
+  .descricao-icones.show{
     opacity:1;
     transform:translateY(0);
   }
-  .descricao-chamativa h2{
-    font-size:clamp(1.8rem,4vw,2.8rem);
-    margin-bottom:1rem;
-    background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:gradient 3s ease infinite;
+  .icone-card{
+    background:#1a1a1a;
+    border-radius:14px;
+    padding:1.2rem .8rem;
+    text-align:center;
+    border:2px solid transparent;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
   }
-  @keyframes gradient{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+  .icone-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--vermelho),var(--amarelo));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
   }
-  .descricao-chamativa p{
-    font-size:clamp(1rem,2.5vw,1.3rem);
+  .icone-card:hover::before{opacity:.08;}
+  .icone-card:hover{
+    border-color:var(--vermelho);
+    transform:translateY(-6px) scale(1.03);
+  }
+  .icone-card img{
+    width:64px;
+    height:64px;
+    margin:0 auto .6rem;
+    position:relative;
+    z-index:1;
+    transition:transform .4s;
+  }
+  .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
+  .icone-card h3{
+    font-size:.95rem;
+    color:var(--amarelo);
+    margin-bottom:.3rem;
+    position:relative;
+    z-index:1;
+  }
+  .icone-card p{
+    font-size:.8rem;
     color:#ccc;
-    line-height:1.6;
+    position:relative;
+    z-index:1;
   }
 
   .detalhes-grid{
@@ -155,49 +185,35 @@
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
 
-  .reviews{
-    padding:4rem 1rem;
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:2rem;
-    overflow:hidden;
-  }
-  .review-card{
-    background:var(--cinza);
-    border-radius:14px;
-    padding:1.5rem;
+  .texto-chamativo{
+    max-width:800px;
+    margin:2rem auto 3rem;
     text-align:center;
-    border:2px solid var(--vermelho);
     opacity:0;
-    transform:scale(0.8) rotate(-5deg);
-    transition:all .6s;
+    transform:translateY(40px);
+    transition:all .8s;
   }
-  .review-card.show{
+  .texto-chamativo.show{
     opacity:1;
-    transform:scale(1) rotate(0);
+    transform:translateY(0);
   }
-  .review-card img{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    margin:0 auto 1rem;
-    object-fit:cover;
+  .texto-chamativo h2{
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    margin-bottom:1rem;
+    background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradient 3s ease infinite;
   }
-  .stars{
-    color:var(--amarelo);
-    font-size:1.2rem;
-    margin-bottom:.5rem;
+  @keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
   }
-  .review-text{
-    font-size:.95rem;
+  .texto-chamativo p{
+    font-size:clamp(1rem,2.5vw,1.3rem);
     color:#ccc;
-    margin-bottom:.8rem;
-  }
-  .review-name{
-    font-weight:700;
-    color:#fff;
+    line-height:1.6;
   }
 
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
@@ -219,17 +235,37 @@
 </section>
 
 <section style="padding:4rem 1rem;max-width:1200px;margin:auto">
-  <div class="descricao-chamativa">
-    <h2>Por que escolher o Netflix Solo 4K?</h2>
-    <p>
-      A única opção que entrega <strong>cinema em casa</strong> por menos de R$ 0,50 por dia. 
-      Somos o <span style="color:var(--amarelo)">único plano individual</span> com resolução 4K e HDR, 
-      downloads ilimitados e acesso ao <span style="color:var(--vermelho)">catálogo completo</span> de séries, filmes e documentários. 
-      Economize até <strong>65%</strong> em relação aos planos tradicionais sem perder qualidade. 
-      Ativação imediata, sem fidelidade e com suporte 24/7. 
-      <span style="color:var(--amarelo)">Perfeito para quem mora sozinho</span> e quer o melhor entretenimento do mundo, 
-      onde e quando quiser, <strong>sem pagar por telas que não usa</strong>.
-    </p>
+  <div class="descricao-icones">
+    <div class="icone-card">
+      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+      <h3>4K + HDR</h3>
+      <p>Qualidade máxima</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/color/96/000000/tv.png" alt="1 Tela">
+      <h3>1 Tela</h3>
+      <p>Só pra você</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
+      <h3>Downloads</h3>
+      <p>Offline livre</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+      <h3>65% mais barato</h3>
+      <p>Economia real</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/fluency/96/000000/no-hidden-fee.png" alt="Sem fidelidade">
+      <h3>Sem fidelidade</h3>
+      <p>Cancela quando quiser</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/color/96/000000/clock.png" alt="Ativação">
+      <h3>Ativação imediata</h3>
+      <p>Começa agora</p>
+    </div>
   </div>
 
   <div class="detalhes-grid">
@@ -255,25 +291,16 @@
     </div>
   </div>
 
-  <div class="reviews">
-    <div class="review-card">
-      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Review 1">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"Imagem incrível em 4K, vale cada centavo!"</p>
-      <p class="review-name">Carla M.</p>
-    </div>
-    <div class="review-card">
-      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Review 2">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"Ativação rápida, assisto no meu celular sem travar."</p>
-      <p class="review-name">Lucas R.</p>
-    </div>
-    <div class="review-card">
-      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Review 3">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">"Perfeito para quem mora sozinho e quer economizar."</p>
-      <p class="review-name">Fernanda K.</p>
-    </div>
+  <div class="texto-chamativo">
+    <h2>Cinema em casa por menos de R$ 0,50 por dia</h2>
+    <p>
+      Somos o <span style="color:var(--amarelo)">único plano individual</span> com resolução 4K e HDR, 
+      downloads ilimitados e acesso ao <span style="color:var(--vermelho)">catálogo completo</span> de séries, filmes e documentários. 
+      Economize até <strong>65%</strong> em relação aos planos tradicionais sem perder qualidade. 
+      Ativação imediata, sem fidelidade e com suporte 24/7. 
+      <span style="color:var(--amarelo)">Perfeito para quem mora sozinho</span> e quer o melhor entretenimento do mundo, 
+      onde e quando quiser, <strong>sem pagar por telas que não usa</strong>.
+    </p>
   </div>
 
   <div class="actions fade-in">
@@ -291,7 +318,7 @@
     });
   },{threshold:0.15});
 
-  document.querySelectorAll('.detalhe-card, .review-card, .fade-in, .descricao-chamativa').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo').forEach(el=>observer.observe(el));
 
   const hero=document.querySelector('.hero');
   const heroObserver=new IntersectionObserver((entries)=>{
@@ -306,4 +333,4 @@
 </script>
 
 </body>
-</html>
+</html
