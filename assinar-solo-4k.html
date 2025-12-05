@@ -115,16 +115,6 @@
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
 
-  /* CRONÔMETRO VERMELHO */
-  .cronometro{
-    text-align:center;
-    margin:2rem 0;
-    font-size:2.2rem;
-    color:var(--vermelho);
-    font-weight:900;
-    animation:pulseVermelho 1.2s infinite;
-  }
-
   /* REVIEWS */
   .reviews{
     padding:4rem 1rem;
@@ -207,11 +197,6 @@
     </div>
   </div>
 
-  <!-- CRONÔMETRO -->
-  <div class="cronometro">
-    ⏱️ Oferta termina em: <span id="timer">30:00</span>
-  </div>
-
   <!-- AÇÕES -->
   <div class="actions">
     <button class="btn btn-vermelho">Assinar Netflix Solo</button>
@@ -240,19 +225,6 @@
     <p class="review-name">Fernanda K.</p>
   </div>
 </div>
-
-<script>
-  // cronômetro 30:00
-  let tempo = 30 * 60;
-  const timer = document.getElementById('timer');
-  const interval = setInterval(() => {
-    const min = Math.floor(tempo / 60);
-    const seg = tempo % 60;
-    timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
-    tempo--;
-    if (tempo < 0) clearInterval(interval);
-  }, 1000);
-</script>
 
 </body>
 </html>
