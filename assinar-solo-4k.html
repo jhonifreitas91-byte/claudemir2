@@ -185,8 +185,9 @@
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
 
-  .divisoria-icones{
-    height:3px;
+  /* ---------- linha única animada ---------- */
+  .divisoria-unica{
+    height:4px;
     background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
     border:none;
     margin:2.5rem auto 1.5rem;
@@ -195,26 +196,26 @@
     opacity:0;
     transform:scaleX(0);
     transition:all .6s;
+    position:relative;
+    overflow:hidden;
   }
-  .divisoria-icones.show{
+  .divisoria-unica.show{
     opacity:1;
     transform:scaleX(1);
   }
-
-  .divisoria-topico{
-    height:3px;
-    background:linear-gradient(90deg,var(--azul),var(--amarelo));
-    border:none;
-    margin:2.5rem auto 1.5rem;
-    max-width:220px;
-    border-radius:3px;
-    opacity:0;
-    transform:scaleX(0);
-    transition:all .6s;
+  .divisoria-unica::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,var(--vermelho),transparent);
+    animation:snake 2s linear infinite;
   }
-  .divisoria-topico.show{
-    opacity:1;
-    transform:scaleX(1);
+  @keyframes snake{
+    0%{left:-100%;}
+    100%{left:100%;}
   }
 
   .texto-chamativo{
@@ -251,16 +252,6 @@
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
   .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
   .fade-in.show{opacity:1;transform:translateY(0);}
-
-  /* Animação de contorno vermelho nos tópicos */
-  @keyframes borderRed{
-    0%{border-color:transparent;}
-    50%{border-color:var(--vermelho);}
-    100%{border-color:transparent;}
-  }
-  .icone-card{
-    animation:borderRed 2s infinite;
-  }
 </style>
 </head>
 <body>
@@ -310,7 +301,7 @@
     </div>
   </div>
 
-  <hr class="divisoria-icones">
+  <hr class="divisoria-unica">
 
   <div class="detalhes-grid">
     <div class="detalhe-card">
@@ -334,8 +325,6 @@
       <p>Menos de R$ 0,50 por dia</p>
     </div>
   </div>
-
-  <hr class="divisoria-topico">
 
   <div class="texto-chamativo">
     <h2>Cinema em casa por menos de R$ 0,50 por dia</h2>
@@ -364,7 +353,7 @@
     });
   },{threshold:0.15});
 
-  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-icones, .divisoria-topico').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-unica').forEach(el=>observer.observe(el));
 
   const hero=document.querySelector('.hero');
   const heroObserver=new IntersectionObserver((entries)=>{
