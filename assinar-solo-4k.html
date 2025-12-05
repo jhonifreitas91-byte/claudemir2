@@ -2,89 +2,24 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Assinar Netflix Solo 4K</title>
+<title>Netflix Solo 4K – Streaming Total</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --vermelho:#e50914;
+    --roxo:#E50914;   /* trocado para vermelho Netflix */
+    --azul:#0052d4;
     --preto:#0a0a0a;
     --cinza:#121212;
+    --rosa:#E50914;   /* trocado para vermelho Netflix */
     --amarelo:#ffd600;
   }
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#fff}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
   body{background:var(--preto)}
   img{max-width:100%;display:block}
-
-  /* HERO ASSINAR */
-  .hero-assinar{
-    width:100%;
-    min-height:100vh;
-    background:url("https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-4247-9a4c-3d9b8b7c7d3b/8a0a3e0e-0b0e-4b3b-8b3b-8b3b8b3b8b3b/BR-pt-20210517-popsignuptwoweeks-perspective_alpha_website_large.jpg") center/cover no-repeat;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
-  .hero-assinar::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.55);
-  }
-  .hero-content{z-index:2;width:90%;max-width:700px}
-
-  /* TÍTULO COM FUNDO SEMI-TRANSPARENTE */
-  .titulo-box{
-    background:rgba(18,18,18,.75);
-    border-radius:12px;
-    padding:2rem 1.5rem;
-    margin-bottom:2rem;
-    backdrop-filter:blur(4px);
-  }
-  .titulo-box h1{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:.5rem;color:var(--vermelho)}
-  .titulo-box p{font-size:1.1rem;color:#ccc}
-  .titulo-box .preco{font-size:1.4rem;color:var(--amarelo);font-weight:700}
-
-  /* OFERTA PISCANTE VERMELHO */
-  .oferta-pulse{
-    display:inline-block;
-    font-size:1.2rem;
-    color:#fff;
-    background:var(--vermelho);
-    padding:8px 18px;
-    border-radius:30px;
-    font-weight:700;
-    animation:pulseVermelho 1.2s infinite;
-  }
-  @keyframes pulseVermelho{
-    0%{transform:scale(1);box-shadow:0 0 0 0 rgba(229,9,20,.7)}
-    70%{transform:scale(1.02);box-shadow:0 0 0 10px rgba(229,9,20,0)}
-    100%{transform:scale(1);box-shadow:0 0 0 0 rgba(229,9,20,0)}
-  }
-
-  /* AVALIAÇÕES */
-  .avaliacoes{
-    display:grid;
-    gap:1rem;
-    margin:2rem 0;
-  }
-  .avaliacao{
-    background:rgba(18,18,18,.85);
-    border:2px solid var(--vermelho);
-    border-radius:10px;
-    padding:1rem;
-    text-align:left;
-  }
-  .avaliacao .stars{color:var(--amarelo);font-size:1.1rem;margin-bottom:.3rem}
-  .avaliacao .texto{font-size:.95rem;color:#ddd}
-  .avaliacao .nome{font-weight:700;color:#fff;margin-top:.4rem}
-
-  /* BOTÕES */
   .btn{
     padding:14px 32px;
     border:none;
-    border-radius:4px;
+    border-radius:30px;
     font-size:1.1rem;
     font-weight:700;
     cursor:pointer;
@@ -92,55 +27,203 @@
     text-decoration:none;
     display:inline-block;
   }
-  .btn-vermelho{background:var(--vermelho)}
-  .btn-vermelho:hover{background:#f40612;transform:scale(1.02)}
+  .btn-roxo{background:var(--roxo)}
+  .btn-roxo:hover{background:var(--azul);transform:scale(1.05)}
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
-  /* RODAPÉ */
-  footer{
+  /* HERO */
+  .hero{
+    width:100%;
+    height:100vh;
+    background:url("pipoca1.jpg") center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
-    padding:2rem 1rem;
-    font-size:.9rem;
-    color:#aaa;
   }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+  }
+  .hero-content{z-index:2}
+  .hero h1{font-size:clamp(2.2rem,5vw,4rem);text-shadow:0 4px 12px rgba(0,0,0,.7)}
+  .hero p{font-size:1.3rem;margin:1rem 0 2rem}
+  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+  /* PREÇO PULSANTE */
+  .preco-pulse{
+    font-size:2.4rem;
+    color:var(--amarelo);
+    font-weight:900;
+    animation:pulse 1.2s infinite;
+  }
+  @keyframes pulse{
+    0%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
+    50%{transform:scale(1.05);text-shadow:0 0 20px var(--rosa)}
+    100%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
+  }
+
+  /* DETALHES */
+  .detalhes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1.5rem;
+    margin:2rem 0;
+  }
+  .detalhe-card{
+    background:#1a1a1a;
+    border-radius:12px;
+    padding:1.2rem;
+    text-align:center;
+    border:2px solid transparent;
+    transition:.3s;
+  }
+  .detalhe-card:hover{border-color:var(--rosa)}
+  .detalhe-card img{margin:0 auto .8rem}
+  .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
+  .detalhe-card p{font-size:.85rem;color:#ccc}
+
+  /* CRONÔMETRO */
+  .cronometro{
+    text-align:center;
+    margin:2rem 0;
+    font-size:2.2rem;
+    color:var(--amarelo);
+    font-weight:900;
+    animation:pulse 1.2s infinite;
+  }
+
+  /* REVIEWS */
+  .reviews{
+    padding:4rem 1rem;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:2rem;
+  }
+  .review-card{
+    background:var(--cinza);
+    border-radius:14px;
+    padding:1.5rem;
+    text-align:center;
+    border:2px solid var(--roxo); /* contorno vermelho */
+  }
+  .review-card img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    margin:0 auto 1rem;
+    object-fit:cover;
+  }
+  .stars{
+    color:var(--amarelo);
+    font-size:1.2rem;
+    margin-bottom:.5rem;
+  }
+  .review-text{
+    font-size:.95rem;
+    color:#ccc;
+    margin-bottom:.8rem;
+  }
+  .review-name{
+    font-weight:700;
+    color:#fff;
+  }
+
+  /* AÇÕES */
+  .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
 </style>
 </head>
 <body>
 
-<section class="hero-assinar">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-content">
-    <div class="titulo-box">
-      <h1>Netflix Solo 4K</h1>
-      <p>1 tela em 4K/HDR com todo catálogo original</p>
-      <div class="preco">R$ 14,90/mês</div>
-    </div>
-
-    <div class="oferta-pulse">🔥 Oferta por tempo limitado</div>
-
-    <div class="avaliacoes">
-      <div class="avaliacao">
-        <div class="stars">★★★★★</div>
-        <div class="texto">“Imagem incrível e sem travamentos, melhor custo-benefício!”</div>
-        <div class="nome">— Carlos R.</div>
-      </div>
-      <div class="avaliacao">
-        <div class="stars">★★★★★</div>
-        <div class="texto">“Ativação rápida, em 2 minutos já estava assistindo.”</div>
-        <div class="nome">— Larissa M.</div>
-      </div>
-    </div>
-
-    <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-      <a href="confirmar-solo.html" class="btn btn-vermelho">Assinar Agora</a>
-      <a href="index.html" class="btn btn-ghost">Voltar</a>
+    <h1>Netflix Solo 4K</h1>
+    <p>1 tela em 4K/HDR com todo catálogo original</p>
+    <div class="hero-actions">
+      <span class="preco-pulse">R$ 14,90/mês</span>
     </div>
   </div>
 </section>
 
-<footer>
-  Streaming Total © 2025 | Todos os direitos reservados
-</footer>
+<!-- DETALHES -->
+<section style="padding:4rem 1rem;max-width:1200px;margin:auto">
+  <h2 style="text-align:center;margin-bottom:2rem">Por que escolher o Netflix Solo?</h2>
+
+  <div class="detalhes-grid">
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+      <h3>4K + HDR</h3>
+      <p>Resolução máxima e cores vibrantes</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/color/96/000000/tv.png" alt="1 Tela">
+      <h3>1 Tela</h3>
+      <p>Perfeito para uso individual</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
+      <h3>Downloads</h3>
+      <p>Assista offline onde quiser</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+      <h3>Economia 65%</h3>
+      <p>Menos de R$ 0,50 por dia</p>
+    </div>
+  </div>
+
+  <!-- CRONÔMETRO -->
+  <div class="cronometro">
+    ⏱️ Oferta termina em: <span id="timer">30:00</span>
+  </div>
+
+  <!-- AÇÕES -->
+  <div class="actions">
+    <button class="btn btn-roxo">Assinar Netflix Solo</button>
+    <a href="index.html" class="btn btn-ghost">Voltar</a>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<div class="reviews">
+  <div class="review-card">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Review 1">
+    <div class="stars">★★★★★</div>
+    <p class="review-text">"Imagem incrível em 4K, vale cada centavo!"</p>
+    <p class="review-name">Carla M.</p>
+  </div>
+  <div class="review-card">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Review 2">
+    <div class="stars">★★★★★</div>
+    <p class="review-text">"Ativação rápida, assisto no meu celular sem travar."</p>
+    <p class="review-name">Lucas R.</p>
+  </div>
+  <div class="review-card">
+    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Review 3">
+    <div class="stars">★★★★★</div>
+    <p class="review-text">"Perfeito para quem mora sozinho e quer economizar."</p>
+    <p class="review-name">Fernanda K.</p>
+  </div>
+</div>
+
+<script>
+  // cronômetro 30:00
+  let tempo = 30 * 60;
+  const timer = document.getElementById('timer');
+  const interval = setInterval(() => {
+    const min = Math.floor(tempo / 60);
+    const seg = tempo % 60;
+    timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
+    tempo--;
+    if (tempo < 0) clearInterval(interval);
+  }, 1000);
+</script>
 
 </body>
 </html>
