@@ -35,7 +35,7 @@
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
-  /* HERO COM IMAGEM DE FUNDO */
+  /* HERO COM BACKGROUND ANIMADO */
   .hero{
     width:100%;
     height:100vh;
@@ -52,7 +52,16 @@
     inset:0;
     background:rgba(0,0,0,.6);
   }
-  .hero-content{z-index:2}
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    background:url("pipoca1.jpg") center/cover no-repeat;
+    transform:scale(1.1);
+    transition:transform 1.2s ease;
+  }
+  .hero.in-view .hero-bg{transform:scale(1);}
+  .hero-content{z-index:2;opacity:0;transform:translateY(40px);transition:all .8s .4s;}
+  .hero.in-view .hero-content{opacity:1;transform:translateY(0);}
 
   /* TÍTULO ANIMADO */
   .titulo-wrapper{
@@ -93,7 +102,7 @@
     100%{transform:scale(1);}
   }
 
-  /* DETALHES */
+  /* DETALHES COM ANIMAÇÃO AO SCROLL */
   .detalhes-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -107,9 +116,15 @@
     text-align:center;
     border:2px solid transparent;
     transition:.3s;
+    opacity:0;
+    transform:translateY(40px);
+  }
+  .detalhe-card.show{
+    animation:fadeInUp 0.6s forwards;
   }
   .detalhe-card:hover{border-color:var(--vermelho)}
-  .detalhe-card img{margin:0 auto .8rem}
+  .detalhe-card img{margin:0 auto .8rem;transition:transform .3s}
+  .detalhe-card:hover img{transform:scale(1.1) rotate(5deg)}
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
 
@@ -131,16 +146,11 @@
     border:2px solid var(--vermelho);
     opacity:0;
     transform:scale(0.8) rotate(-5deg);
-    animation:popIn 0.8s forwards;
+    transition:all .6s;
   }
-  .review-card:nth-child(1){animation-delay:0.2s}
-  .review-card:nth-child(2){animation-delay:0.4s}
-  .review-card:nth-child(3){animation-delay:0.6s}
-  @keyframes popIn{
-    to{
-      opacity:1;
-      transform:scale(1) rotate(0);
-    }
+  .review-card.show{
+    opacity:1;
+    transform:scale(1) rotate(0);
   }
   .review-card img{
     width:80px;
@@ -166,12 +176,15 @@
 
   /* AÇÕES */
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+  .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
+  .fade-in.show{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="titulo-wrapper">
       <h1>Netflix Solo 4K</h1>
@@ -183,7 +196,7 @@
 
 <!-- DETALHES -->
 <section style="padding:4rem 1rem;max-width:1200px;margin:auto">
-  <h2 style="text-align:center;margin-bottom:2rem">Por que escolher o Netflix Solo?</h2>
+  <h2 style="text-align:center;margin-bottom:2rem" class="fade-in">Por que escolher o Netflix Solo?</h2>
 
   <div class="detalhes-grid">
     <div class="detalhe-card">
@@ -209,7 +222,7 @@
   </div>
 
   <!-- AÇÕES -->
-  <div class="actions">
+  <div class="actions fade-in">
     <button class="btn btn-vermelho">Assinar Netflix Solo</button>
     <a href="index.html" class="btn btn-ghost">Voltar</a>
   </div>
@@ -236,6 +249,31 @@
     <p class="review-name">Fernanda K.</p>
   </div>
 </div>
+
+<script>
+  // Revela elementos ao scroll
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  },{threshold:0.15});
+
+  document.querySelectorAll('.detalhe-card, .review-card, .fade-in').forEach(el=>observer.observe(el));
+
+  // Anima hero ao entrar na viewport
+  const hero=document.querySelector('.hero');
+  const heroObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        heroObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.4});
+  heroObserver.observe(hero);
+</script>
 
 </body>
 </html>
