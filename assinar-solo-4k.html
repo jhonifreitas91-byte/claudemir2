@@ -102,6 +102,38 @@
     100%{transform:scale(1);}
   }
 
+  /* DESCRIÇÃO CHAMATIVA */
+  .descricao-chamativa{
+    max-width:800px;
+    margin:2rem auto 3rem;
+    text-align:center;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s;
+  }
+  .descricao-chamativa.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .descricao-chamativa h2{
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    margin-bottom:1rem;
+    background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradient 3s ease infinite;
+  }
+  @keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+  .descricao-chamativa p{
+    font-size:clamp(1rem,2.5vw,1.3rem);
+    color:#ccc;
+    line-height:1.6;
+  }
+
   /* DETALHES */
   .detalhes-grid{
     display:grid;
@@ -194,9 +226,20 @@
   </div>
 </section>
 
-<!-- DETALHES -->
+<!-- DESCRIÇÃO CHAMATIVA -->
 <section style="padding:4rem 1rem;max-width:1200px;margin:auto">
-  <h2 style="text-align:center;margin-bottom:2rem" class="fade-in">Por que escolher o Netflix Solo?</h2>
+  <div class="descricao-chamativa">
+    <h2>Por que escolher o Netflix Solo 4K?</h2>
+    <p>
+      A única opção que entrega <strong>cinema em casa</strong> por menos de R$ 0,50 por dia. 
+      Somos o <span style="color:var(--amarelo)">único plano individual</span> com resolução 4K e HDR, 
+      downloads ilimitados e acesso ao <span style="color:var(--vermelho)">catálogo completo</span> de séries, filmes e documentários. 
+      Economize até <strong>65%</strong> em relação aos planos tradicionais sem perder qualidade. 
+      Ativação imediata, sem fidelidade e com suporte 24/7. 
+      <span style="color:var(--amarelo)">Perfeito para quem mora sozinho</span> e quer o melhor entretenimento do mundo, 
+      onde e quando quiser, <strong>sem pagar por telas que não usa</strong>.
+    </p>
+  </div>
 
   <div class="detalhes-grid">
     <div class="detalhe-card">
@@ -260,7 +303,7 @@
     });
   },{threshold:0.15});
 
-  document.querySelectorAll('.detalhe-card, .review-card, .fade-in').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.detalhe-card, .review-card, .fade-in, .descricao-chamativa').forEach(el=>observer.observe(el));
 
   // Anima hero ao entrar na viewport
   const hero=document.querySelector('.hero');
