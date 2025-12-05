@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --rosa:#ff0057;
-    --amarelo:#ffd600;
     --roxo:#8a2be2;
     --azul:#0052d4;
     --preto:#0a0a0a;
     --cinza:#121212;
+    --rosa:#ff0057;
+    --amarelo:#ffd600;
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
-  body{background:var(--preto);overflow-x:hidden}
+  body{background:var(--preto)}
   img{max-width:100%;display:block}
   .btn{
     padding:14px 32px;
@@ -27,124 +27,115 @@
     text-decoration:none;
     display:inline-block;
   }
-  .btn-rosa{background:var(--rosa)}
-  .btn-rosa:hover{background:var(--amarelo);color:#000;transform:scale(1.05)}
+  .btn-roxo{background:var(--roxo)}
+  .btn-roxo:hover{background:var(--azul);transform:scale(1.05)}
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
-  /* HERO ANIMADO */
+  /* HERO */
   .hero{
     width:100%;
     height:100vh;
-    background:linear-gradient(45deg,var(--rosa),var(--amarelo),var(--roxo));
-    background-size:400% 400%;
-    animation:gradient 8s ease infinite;
+    background:url("https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;
+    position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    position:relative;
   }
-  @keyframes gradient{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,#8a2be2cc 0%,#0052d4cc 100%);
   }
-  .hero-content{z-index:2;animation:fadeInDown 1s ease}
-  @keyframes fadeInDown{
-    from{opacity:0;transform:translateY(-30px)}
-    to{opacity:1;transform:translateY(0)}
-  }
-  .hero h1{font-size:clamp(2.5rem,6vw,5rem);text-shadow:0 4px 12px rgba(0,0,0,.7)}
-  .hero p{font-size:1.4rem;margin:1rem 0 2rem}
+  .hero-content{z-index:2}
+  .hero h1{font-size:clamp(2.2rem,5vw,4rem);text-shadow:0 4px 12px rgba(0,0,0,.7)}
+  .hero p{font-size:1.3rem;margin:1rem 0 2rem}
   .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
-  /* DESTAQUES */
-  .destaques{
-    padding:4rem 1rem;
-    max-width:1000px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:2rem;
-    text-align:center;
-  }
-  .destaque{
-    background:var(--cinza);
-    border-radius:14px;
-    padding:2rem 1rem;
-    border:2px solid transparent;
-    transition:.4s;
-    animation:fadeInUp 1s ease;
-  }
-  @keyframes fadeInUp{
-    from{opacity:0;transform:translateY(30px)}
-    to{opacity:1;transform:translateY(0)}
-  }
-  .destaque:hover{border-color:var(--rosa);transform:translateY(-8px)}
-  .destaque img{width:60px;margin:0 auto 1rem}
-  .destaque h3{font-size:1.3rem;margin-bottom:.5rem}
-  .destaque p{color:#ccc}
-
-  /* PREÇO CHAMATIVO */
-  .preco-chamada{
-    padding:3rem 1rem;
-    text-align:center;
-  }
-  .preco-chamada h2{font-size:2.2rem;margin-bottom:1rem}
-  .preco{
-    font-size:3rem;
+  /* PREÇO PULSANTE */
+  .preco-pulse{
+    font-size:2.4rem;
     color:var(--amarelo);
-    font-weight:800;
-    margin-bottom:1rem;
-    animation:pulse 2s infinite;
+    font-weight:900;
+    animation:pulse 1.2s infinite;
   }
   @keyframes pulse{
-    0%{transform:scale(1)}
-    50%{transform:scale(1.05)}
-    100%{transform:scale(1)}
+    0%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
+    50%{transform:scale(1.05);text-shadow:0 0 20px var(--rosa)}
+    100%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
   }
 
-  /* DEPOIMENTOS FAMÍLIA */
-  .depo-familia{
-    padding:3rem 1rem;
-    max-width:1000px;
-    margin:auto;
+  /* DETALHES */
+  .detalhes-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:2rem;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1.5rem;
+    margin:2rem 0;
   }
-  .depo-familia .depo{
-    background:var(--cinza);
+  .detalhe-card{
+    background:#1a1a1a;
     border-radius:12px;
-    padding:1.6rem;
+    padding:1.2rem;
     text-align:center;
     border:2px solid transparent;
     transition:.3s;
   }
-  .depo-familia .depo:hover{border-color:var(--rosa)}
-  .depo-familia img{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    object-fit:cover;
-    margin:0 auto 1rem;
-    border:3px solid var(--rosa)
-  }
-  .depo-stars{color:var(--amarelo);margin-bottom:.5rem}
-  .depo-text{font-style:italic;color:#ddd;margin-bottom:.8rem}
-  .depo-name{color:var(--rosa);font-weight:700}
+  .detalhe-card:hover{border-color:var(--rosa)}
+  .detalhe-card img{margin:0 auto .8rem}
+  .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
+  .detalhe-card p{font-size:.85rem;color:#ccc}
 
-  /* RODAPÉ */
-  footer{
-    margin-top:4rem;
-    background:linear-gradient(45deg,var(--rosa),var(--amarelo));
-    padding:3rem 1rem;
+  /* CRONÔMETRO */
+  .cronometro{
+    text-align:center;
+    margin:2rem 0;
+    font-size:2.2rem;
+    color:var(--amarelo);
+    font-weight:900;
+    animation:pulse 1.2s infinite;
+  }
+
+  /* REVIEWS */
+  .reviews{
+    padding:4rem 1rem;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:2rem;
+  }
+  .review-card{
+    background:var(--cinza);
+    border-radius:14px;
+    padding:1.5rem;
     text-align:center;
   }
-  footer p{color:#000;font-weight:600;margin-bottom:1rem}
-  footer .btn{background:#000;color:#fff;margin:.3rem}
-  footer .btn:hover{background:#fff;color:#000}
+  .review-card img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    margin:0 auto 1rem;
+    object-fit:cover;
+  }
+  .stars{
+    color:var(--amarelo);
+    font-size:1.2rem;
+    margin-bottom:.5rem;
+  }
+  .review-text{
+    font-size:.95rem;
+    color:#ccc;
+    margin-bottom:.8rem;
+  }
+  .review-name{
+    font-weight:700;
+    color:#fff;
+  }
+
+  /* AÇÕES */
+  .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
 </style>
 </head>
 <body>
@@ -153,75 +144,86 @@
 <section class="hero">
   <div class="hero-content">
     <h1>Combo Família 4K</h1>
-    <p>4 telas simultâneas + 4K/HDR + downloads ilimitados<br>Netflix, Disney+, HBO Max e Paramount+ por apenas</p>
-    <div class="preco">R$ 39,90/mês</div>
+    <p>4 telas simultâneas • 4K/HDR • Downloads ilimitados</p>
     <div class="hero-actions">
-      <a href="#assinar" class="btn btn-rosa">Quero Assinar</a>
-      <button class="btn btn-ghost">Ver Demo</button>
+      <span class="preco-pulse">R$ 39,90/mês</span>
     </div>
   </div>
 </section>
 
-<!-- DESTAQUES -->
-<div class="destaques">
-  <div class="destaque">
-    <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
-    <h3>Imagem Ultra HD</h3>
-    <p>Resolução 4K + HDR10. Cores vivas e detalhes nítidos na TV grande.</p>
+<!-- DETALHES -->
+<section style="padding:4rem 1rem;max-width:1200px;margin:auto">
+  <h2 style="text-align:center;margin-bottom:2rem">Por que escolher o Combo Família?</h2>
+
+  <div class="detalhes-grid">
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+      <h3>4K + HDR</h3>
+      <p>Resolução máxima em até 4 telas</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/color/96/000000/family.png" alt="Família">
+      <h3>4 Telas</h3>
+      <p>Assista todo mundo ao mesmo tempo</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
+      <h3>Downloads</h3>
+      <p>Offline em até 10 dispositivos</p>
+    </div>
+    <div class="detalhe-card">
+      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+      <h3>Economia 70%</h3>
+      <p>Mais barato que 4 assinaturas separadas</p>
+    </div>
   </div>
-  <div class="destaque">
-    <img src="https://img.icons8.com/color/96/000000/family.png" alt="Família">
-    <h3>Até 4 Telas</h3>
-    <p>Pai, mãe e filhos assistindo ao mesmo tempo, cada um no seu aparelho.</p>
+
+  <!-- CRONÔMETRO -->
+  <div class="cronometro">
+    ⏱️ Oferta termina em: <span id="timer">30:00</span>
   </div>
-  <div class="destaque">
-    <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
-    <h3>Downloads Ilimitados</h3>
-    <p>Leve filmes e séries para o avião ou viagens de carro sem gastar dados.</p>
+
+  <!-- AÇÕES (com botão Voltar idêntico ao Netflix Solo) -->
+  <div class="actions">
+    <button class="btn btn-roxo">Assinar Combo Família</button>
+    <a href="index.html" class="btn btn-ghost">Voltar</a>
   </div>
-  <div class="destaque">
-    <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
-    <h3>Economia Garantida</h3>
-    <p>Menos de R$ 1,33 por dia. Economize até 70% em relação às assinaturas avulsas.</p>
+</section>
+
+<!-- REVIEWS -->
+<div class="reviews">
+  <div class="review-card">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Review 1">
+    <div class="stars">★★★★★</div>
+    <p class="review-text">"Economizamos muito e todo mundo assiste o que quer!"</p>
+    <p class="review-name">Carla M.</p>
+  </div>
+  <div class="review-card">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Review 2">
+    <div class="stars">★★★★★</div>
+    <p class="review-text">"Ativação rápida, 4K liso na smart e no celular."</p>
+    <p class="review-name">Lucas R.</p>
+  </div>
+  <div class="review-card">
+    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Review 3">
+    <div class="stars">★★★★★</div>
+    <p class="review-text">"Melhor custo-benefício do mercado. Recomendo!"</p>
+    <p class="review-name">Fernanda K.</p>
   </div>
 </div>
 
-<!-- PREÇO CHAMATIVO -->
-<div class="preco-chamada">
-  <h2>Experimente 7 Dias Grátis</h2>
-  <div class="preco">R$ 39,90/mês</div>
-  <p>Sem fidelidade. Cancele quando quiser. Aproveite.</p>
-  <a id="assinar" href="https://wa.me/5531999999999?text=Quero%20assinar%20o%20Combo%20Família%204K" class="btn btn-rosa">Assinar Agora</a>
-</div>
-
-<!-- DEPOIMENTOS -->
-<div class="depo-familia">
-  <div class="depo">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Mãe">
-    <div class="depo-stars">★★★★★</div>
-    <p class="depo-text">"Meus filhos assistem desenhos na tablet enquanto eu vejo série na TV. Zero briga!"</p>
-    <p class="depo-name">Cláudia R.</p>
-  </div>
-  <div class="depo">
-    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Pai">
-    <div class="depo-stars">★★★★★</div>
-    <p class="depo-text">"Pagava quase 200 reais em serviços separados. Agora gasto menos de 40 e tenho tudo."</p>
-    <p class="depo-name">Roberto R.</p>
-  </div>
-  <div class="depo">
-    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Filha">
-    <div class="depo-stars">★★★★★</div>
-    <p class="depo-text">"Baixo os filmes no celular e assisto no colégio sem gastar meus dados. Perfeito!"</p>
-    <p class="depo-name">Larissa M.</p>
-  </div>
-</div>
-
-<!-- RODAPÉ -->
-<footer>
-  <p>Streaming Total © 2025 | Todos os direitos reservados</p>
-  <a href="https://wa.me/5531999999999" class="btn">Whatsapp</a>
-  <button class="btn">Central de Ajuda</button>
-</footer>
+<script>
+  // cronômetro 30:00
+  let tempo = 30 * 60;
+  const timer = document.getElementById('timer');
+  const interval = setInterval(() => {
+    const min = Math.floor(tempo / 60);
+    const seg = tempo % 60;
+    timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
+    tempo--;
+    if (tempo < 0) clearInterval(interval);
+  }, 1000);
+</script>
 
 </body>
 </html>
