@@ -31,7 +31,7 @@
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
-  /* CARROSSEL DE IMAGENS AO FUNDO */
+  /* HERO CARROSSEL SEM PAUSA */
   .hero{
     width:100%;
     height:100vh;
@@ -46,157 +46,14 @@
     position:absolute;
     inset:0;
     z-index:-1;
-    display:flex;
-    animation:slide 15s infinite linear;
+    animation:slide 12s infinite linear;
   }
   @keyframes slide{
-    0%{transform:translateX(0);}
-    25%{transform:translateX(-25%);}
-    50%{transform:translateX(-50%);}
-    75%{transform:translateX(-75%);}
-    100%{transform:translateX(-100%);}
-  }
-  .hero-slide{
-    min-width:100%;
-    height:100vh;
-    background-size:cover;
-    background-position:center;
-  }
-  .hero-content{z-index:2}
-  .hero h1{
-    font-size:clamp(2.2rem,5vw,4rem);
-    text-shadow:0 4px 12px rgba(0,0,0,.7);
-  }
-  .hero p{font-size:1.3rem;margin:1rem 0 2rem}
-  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-
-  /* PRODUTOS */
-  .produtos{
-    padding:4rem 1rem;
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:2rem;
-  }
-  .card{
-    background:var(--cinza);
-    border-radius:14px;
-    overflow:hidden;
-    border:2px solid transparent;
-    transition:.4s;
-  }
-  .card:hover{
-    border-color:var(--laranja);
-    transform:translateY(-8px);
-    box-shadow:0 0 20px var(--laranja);
-  }
-  .card img{height:180px;object-fit:cover;width:100%}
-  .card-body{padding:1.2rem}
-  .card-body h3{font-size:1.3rem;margin-bottom:.5rem}
-  .card-body p{color:#ccc;margin-bottom:1rem}
-  .preco{
-    font-size:2rem;
-    color:var(--amarelo);
-    font-weight:900;
-    margin-bottom:.8rem;
-    animation:pulsePrice 1s infinite;
-  }
-  @keyframes pulsePrice{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.08);}
-    100%{transform:scale(1);}
-  }
-  .tags{
-    display:flex;
-    gap:.4rem;
-    flex-wrap:wrap;
-    margin-bottom:1rem
-  }
-  .tag{
-    background:#ff7a0044;
-    padding:4px 10px;
-    border-radius:20px;
-    font-size:.75rem
-  }
-  .card-buttons{
-    display:flex;
-    gap:.5rem;
-    flex-wrap:wrap;
-  }
-  .card-buttons .btn{flex:1;font-size:.95rem;text-align:center}
-</style>
-</head>
-<body>
-
-<!-- CARROSSEL DE IMAGENS AO FUNDO -->
-<section class="hero">
-  <div class="hero-slider">
-    <div class="hero-slide" style="background:url('https://images.unsplash.com
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Streaming Total – Visual Explosivo</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  :root{
-    --laranja:#ff7a00;
-    --laranja-claro:#ff9d00;
-    --preto:#0a0a0a;
-    --cinza:#121212;
-    --amarelo:#ffd600;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
-  body{background:var(--preto)}
-  img{max-width:100%;display:block}
-  .btn{
-    padding:14px 32px;
-    border:none;
-    border-radius:30px;
-    font-size:1.1rem;
-    font-weight:700;
-    cursor:pointer;
-    transition:.3s;
-    text-decoration:none;
-    display:inline-block;
-  }
-  .btn-laranja{background:var(--laranja)}
-  .btn-laranja:hover{background:var(--laranja-claro);transform:scale(1.05)}
-  .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
-  .btn-ghost:hover{background:#fff;color:#111}
-
-  /* CARROSSEL DE IMAGENS AO FUNDO */
-  .hero{
-    width:100%;
-    height:100vh;
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
-  .hero-slider{
-    position:absolute;
-    inset:0;
-    z-index:-2;
-    display:flex;
-    animation:slide 15s infinite linear;
-  }
-  @keyframes slide{
-    0%{transform:translateX(0);}
-    25%{transform:translateX(-25%);}
-    50%{transform:translateX(-50%);}
-    75%{transform:translateX(-75%);}
-    100%{transform:translateX(-100%);}
-  }
-  .hero-slide{
-    min-width:100%;
-    height:100vh;
-    background-size:cover;
-    background-position:center;
+    0%{background:url("https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;}
+    25%{background:url("https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;}
+    50%{background:url("https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;}
+    75%{background:url("https://images.unsplash.com/photo-1608178398319-48f814d0750c?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;}
+    100%{background:url("https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;}
   }
   .hero-content{z-index:2}
   .hero h1{
@@ -373,15 +230,9 @@
 </head>
 <body>
 
-<!-- CARROSSEL DE IMAGENS AO FUNDO -->
+<!-- HERO CARROSSEL SEM PAUSA -->
 <section class="hero">
-  <div class="hero-slider">
-    <div class="hero-slide" style="background:url('https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=1920&q=90') center/cover no-repeat;"></div>
-    <div class="hero-slide" style="background:url('https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=1920&q=90') center/cover no-repeat;"></div>
-    <div class="hero-slide" style="background:url('https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=1920&q=90') center/cover no-repeat;"></div>
-    <div class="hero-slide" style="background:url('https://images.unsplash.com/photo-1608178398319-48f814d0750c?auto=format&fit=crop&w=1920&q=90') center/cover no-repeat;"></div>
-    <div class="hero-slide" style="background:url('https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=1920&q=90') center/cover no-repeat;"></div>
-  </div>
+  <div class="hero-slider"></div>
   <div class="hero-content">
     <h1>Todos os Streamings. Um Só Preço.</h1>
     <p>Combine Netflix, HBO, Disney, Paramount e mais – economia de até 70%</p>
@@ -396,7 +247,7 @@
 
   <!-- CARD 1 -->
   <article class="card">
-    <img src="https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=800&q=80" alt="Combo Família">
+    <img src="combofamilia.jpg" alt="Combo Família">
     <div class="card-body">
       <h3>Combo Família 4K</h3>
       <div class="tags">
@@ -415,7 +266,7 @@
 
   <!-- CARD 2 -->
   <article class="card">
-    <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?auto=format&fit=crop&w=800&q=80" alt="Solo Premium">
+    <img src="netflix4k.jpg" alt="Solo Premium">
     <div class="card-body">
       <h3>Netflix Solo 4K</h3>
       <div class="tags">
@@ -434,7 +285,7 @@
 
   <!-- CARD 3 -->
   <article class="card">
-    <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=800&q=80" alt="Esportes">
+    <img src="https://images.unsplash.com/photo-1611599637843-05e1d455a1a5?auto=format&fit=crop&w=800&q=80" alt="Esportes">
     <div class="card-body">
       <h3>Combo Esportes</h3>
       <div class="tags">
@@ -453,7 +304,7 @@
 
   <!-- CARD 4 -->
   <article class="card">
-    <img src="https://images.unsplash.com/photo-1608178398319-48f814d0750c?auto=format&fit=crop&w=800&q=80" alt="Super Pack">
+    <img src="https://images.unsplash.com/photo-1611787640592-6dafa28b81?auto=format&fit=crop&w=800&q=80" alt="Super Pack">
     <div class="card-body">
       <h3>Super Pack Premium</h3>
       <div class="tags">
