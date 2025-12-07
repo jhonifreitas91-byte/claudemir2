@@ -6,9 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --neon:#00f0ff;
     --laranja:#ff7a00;
-    --rosa:#ff0057;
+    --laranja-claro:#ff9d00;
     --preto:#0a0a0a;
     --cinza:#121212;
     --amarelo:#ffd600;
@@ -27,12 +26,12 @@
     text-decoration:none;
     display:inline-block;
   }
-  .btn-neon{background:var(--neon);color:#000}
-  .btn-neon:hover{background:#fff;transform:scale(1.05)}
+  .btn-laranja{background:var(--laranja)}
+  .btn-laranja:hover{background:var(--laranja-claro);transform:scale(1.05)}
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
-  /* HERO CARROSSEL DE IMAGENS */
+  /* HERO CARROSSEL SEM PAUSA */
   .hero{
     width:100%;
     height:100vh;
@@ -47,7 +46,7 @@
     position:absolute;
     inset:0;
     z-index:-1;
-    animation:slide 18s infinite;
+    animation:slide 12s infinite linear;
   }
   @keyframes slide{
     0%{background:url("https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;}
@@ -60,21 +59,8 @@
   .hero h1{
     font-size:clamp(2.2rem,5vw,4rem);
     text-shadow:0 4px 12px rgba(0,0,0,.7);
-    animation:titleGlow 2s infinite alternate;
   }
-  @keyframes titleGlow{
-    from{text-shadow:0 0 10px var(--neon),0 0 20px var(--neon);}
-    to{text-shadow:0 0 20px var(--laranja),0 0 30px var(--laranja);}
-  }
-  .hero p{
-    font-size:1.3rem;
-    margin:1rem 0 2rem;
-    animation:fadeInUp 1s ease-out;
-  }
-  @keyframes fadeInUp{
-    from{opacity:0;transform:translateY(30px);}
-    to{opacity:1;transform:translateY(0);}
-  }
+  .hero p{font-size:1.3rem;margin:1rem 0 2rem}
   .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 
   /* PRODUTOS */
@@ -92,41 +78,26 @@
     overflow:hidden;
     border:2px solid transparent;
     transition:.4s;
-    position:relative;
-    animation:cardFloat 6s ease-in-out infinite;
-  }
-  @keyframes cardFloat{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
-    100%{transform:translateY(0);}
   }
   .card:hover{
-    border-color:var(--neon);
-    transform:translateY(-8px) scale(1.02);
-    box-shadow:0 0 20px var(--neon);
+    border-color:var(--laranja);
+    transform:translateY(-8px);
+    box-shadow:0 0 20px var(--laranja);
   }
   .card img{height:180px;object-fit:cover;width:100%}
   .card-body{padding:1.2rem}
-  .card-body h3{
-    font-size:1.3rem;
-    margin-bottom:.5rem;
-    animation:textFlicker 3s infinite;
-  }
-  @keyframes textFlicker{
-    0%,100%{opacity:1;}
-    50%{opacity:.8;}
-  }
+  .card-body h3{font-size:1.3rem;margin-bottom:.5rem}
   .card-body p{color:#ccc;margin-bottom:1rem}
   .preco{
-    font-size:1.6rem;
+    font-size:2rem;
     color:var(--amarelo);
-    font-weight:700;
+    font-weight:900;
     margin-bottom:.8rem;
-    animation:pulsePrice 1.5s infinite;
+    animation:pulsePrice 1s infinite;
   }
   @keyframes pulsePrice{
     0%{transform:scale(1);}
-    50%{transform:scale(1.05);}
+    50%{transform:scale(1.08);}
     100%{transform:scale(1);}
   }
   .tags{
@@ -136,7 +107,7 @@
     margin-bottom:1rem
   }
   .tag{
-    background:#00f0ff44;
+    background:#ff7a0044;
     padding:4px 10px;
     border-radius:20px;
     font-size:.75rem
@@ -175,11 +146,6 @@
     overflow-y:auto;
     padding:2rem;
     position:relative;
-    animation:slideUp .4s ease;
-  }
-  @keyframes slideUp{
-    from{transform:translateY(40px);opacity:0}
-    to{transform:translateY(0);opacity:1}
   }
   .close-btn{
     position:absolute;
@@ -201,13 +167,8 @@
     text-align:center;
     border:2px solid transparent;
     transition:.3s;
-    animation:cardEntrance .6s ease-out;
   }
-  @keyframes cardEntrance{
-    from{opacity:0;transform:scale(.9);}
-    to{opacity:1;transform:scale(1);}
-  }
-  .detalhe-card:hover{border-color:var(--rosa)}
+  .detalhe-card:hover{border-color:var(--laranja)}
   .detalhe-card img{margin:0 auto .8rem}
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
@@ -219,12 +180,6 @@
     font-size:2.2rem;
     color:var(--amarelo);
     font-weight:900;
-    animation:pulse 1.2s infinite;
-  }
-  @keyframes pulse{
-    0%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
-    50%{transform:scale(1.05);text-shadow:0 0 20px var(--rosa)}
-    100%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
   }
 
   .modal-actions{
@@ -249,17 +204,6 @@
     border-radius:14px;
     padding:1.5rem;
     text-align:center;
-    border:2px solid transparent;
-    transition:.3s;
-    animation:depoFade 1s ease-out;
-  }
-  @keyframes depoFade{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  .depo:hover{
-    border-color:var(--neon);
-    box-shadow:0 0 15px var(--neon);
   }
   .depo img{
     width:80px;
@@ -286,14 +230,14 @@
 </head>
 <body>
 
-<!-- HERO CARROSSEL DE IMAGENS -->
+<!-- HERO CARROSSEL SEM PAUSA -->
 <section class="hero">
   <div class="hero-slider"></div>
   <div class="hero-content">
     <h1>Todos os Streamings. Um Só Preço.</h1>
     <p>Combine Netflix, HBO, Disney, Paramount e mais – economia de até 70%</p>
     <div class="hero-actions">
-      <a href="#produtos" class="btn btn-neon">Explorar Pacotes</a>
+      <a href="#produtos" class="btn btn-laranja">Explorar Pacotes</a>
     </div>
   </div>
 </section>
@@ -314,7 +258,7 @@
       <p>Netflix + Disney+ + HBO Max + Paramount</p>
       <div class="preco">R$ 39,90/mês</div>
       <div class="card-buttons">
-        <a href="familia4k.html" class="btn btn-neon">Assinar</a>
+        <a href="familia4k.html" class="btn btn-laranja">Assinar</a>
         <button class="btn btn-ghost" onclick="abrirModal()">Detalhes</button>
       </div>
     </div>
@@ -333,7 +277,7 @@
       <p>O melhor do catálogo original Netflix</p>
       <div class="preco">R$ 14,90/mês</div>
       <div class="card-buttons">
-        <a href="assinar-solo-4k.html" target="_blank" class="btn btn-neon">Assinar</a>
+        <a href="assinar-solo-4k.html" target="_blank" class="btn btn-laranja">Assinar</a>
         <button class="btn btn-ghost" onclick="abrirModalSolo()">Detalhes</button>
       </div>
     </div>
@@ -352,7 +296,7 @@
       <p>Paramount + HBO Max – jogos ao vivo e séries</p>
       <div class="preco">R$ 34,90/mês</div>
       <div class="card-buttons">
-        <a href="assinar-esportes.html" target="_blank" class="btn btn-neon">Assinar</a>
+        <a href="assinar-esportes.html" target="_blank" class="btn btn-laranja">Assinar</a>
         <button class="btn btn-ghost">Detalhes</button>
       </div>
     </div>
@@ -371,7 +315,7 @@
       <p>Todos os streamings em um só lugar</p>
       <div class="preco">R$ 59,90/mês</div>
       <div class="card-buttons">
-        <a href="assinar-super-pack.html" target="_blank" class="btn btn-neon">Assinar</a>
+        <a href="assinar-super-pack.html" target="_blank" class="btn btn-laranja">Assinar</a>
         <button class="btn btn-ghost">Detalhes</button>
       </div>
     </div>
@@ -437,7 +381,7 @@
     </div>
 
     <div class="modal-actions">
-      <a href="familia4k.html" class="btn btn-neon">Assinar Agora</a>
+      <a href="familia4k.html" class="btn btn-laranja">Assinar Agora</a>
       <button class="btn btn-ghost" onclick="fecharModal()">Fechar</button>
     </div>
   </div>
@@ -479,7 +423,7 @@
     </div>
 
     <div class="modal-actions">
-      <a href="assinar-solo-4k.html" target="_blank" class="btn btn-neon">Assinar Agora</a>
+      <a href="assinar-solo-4k.html" target="_blank" class="btn btn-laranja">Assinar Agora</a>
       <button class="btn btn-ghost" onclick="fecharModalSolo()">Fechar</button>
     </div>
   </div>
