@@ -59,11 +59,13 @@
     background-repeat:no-repeat;
     flex-shrink:0;
   }
-  /* FORÇA IMAGEM A ENCHEER TODA A TELA SEM DISTORCER */
+  /* ZOOM PARA CELULAR: mantém proporção e cobre tudo */
   @media (max-width:768px){
     .hero-slide{
-      background-size:100% 100%;
+      background-size:cover;
       background-position:center center;
+      /* zoom leve para diminuir "esticada" e manter qualidade */
+      transform:scale(1.15);
     }
   }
   .hero-content{z-index:2}
