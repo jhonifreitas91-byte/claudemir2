@@ -59,14 +59,20 @@
     background-repeat:no-repeat;
     flex-shrink:0;
   }
-  /* IMAGENS DESDE O INÍCIO: sem zoom, sem esticar */
   @media (max-width:768px){
     .hero-slide{
       background-size:cover;
       background-position:center center;
     }
   }
-  .hero-content{z-index:2}
+  .hero-content{
+    z-index:2;
+    /* quadrado cinza meio opaco */
+    background:rgba(18,18,18,.55);
+    padding:2.5rem 2rem;
+    border-radius:12px;
+    max-width:90%;
+  }
   .hero h1{
     font-size:clamp(2.2rem,5vw,4rem);
     text-shadow:0 4px 12px rgba(0,0,0,.7);
