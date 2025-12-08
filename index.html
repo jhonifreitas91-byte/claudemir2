@@ -59,12 +59,11 @@
     background-repeat:no-repeat;
     flex-shrink:0;
   }
-  /* Ajuste responsivo sem distorcer */
+  /* FORÇA IMAGEM A ENCHEER TODA A TELA SEM DISTORCER */
   @media (max-width:768px){
     .hero-slide{
-      background-size:contain;
+      background-size:100% 100%;
       background-position:center center;
-      background-color:#000; /* evita espaços vazios */
     }
   }
   .hero-content{z-index:2}
