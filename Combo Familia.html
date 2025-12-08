@@ -6,11 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --roxo:#8a2be2;
-    --azul:#0052d4;
+    --laranja:#ff7a00;
+    --laranja-claro:#ff9d00;
     --preto:#0a0a0a;
     --cinza:#121212;
-    --rosa:#ff0057;
     --amarelo:#ffd600;
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
@@ -27,8 +26,8 @@
     text-decoration:none;
     display:inline-block;
   }
-  .btn-roxo{background:var(--roxo)}
-  .btn-roxo:hover{background:var(--azul);transform:scale(1.05)}
+  .btn-laranja{background:var(--laranja)}
+  .btn-laranja:hover{background:var(--laranja-claro);transform:scale(1.05)}
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
@@ -47,7 +46,7 @@
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(45deg,#8a2be2cc 0%,#0052d4cc 100%);
+    background:linear-gradient(45deg,#ff7a00cc 0%,#ff9d00cc 100%);
   }
   .hero-content{z-index:2}
   .hero h1{font-size:clamp(2.2rem,5vw,4rem);text-shadow:0 4px 12px rgba(0,0,0,.7)}
@@ -63,7 +62,7 @@
   }
   @keyframes pulse{
     0%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
-    50%{transform:scale(1.05);text-shadow:0 0 20px var(--rosa)}
+    50%{transform:scale(1.05);text-shadow:0 0 20px var(--laranja)}
     100%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
   }
 
@@ -82,57 +81,10 @@
     border:2px solid transparent;
     transition:.3s;
   }
-  .detalhe-card:hover{border-color:var(--rosa)}
+  .detalhe-card:hover{border-color:var(--laranja)}
   .detalhe-card img{margin:0 auto .8rem}
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
-
-  /* CRONÔMETRO */
-  .cronometro{
-    text-align:center;
-    margin:2rem 0;
-    font-size:2.2rem;
-    color:var(--amarelo);
-    font-weight:900;
-    animation:pulse 1.2s infinite;
-  }
-
-  /* REVIEWS */
-  .reviews{
-    padding:4rem 1rem;
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:2rem;
-  }
-  .review-card{
-    background:var(--cinza);
-    border-radius:14px;
-    padding:1.5rem;
-    text-align:center;
-  }
-  .review-card img{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    margin:0 auto 1rem;
-    object-fit:cover;
-  }
-  .stars{
-    color:var(--amarelo);
-    font-size:1.2rem;
-    margin-bottom:.5rem;
-  }
-  .review-text{
-    font-size:.95rem;
-    color:#ccc;
-    margin-bottom:.8rem;
-  }
-  .review-name{
-    font-weight:700;
-    color:#fff;
-  }
 
   /* AÇÕES */
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
@@ -179,51 +131,11 @@
     </div>
   </div>
 
-  <!-- CRONÔMETRO -->
-  <div class="cronometro">
-    ⏱️ Oferta termina em: <span id="timer">30:00</span>
-  </div>
-
   <!-- AÇÕES -->
   <div class="actions">
-    <button class="btn btn-roxo">Assinar Combo Família</button>
+    <button class="btn btn-laranja">Assinar Combo Família</button>
   </div>
 </section>
-
-<!-- REVIEWS -->
-<div class="reviews">
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Review 1">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Economizamos muito e todo mundo assiste o que quer!"</p>
-    <p class="review-name">Carla M.</p>
-  </div>
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Review 2">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Ativação rápida, 4K liso na smart e no celular."</p>
-    <p class="review-name">Lucas R.</p>
-  </div>
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Review 3">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Melhor custo-benefício do mercado. Recomendo!"</p>
-    <p class="review-name">Fernanda K.</p>
-  </div>
-</div>
-
-<script>
-  // cronômetro 30:00
-  let tempo = 30 * 60;
-  const timer = document.getElementById('timer');
-  const interval = setInterval(() => {
-    const min = Math.floor(tempo / 60);
-    const seg = tempo % 60;
-    timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
-    tempo--;
-    if (tempo < 0) clearInterval(interval);
-  }, 1000);
-</script>
 
 </body>
 </html>
