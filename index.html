@@ -59,13 +59,13 @@
     background-repeat:no-repeat;
     flex-shrink:0;
   }
-  /* ZOOM PARA CELULAR: mantém proporção e cobre tudo */
+  /* QUALIDADE MÁXIMA: usa imagens 4K e mantém proporção */
   @media (max-width:768px){
     .hero-slide{
       background-size:cover;
       background-position:center center;
-      /* zoom leve para diminuir "esticada" e manter qualidade */
-      transform:scale(1.15);
+      /* leve zoom para cortar bordas sem distorcer */
+      transform:scale(1.05);
     }
   }
   .hero-content{z-index:2}
@@ -266,11 +266,12 @@
 <!-- HERO AUTO SWIPE -->
 <section class="hero">
   <div class="hero-slider" id="slider">
-    <div class="hero-slide" style="background-image:url('netflixbanner.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('hbobanner.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('disneybanner.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('paramountbanner.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1594736797933-d040e1ba2fe65?auto=format&fit=crop&w=1600&q=80')"></div>
+    <!-- IMAGENS 4K DE ALTA RESOLUÇÃO -->
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1657737551683-2d4b5b5d5b5d?auto=format&fit=crop&w=3840&q=100')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1657737551683-2d4b5b5d5b5d?auto=format&fit=crop&w=3840&q=100')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1657737551683-2d4b5b5d5b5d?auto=format&fit=crop&w=3840&q=100')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1657737551683-2d4b5b5d5b5d?auto=format&fit=crop&w=3840&q=100')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1657737551683-2d4b5b5d5b5d?auto=format&fit=crop&w=3840&q=100')"></div>
   </div>
   <div class="hero-content">
     <h1>Todos os Streamings. Um Só Preço.</h1>
