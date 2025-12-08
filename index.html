@@ -328,21 +328,21 @@
     </div>
   </article>
 
-  <!-- CARD 3 -->
+  <!-- CARD 3 – MÚSICA -->
   <article class="card">
-    <img src="https://images.unsplash.com/photo-1611599637843-05e1d455a1a5?auto=format&fit=crop&w=800&q=80" alt="Esportes">
+    <img src="https://images.unsplash.com/photo-1493225457124-a07ea19173b1?auto=format&fit=crop&w=800&q=80" alt="Combo Música">
     <div class="card-body">
-      <h3>Combo Esportes</h3>
+      <h3>Combo Música Premium</h3>
       <div class="tags">
-        <span class="tag">Champions</span>
-        <span class="tag">NFL</span>
-        <span class="tag">F1</span>
+        <span class="tag">YouTube Premium</span>
+        <span class="tag">Spotify Premium</span>
+        <span class="tag">Amazon Music</span>
       </div>
-      <p>Paramount + HBO Max – jogos ao vivo e séries</p>
-      <div class="preco">R$ 34,90/mês</div>
+      <p>Três serviços de música sem anúncios e downloads ilimitados</p>
+      <div class="preco">R$ 29,90/mês</div>
       <div class="card-buttons">
-        <a href="assinar-esportes.html" target="_blank" class="btn btn-laranja">Assinar</a>
-        <button class="btn btn-ghost">Detalhes</button>
+        <a href="assinar-musica.html" target="_blank" class="btn btn-laranja">Assinar</a>
+        <button class="btn btn-ghost" onclick="abrirModalMusica()">Detalhes</button>
       </div>
     </div>
   </article>
@@ -428,6 +428,48 @@
     <div class="modal-actions">
       <a href="familia4k.html" class="btn btn-laranja">Assinar Agora</a>
       <button class="btn btn-ghost" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DETALHES MÚSICA -->
+<div id="modalMusica" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="fecharModalMusica()">&times;</button>
+    <h2>Combo Música Premium</h2>
+    <p class="subtitulo">Três gigantes da música em um só pacote.</p>
+
+    <div class="detalhes-grid">
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/youtube.png" alt="YouTube">
+        <h3>YouTube Premium</h3>
+        <p>Sem anúncios, downloads e YouTube Music incluso.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/spotify.png" alt="Spotify">
+        <h3>Spotify Premium</h3>
+        <p>Música sem anúncios, modo offline e alta qualidade.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/amazon-music.png" alt="Amazon">
+        <h3>Amazon Music Unlimited</h3>
+        <p>100 milhões de músicas em HD e espaço 3D.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+        <h3>Economia de 65%</h3>
+        <p>Menos de R$ 1 por dia por todo esse conteúdo.</p>
+      </div>
+    </div>
+
+    <!-- CRONÔMETRO PULSANTE -->
+    <div class="cronometro">
+      ⏱️ Oferta termina em: <span id="timerMusica">30:00</span>
+    </div>
+
+    <div class="modal-actions">
+      <a href="assinar-musica.html" target="_blank" class="btn btn-laranja">Assinar Agora</a>
+      <button class="btn btn-ghost" onclick="fecharModalMusica()">Fechar</button>
     </div>
   </div>
 </div>
@@ -558,6 +600,16 @@
     document.body.style.overflow = '';
   }
 
+  function abrirModalMusica() {
+    document.getElementById('modalMusica').classList.add('ativo');
+    document.body.style.overflow = 'hidden';
+    iniciarCronometroMusica();
+  }
+  function fecharModalMusica() {
+    document.getElementById('modalMusica').classList.remove('ativo');
+    document.body.style.overflow = '';
+  }
+
   function iniciarCronometro() {
     let tempo = 30 * 60;
     const timer = document.getElementById('timer');
@@ -573,6 +625,18 @@
   function iniciarCronometroSolo() {
     let tempo = 30 * 60;
     const timer = document.getElementById('timerSolo');
+    const interval = setInterval(() => {
+      const min = Math.floor(tempo / 60);
+      const seg = tempo % 60;
+      timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
+      tempo--;
+      if (tempo < 0) clearInterval(interval);
+    }, 1000);
+  }
+
+  function iniciarCronometroMusica() {
+    let tempo = 30 * 60;
+    const timer = document.getElementById('timerMusica');
     const interval = setInterval(() => {
       const min = Math.floor(tempo / 60);
       const seg = tempo % 60;
