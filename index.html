@@ -31,10 +31,12 @@
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
-  /* HERO AUTO SWIPE */
+  /* ===== HERO 1280×720 ===== */
   .hero{
     width:100%;
-    height:100vh;
+    max-width:1280px;          /* largura exata da imagem */
+    height:720px;              /* altura exata da imagem */
+    margin:0 auto;             /* centraliza na tela */
     position:relative;
     overflow:hidden;
     display:flex;
@@ -52,19 +54,26 @@
   }
   .hero-slider:active{cursor:grabbing}
   .hero-slide{
-    width:100%;
-    height:100%;
-    background-size:1179px 2050px;   /* tamanho fixo das imagens */
+    width:1280px;              /* largura fixa 1280 */
+    height:720px;              /* altura fixa 720 */
+    background-size:contain;     /* mostra a imagem inteira */
     background-position:center;
     background-repeat:no-repeat;
     flex-shrink:0;
   }
-  @media (max-width:768px){
+  /* responsivo mantendo proporção 16:9 */
+  @media (max-width:1280px){
+    .hero{
+      width:100%;
+      height:calc(100vw * 9 / 16);
+      max-height:720px;
+    }
     .hero-slide{
-      background-size:1179px 2050px;
-      background-position:center center;
+      width:100%;
+      height:100%;
     }
   }
+
   .hero-content{
     z-index:2;
     background:rgba(18,18,18,.55);
@@ -99,7 +108,7 @@
   }
   .dot.active{background:var(--laranja)}
 
-  /* PRODUTOS */
+  /* PRODUTOS, MODAIS, DEPOIMENTOS... (mantidos iguais) */
   .produtos{
     padding:4rem 1rem;
     max-width:1200px;
