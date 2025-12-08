@@ -34,9 +34,9 @@
   /* ===== HERO 1280×720 ===== */
   .hero{
     width:100%;
-    max-width:1280px;          /* largura exata da imagem */
-    height:720px;              /* altura exata da imagem */
-    margin:0 auto;             /* centraliza na tela */
+    max-width:1280px;
+    height:720px;
+    margin:0 auto;
     position:relative;
     overflow:hidden;
     display:flex;
@@ -54,14 +54,13 @@
   }
   .hero-slider:active{cursor:grabbing}
   .hero-slide{
-    width:1280px;              /* largura fixa 1280 */
-    height:720px;              /* altura fixa 720 */
-    background-size:contain;     /* mostra a imagem inteira */
+    width:1280px;
+    height:720px;
+    background-size:contain;
     background-position:center;
     background-repeat:no-repeat;
     flex-shrink:0;
   }
-  /* responsivo mantendo proporção 16:9 */
   @media (max-width:1280px){
     .hero{
       width:100%;
@@ -75,19 +74,25 @@
   }
 
   .hero-content{
-  z-index:2;
-  background:rgba(18,18,18,.55);
-  padding:2.5rem 2rem;
-  border-radius:12px;
-  max-width:90%;
-  margin-bottom:80px; /*distância segura dos indicadores/botão*/
-}
+    z-index:2;
+    background:rgba(18,18,18,.55);
+    padding:2.5rem 2rem;
+    border-radius:12px;
+    max-width:90%;
+    margin-bottom:80px;
+  }
   .hero h1{
     font-size:clamp(2.2rem,5vw,4rem);
     text-shadow:0 4px 12px rgba(0,0,0,.7);
   }
   .hero p{font-size:1.3rem;margin:1rem 0 2rem}
-  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .hero-actions{
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:-20px;
+  }
 
   /* INDICADORES */
   .dots{
@@ -109,7 +114,7 @@
   }
   .dot.active{background:var(--laranja)}
 
-  /* PRODUTOS, MODAIS, DEPOIMENTOS... (mantidos iguais) */
+  /* PRODUTOS */
   .produtos{
     padding:4rem 1rem;
     max-width:1200px;
