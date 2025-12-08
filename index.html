@@ -56,7 +56,16 @@
     height:100%;
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
     flex-shrink:0;
+  }
+  /* Ajuste responsivo sem distorcer */
+  @media (max-width:768px){
+    .hero-slide{
+      background-size:contain;
+      background-position:center center;
+      background-color:#000; /* evita espaços vazios */
+    }
   }
   .hero-content{z-index:2}
   .hero h1{
@@ -193,7 +202,7 @@
   }
   .detalhe-card:hover{border-color:var(--laranja)}
   .detalhe-card img{margin:0 auto .8rem}
-  .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
+  .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--laranja)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
 
   /* CRONÔMETRO PULSANTE */
@@ -335,7 +344,7 @@
 
   <!-- CARD 4 -->
   <article class="card">
-    <img src="https://images.unsplash.com/photo-1611787640592-6dafa28b81?auto=format&fit=crop&w=800&q=80" alt="Super Pack">
+    <img src="https://images.unsplash.com/photo-1611787640592-6afa28b81?auto=format&fit=crop&w=800&q=80" alt="Super Pack">
     <div class="card-body">
       <h3>Super Pack Premium</h3>
       <div class="tags">
