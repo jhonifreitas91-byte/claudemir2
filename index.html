@@ -11,6 +11,8 @@
     --preto:#0a0a0a;
     --cinza:#121212;
     --amarelo:#ffd600;
+    --dourado:#ffd700;
+    --dourado-escuro:#ffb700;
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
   body{background:var(--preto);touch-action:pan-y}
@@ -54,18 +56,18 @@
   .hero-slide{
     width:100%;
     height:100%;
-    background-size:1179px 2050px;   /* tamanho fixo das imagens */
+    background-size:1179px 2050px;
     background-position:center;
     background-repeat:no-repeat;
     flex-shrink:0;
   }
   @media (max-width:768px){
-  .hero-slide{
-    background-size: cover;        /* enche toda a área */
-    background-position: center center;
-    background-repeat: no-repeat;
+    .hero-slide{
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+    }
   }
-}
   .hero-content{
     z-index:2;
     background:rgba(18,18,18,.55);
@@ -121,9 +123,19 @@
     transform:translateY(-8px);
     box-shadow:0 0 20px var(--laranja);
   }
+  /* CARD ESPECIAL DOURADO */
+  .card.dourado{
+    border-color:var(--dourado);
+    box-shadow:0 0 20px #ffd70088;
+  }
+  .card.dourado:hover{
+    border-color:var(--dourado-escuro);
+    box-shadow:0 0 30px #ffb700aa;
+  }
   .card img{height:180px;object-fit:cover;width:100%}
   .card-body{padding:1.2rem}
   .card-body h3{font-size:1.3rem;margin-bottom:.5rem}
+  .card.dourado .card-body h3{color:var(--dourado)}
   .card-body p{color:#ccc;margin-bottom:1rem}
   .preco{
     font-size:2rem;
@@ -149,12 +161,32 @@
     border-radius:20px;
     font-size:.75rem
   }
+  .card.dourado .tag{
+    background:#ffd60044;
+    color:var(--dourado);
+    border:1px solid var(--dourado);
+  }
   .card-buttons{
     display:flex;
     gap:.5rem;
     flex-wrap:wrap;
   }
   .card-buttons .btn{flex:1;font-size:.95rem;text-align:center}
+
+  /* ETIQUETA MAIS VENDIDO */
+  .etiqueta{
+    position:absolute;
+    top:12px;right:-1px;
+    background:linear-gradient(135deg,var(--dourado) 0%,var(--dourado-escuro) 100%);
+    color:var(--preto);
+    font-weight:900;
+    font-size:.75rem;
+    padding:6px 14px 6px 20px;
+    clip-path:polygon(0 0,100% 0,100% 100%,0 100%,8px 50%);
+    z-index:3;
+    letter-spacing:.5px;
+    box-shadow:0 2px 8px rgba(0,0,0,.4);
+  }
 
   /* MODAL ESTILOS */
   .modal-overlay{
@@ -319,8 +351,11 @@
 <!-- PRODUTOS -->
 <div id="produtos" class="produtos">
 
-  <!-- CARD 1 -->
-  <article class="card">
+  <!-- CARD 1 – COMBO FAMÍLIA (NOVA COR + ETIQUETA) -->
+  <article class="card dourado" style="position:relative;">
+    <!-- ETIQUETA MAIS VENDIDO -->
+    <span class="etiqueta">MAIS VENDIDO</span>
+
     <img src="cardbanner1.jpg" alt="Combo Família">
     <div class="card-body">
       <h3>Combo Família 4K</h3>
@@ -477,7 +512,6 @@
         <p>Perfil único, sem interferência.</p>
       </div>
       <div class="detalhe-card">
-        <!-- ÍCONE CONDIZENTE: sem-anúncios -->
         <img src="https://img.icons8.com/color/96/000000/no-advertising.png" alt="Sem anúncios">
         <h3>Sem Anúncios</h3>
         <p>Filmes e séries sem interrupções.</p>
@@ -551,7 +585,6 @@
         <p>Filmes, séries e originais em ultra alta definição.</p>
       </div>
       <div class="detalhe-card">
-        <!-- ÍCONE CONDIZENTE: Disney+ -->
         <img src="https://img.icons8.com/color/96/000000/disney-plus.png" alt="Disney">
         <h3>Disney+</h3>
         <p>Conteúdo da Disney, Marvel, Star Wars e National Geographic.</p>
