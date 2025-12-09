@@ -2,15 +2,16 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Netflix Solo 4K – Streaming Total</title>
+<title>Netflix Solo 4K – Seu Streaming Sem Limites</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --vermelho:#E50914;
-    --azul:#0052d4;
+    --vermelho:#e50914;
+    --vermelho-escuro:#b20710;
     --preto:#0a0a0a;
     --cinza:#121212;
-    --amarelo:#ffd600;
+    --branco:#ffffff;
+    --cinza-claro:#ccc;
   }
   @font-face{
     font-family:'Netflix';
@@ -30,15 +31,15 @@
     text-decoration:none;
     display:inline-block;
   }
-  .btn-vermelho{background:var(--vermelho)}
-  .btn-vermelho:hover{background:#f40612;transform:scale(1.05)}
+  .btn-vermelho{background:var(--vermelho);color:var(--branco)}
+  .btn-vermelho:hover{background:var(--vermelho-escuro);transform:scale(1.05)}
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
   .hero{
     width:100%;
     height:100vh;
-    background:url("bannernetflix.jpg") center/cover no-repeat;
+    background:url("netflix-banner.jpg") center/cover no-repeat;
     position:relative;
     display:flex;
     align-items:center;
@@ -54,7 +55,7 @@
   .hero-bg{
     position:absolute;
     inset:0;
-    background:url("pipoca1.jpg") center/cover no-repeat;
+    background:url("netflix-bg.jpg") center/cover no-repeat;
     transform:scale(1.1);
     transition:transform 1.2s ease;
   }
@@ -67,11 +68,16 @@
     border-radius:12px;
     padding:1.5rem 2rem;
     display:inline-block;
+    border:2px solid var(--vermelho);
+    box-shadow:0 0 30px #e5091444;
   }
   .titulo-wrapper h1{
     font-size:clamp(2.5rem,6vw,5rem);
     letter-spacing:2px;
-    animation:fadeIn 1.5s ease-out, glow 2s infinite alternate;
+    animation:fadeIn 1.5s ease-out, glowRed 2s infinite alternate;
+    background:linear-gradient(90deg,var(--vermelho),var(--branco));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
   .titulo-wrapper h1::first-letter{
     font-size:110%;
@@ -82,18 +88,19 @@
     from{opacity:0;transform:translateY(-20px);}
     to{opacity:1;transform:translateY(0);}
   }
-  @keyframes glow{
+  @keyframes glowRed{
     from{text-shadow:0 0 4px #fff,0 0 8px var(--vermelho);}
     to{text-shadow:0 0 8px #fff,0 0 16px var(--vermelho);}
   }
 
   .preco-pulse{
-    font-size:2.4rem;
+    font-size:2.8rem;
     color:var(--vermelho);
     font-weight:900;
-    animation:pulseVermelho 1.2s infinite;
+    animation:pulseRed 1.2s infinite;
+    text-shadow:0 0 10px var(--vermelho);
   }
-  @keyframes pulseVermelho{
+  @keyframes pulseRed{
     0%{transform:scale(1);}
     50%{transform:scale(1.05);}
     100%{transform:scale(1);}
@@ -114,7 +121,7 @@
     transform:translateY(0);
   }
   .icone-card{
-    background:#1a1a1a;
+    background:rgba(0,0,0,0.7);
     border-radius:14px;
     padding:1.2rem .8rem;
     text-align:center;
@@ -127,7 +134,7 @@
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(45deg,var(--vermelho),var(--amarelo));
+    background:linear-gradient(45deg,var(--vermelho),var(--branco));
     opacity:0;
     transition:opacity .4s;
     z-index:0;
@@ -148,47 +155,20 @@
   .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
   .icone-card h3{
     font-size:.95rem;
-    color:var(--amarelo);
     margin-bottom:.3rem;
     position:relative;
     z-index:1;
   }
   .icone-card p{
     font-size:.8rem;
-    color:#ccc;
+    color:var(--cinza-claro);
     position:relative;
     z-index:1;
   }
 
-  .detalhes-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:1.5rem;
-    margin:2rem 0;
-  }
-  .detalhe-card{
-    background:#1a1a1a;
-    border-radius:12px;
-    padding:1.2rem;
-    text-align:center;
-    border:2px solid transparent;
-    transition:.3s;
-    opacity:0;
-    transform:translateY(40px);
-  }
-  .detalhe-card.show{
-    animation:fadeInUp 0.6s forwards;
-  }
-  .detalhe-card:hover{border-color:var(--vermelho)}
-  .detalhe-card img{margin:0 auto .8rem;transition:transform .3s}
-  .detalhe-card:hover img{transform:scale(1.1) rotate(5deg)}
-  .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
-  .detalhe-card p{font-size:.85rem;color:#ccc}
-
-  /* ---------- linha única animada ---------- */
   .divisoria-unica{
     height:4px;
-    background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
+    background:linear-gradient(90deg,var(--vermelho),var(--branco));
     border:none;
     margin:2.5rem auto 1.5rem;
     max-width:220px;
@@ -233,7 +213,7 @@
   .texto-chamativo h2{
     font-size:clamp(1.8rem,4vw,2.8rem);
     margin-bottom:1rem;
-    background:linear-gradient(90deg,var(--vermelho),var(--amarelo));
+    background:linear-gradient(90deg,var(--vermelho),var(--branco));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     animation:gradient 3s ease infinite;
@@ -245,13 +225,69 @@
   }
   .texto-chamativo p{
     font-size:clamp(1rem,2.5vw,1.3rem);
-    color:#ccc;
+    color:var(--cinza-claro);
     line-height:1.6;
   }
 
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
   .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
   .fade-in.show{opacity:1;transform:translateY(0);}
+
+  .streaming-showcase{
+    max-width:1000px;
+    margin:3rem auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1.5rem;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s;
+  }
+  .streaming-showcase.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .stream-card{
+    background:rgba(0,0,0,0.7);
+    border-radius:14px;
+    padding:1.2rem;
+    border:2px solid transparent;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .stream-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--vermelho),var(--branco));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
+  }
+  .stream-card:hover::before{opacity:.08;}
+  .stream-card:hover{
+    border-color:var(--vermelho);
+    transform:translateY(-6px) scale(1.03);
+  }
+  .stream-card h3{
+    font-size:1.1rem;
+    color:var(--vermelho);
+    margin-bottom:.5rem;
+    position:relative;
+    z-index:1;
+  }
+  .stream-card p{
+    font-size:.85rem;
+    color:var(--cinza-claro);
+    line-height:1.4;
+    position:relative;
+    z-index:1;
+  }
+  .stream-card .highlight{
+    color:var(--vermelho);
+    font-weight:700;
+  }
 </style>
 </head>
 <body>
@@ -261,8 +297,8 @@
   <div class="hero-content">
     <div class="titulo-wrapper">
       <h1>Netflix Solo 4K</h1>
-      <p>1 tela em 4K/HDR com todo catálogo original</p>
-      <div class="preco-pulse">R$ 14,90/mês</div>
+      <p>SEU STREAMING SEM LIMITES</p>
+      <div class="preco-pulse">R$ 19,90/mês</div>
     </div>
   </div>
 </section>
@@ -271,22 +307,22 @@
   <div class="descricao-icones">
     <div class="icone-card">
       <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
-      <h3>4K + HDR</h3>
+      <h3>4K Ultra HD</h3>
       <p>Qualidade máxima</p>
     </div>
     <div class="icone-card">
       <img src="https://img.icons8.com/color/96/000000/tv.png" alt="1 Tela">
       <h3>1 Tela</h3>
-      <p>Só pra você</p>
+      <p>Solo total</p>
     </div>
     <div class="icone-card">
       <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
       <h3>Downloads</h3>
-      <p>Offline livre</p>
+      <p>Offline ilimitado</p>
     </div>
     <div class="icone-card">
       <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
-      <h3>65% mais barato</h3>
+      <h3>50% mais barato</h3>
       <p>Economia real</p>
     </div>
     <div class="icone-card">
@@ -303,43 +339,38 @@
 
   <hr class="divisoria-unica">
 
-  <div class="detalhes-grid">
-    <div class="detalhe-card">
-      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
-      <h3>4K + HDR</h3>
-      <p>Resolução máxima e cores vibrantes</p>
-    </div>
-    <div class="detalhe-card">
-      <img src="https://img.icons8.com/color/96/000000/tv.png" alt="1 Tela">
-      <h3>1 Tela</h3>
-      <p>Perfeito para uso individual</p>
-    </div>
-    <div class="detalhe-card">
-      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
-      <h3>Downloads</h3>
-      <p>Assista offline onde quiser</p>
-    </div>
-    <div class="detalhe-card">
-      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
-      <h3>Economia 65%</h3>
-      <p>Menos de R$ 0,50 por dia</p>
-    </div>
-  </div>
-
   <div class="texto-chamativo">
-    <h2>Cinema em casa por menos de R$ 0,50 por dia</h2>
+    <h2>A NETFLIX QUE VOCÊ AMA, PELO MENOR PREÇO</h2>
     <p>
-      Somos o <span style="color:var(--amarelo)">único plano individual</span> com resolução 4K e HDR, 
-      downloads ilimitados e acesso ao <span style="color:var(--vermelho)">catálogo completo</span> de séries, filmes e documentários. 
-      Economize até <strong>65%</strong> em relação aos planos tradicionais sem perder qualidade. 
-      Ativação imediata, sem fidelidade e com suporte 24/7. 
-      <span style="color:var(--amarelo)">Perfeito para quem mora sozinho</span> e quer o melhor entretenimento do mundo, 
-      onde e quando quiser, <strong>sem pagar por telas que não usa</strong>.
+      <span style="color:var(--vermelho)">MAIS VENDIDO POR UM MOTIVO:</span> Acesso completo ao catálogo Netflix 
+      em 4K Ultra HD por apenas <strong>R$ 19,90/mês</strong>. 
+      <span style="color:var(--branco)">Perfeito para quem quer</span> assistir sozinho com a melhor qualidade. 
+      Downloads ilimitados, sem fidelidade e com suporte 24/7. 
+      <strong>50% mais barato</strong> que o plano oficial - economia real no seu bolso!
     </p>
   </div>
 
+  <div class="streaming-showcase">
+    <div class="stream-card">
+      <h3>Séries Originais</h3>
+      <p>Tem <span class="highlight">TODOS</span> os sucessos: Stranger Things, La Casa de Papel, Round 6, The Witcher, Sandman. <span class="highlight">240 milhões</span> de assinantes não mentem: aqui é o reino das temporadas completas. Baixe e assista offline – sem anúncios, sem limites.</p>
+    </div>
+    <div class="stream-card">
+      <h3>Filmes Exclusivos</h3>
+      <p>Estreias toda semana: Extraction, The Gray Man, Red Notice, e clássicos como Clube da Luta e Forrest Gump. <span class="highlight">Oscar, Emmy e indicados</span> - tudo em 4K com áudio 5.1.</p>
+    </div>
+    <div class="stream-card">
+      <h3>Animes & Documentários</h3>
+      <p>Death Note, One Piece, Naruto e <span class="highlight">ORIGINAIS NETFLIX</span> como Castlevania. Documentários como Seaspiracy e The Social Dilemma - conteúdo que muda sua visão do mundo.</p>
+    </div>
+    <div class="stream-card">
+      <h3>Stand-Up & Reality</h3>
+      <p>Comédias de <span class="highlight">dar dor de rir</span>: Dave Chappelle, Ricky Gervais, Anitta. Realties como Love Is Blind e Too Hot To Handle - puro vício em maratonar.</p>
+    </div>
+  </div>
+
   <div class="actions fade-in">
-    <button class="btn btn-vermelho">Assinar Netflix Solo</button>
+    <button class="btn btn-vermelho">Comprar Netflix Solo 4K</button>
     <a href="index.html" class="btn btn-ghost">Voltar</a>
   </div>
 </section>
@@ -353,7 +384,7 @@
     });
   },{threshold:0.15});
 
-  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-unica').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-unica, .streaming-showcase').forEach(el=>observer.observe(el));
 
   const hero=document.querySelector('.hero');
   const heroObserver=new IntersectionObserver((entries)=>{
