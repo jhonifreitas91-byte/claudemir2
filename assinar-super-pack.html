@@ -27,8 +27,31 @@
     text-decoration:none;
     display:inline-block;
   }
-  .btn-dourado{background:var(--dourado);color:#000}
-  .btn-dourado:hover{background:var(--dourado-escuro);transform:scale(1.05)}
+  .btn-dourado{
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
+    background-size:200% 200%;
+    color:#000;
+    animation:gradientShift 3s ease infinite;
+    position:relative;
+    overflow:hidden;
+    z-index:1;
+  }
+  .btn-dourado::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,#fff,var(--dourado),#fff);
+    opacity:0;
+    transition:opacity .4s;
+    z-index:-1;
+  }
+  .btn-dourado:hover::before{opacity:1;}
+  .btn-dourado:hover{transform:scale(1.05);}
+  @keyframes gradientShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
@@ -56,13 +79,35 @@
     border-radius:12px;
     padding:2rem 3rem;
     display:inline-block;
-    border:2px solid var(--dourado);
-    box-shadow:0 0 20px #ffd70066;
+    border:2px solid transparent;
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado)) border-box;
+    -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:destination-out;
+    mask-composite:exclude;
+    box-shadow:0 0 30px #ffd70066,0 0 30px #ffffff66;
+    position:relative;
+    overflow:hidden;
+  }
+  .titulo-wrapper::before{
+    content:'';
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:linear-gradient(45deg,transparent,#fff,transparent);
+    transform:rotate(45deg);
+    animation:shine 3s infinite;
+    z-index:-1;
+  }
+  @keyframes shine{
+    0%{transform:translateX(-100%) translateY(-100%) rotate(45deg);}
+    100%{transform:translateX(100%) translateY(100%) rotate(45deg);}
   }
   .titulo-wrapper h1{
     font-size:clamp(3rem,7vw,6rem);
     letter-spacing:2px;
-    background:linear-gradient(90deg,var(--dourado),#fff);
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     animation:glowDourado 2s infinite alternate;
@@ -78,10 +123,18 @@
   }
   .preco-pulse{
     font-size:2.5rem;
-    color:var(--dourado);
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
     font-weight:900;
     margin-top:1rem;
     text-shadow:0 0 8px #ffd700;
+    animation:pulseDourado 1.2s infinite;
+  }
+  @keyframes pulseDourado{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
   }
 
   .descricao-icones{
@@ -105,7 +158,19 @@
     text-align:center;
     border:2px solid transparent;
     transition:.3s;
+    position:relative;
+    overflow:hidden;
   }
+  .icone-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
+  }
+  .icone-card:hover::before{opacity:.08;}
   .icone-card:hover{
     border-color:var(--dourado);
     transform:translateY(-4px) scale(1.03);
@@ -114,19 +179,27 @@
     width:48px;
     height:48px;
     margin:0 auto .6rem;
+    position:relative;
+    z-index:1;
+    transition:transform .4s;
   }
+  .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
   .icone-card h3{
     font-size:.9rem;
     margin-bottom:.3rem;
+    position:relative;
+    z-index:1;
   }
   .icone-card p{
     font-size:.75rem;
     color:#ccc;
+    position:relative;
+    z-index:1;
   }
 
   .divisoria-unica{
     height:3px;
-    background:var(--dourado);
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
     border:none;
     margin:2.5rem auto 1.5rem;
     max-width:200px;
@@ -134,10 +207,26 @@
     opacity:0;
     transform:scaleX(0);
     transition:all .6s;
+    position:relative;
+    overflow:hidden;
   }
   .divisoria-unica.show{
     opacity:1;
     transform:scaleX(1);
+  }
+  .divisoria-unica::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,var(--dourado),#fff,var(--dourado),transparent);
+    animation:snake 2s linear infinite;
+  }
+  @keyframes snake{
+    0%{left:-100%;}
+    100%{left:100%;}
   }
 
   .texto-chamativo{
@@ -155,7 +244,15 @@
   .texto-chamativo h2{
     font-size:clamp(1.6rem,4vw,2.4rem);
     margin-bottom:1rem;
-    color:var(--dourado);
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradient 3s ease infinite;
+  }
+  @keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
   }
   .texto-chamativo p{
     font-size:clamp(1rem,2.5vw,1.2rem);
@@ -182,16 +279,32 @@
     border-radius:14px;
     padding:1.2rem;
     border-left:4px solid var(--dourado);
+    position:relative;
+    overflow:hidden;
   }
+  .vantagem-item::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
+  }
+  .vantagem-item:hover::before{opacity:.08;}
   .vantagem-item h4{
     font-size:1.1rem;
     margin-bottom:.5rem;
     color:var(--dourado);
+    position:relative;
+    z-index:1;
   }
   .vantagem-item p{
     font-size:.9rem;
     color:#ccc;
     line-height:1.5;
+    position:relative;
+    z-index:1;
   }
 
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
@@ -263,7 +376,7 @@
       Porque você recebe <strong style="color:var(--dourado)">TODOS os serviços premium</strong> em um só lugar – Netflix, Disney+, HBO Max, Paramount+, Spotify, YouTube Music, Apple Music, Amazon Music HD – 
       por menos de <strong>R$ 2 por dia</strong>. 
       São mais de <strong>R$ 400 em serviços</strong> por apenas <strong>R$ 59,90/mês</strong>. 
-      Economia de verdade, sem perder qualidade: 4 telas simultâneas, downloads ilimitados, qualidade studio. 
+      Economize até <strong>85%</strong> sem perder qualidade: 4 telas simultâneas, downloads ilimitados, qualidade studio. 
       Ativação imediata, sem fidelidade, suporte 24/7. 
       É o único pacote que domina <strong>todas as telas e os ouvintes do planeta</strong>.
     </p>
