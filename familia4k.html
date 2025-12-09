@@ -2,19 +2,23 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Combo Família 4K – Streaming Total</title>
+<title>Combo Família 4K – Pacote Mais Vendido | Streaming Total</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --roxo:#8a2be2;
-    --azul:#0052d4;
+    --dourado:#ffd700;
+    --dourado-escuro:#ffb700;
     --preto:#0a0a0a;
     --cinza:#121212;
-    --rosa:#ff0057;
     --amarelo:#ffd600;
+    --laranja:#ff7a00;
   }
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
-  body{background:var(--preto)}
+  @font-face{
+    font-family:'Netflix';
+    src:url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2') format('woff2');
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Netflix','Segoe UI',Helvetica,sans-serif;color:#fff}
+  body{background:#181818}
   img{max-width:100%;display:block}
   .btn{
     padding:14px 32px;
@@ -27,16 +31,15 @@
     text-decoration:none;
     display:inline-block;
   }
-  .btn-roxo{background:var(--roxo)}
-  .btn-roxo:hover{background:var(--azul);transform:scale(1.05)}
+  .btn-dourado{background:var(--dourado);color:#0a0a0a}
+  .btn-dourado:hover{background:var(--dourado-escuro);transform:scale(1.05)}
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
-  /* HERO */
   .hero{
     width:100%;
     height:100vh;
-    background:url("https://images.unsplash.com/photo-1616531770192-6dafa28b81af?auto=format&fit=crop&w=1920&q=90") center/cover no-repeat;
+    background:url("bannerfamilia.jpg") center/cover no-repeat;
     position:relative;
     display:flex;
     align-items:center;
@@ -47,27 +50,123 @@
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(45deg,#8a2be2cc 0%,#0052d4cc 100%);
+    background:rgba(0,0,0,.6);
   }
-  .hero-content{z-index:2}
-  .hero h1{font-size:clamp(2.2rem,5vw,4rem);text-shadow:0 4px 12px rgba(0,0,0,.7)}
-  .hero p{font-size:1.3rem;margin:1rem 0 2rem}
-  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    background:url("familia-bg.jpg") center/cover no-repeat;
+    transform:scale(1.1);
+    transition:transform 1.2s ease;
+  }
+  .hero.in-view .hero-bg{transform:scale(1);}
+  .hero-content{z-index:2;opacity:0;transform:translateY(40px);transition:all .8s .4s;}
+  .hero.in-view .hero-content{opacity:1;transform:translateY(0);}
 
-  /* PREÇO PULSANTE */
+  .titulo-wrapper{
+    background:rgba(18,18,18,.65);
+    border-radius:12px;
+    padding:1.5rem 2rem;
+    display:inline-block;
+    border:2px solid var(--dourado);
+    box-shadow:0 0 30px #ffd70066;
+  }
+  .titulo-wrapper h1{
+    font-size:clamp(2.5rem,6vw,5rem);
+    letter-spacing:2px;
+    animation:fadeIn 1.5s ease-out, glowGold 2s infinite alternate;
+    background:linear-gradient(90deg,var(--dourado),var(--amarelo));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .titulo-wrapper h1::first-letter{
+    font-size:110%;
+    color:var(--dourado);
+    text-shadow:0 0 8px var(--dourado);
+  }
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(-20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes glowGold{
+    from{text-shadow:0 0 4px #fff,0 0 8px var(--dourado);}
+    to{text-shadow:0 0 8px #fff,0 0 16px var(--dourado);}
+  }
+
   .preco-pulse{
-    font-size:2.4rem;
-    color:var(--amarelo);
+    font-size:2.8rem;
+    color:var(--dourado);
     font-weight:900;
-    animation:pulse 1.2s infinite;
+    animation:pulseGold 1.2s infinite;
+    text-shadow:0 0 10px var(--dourado);
   }
-  @keyframes pulse{
-    0%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
-    50%{transform:scale(1.05);text-shadow:0 0 20px var(--rosa)}
-    100%{transform:scale(1);text-shadow:0 0 10px var(--amarelo)}
+  @keyframes pulseGold{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
   }
 
-  /* DETALHES */
+  .descricao-icones{
+    max-width:900px;
+    margin:2rem auto 1.5rem;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1.5rem;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s;
+  }
+  .descricao-icones.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .icone-card{
+    background:#1a1a1a;
+    border-radius:14px;
+    padding:1.2rem .8rem;
+    text-align:center;
+    border:2px solid transparent;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .icone-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--dourado),var(--amarelo));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
+  }
+  .icone-card:hover::before{opacity:.08;}
+  .icone-card:hover{
+    border-color:var(--dourado);
+    transform:translateY(-6px) scale(1.03);
+  }
+  .icone-card img{
+    width:64px;
+    height:64px;
+    margin:0 auto .6rem;
+    position:relative;
+    z-index:1;
+    transition:transform .4s;
+  }
+  .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
+  .icone-card h3{
+    font-size:.95rem;
+    color:var(--amarelo);
+    margin-bottom:.3rem;
+    position:relative;
+    z-index:1;
+  }
+  .icone-card p{
+    font-size:.8rem;
+    color:#ccc;
+    position:relative;
+    z-index:1;
+  }
+
   .detalhes-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
@@ -81,148 +180,197 @@
     text-align:center;
     border:2px solid transparent;
     transition:.3s;
+    opacity:0;
+    transform:translateY(40px);
   }
-  .detalhe-card:hover{border-color:var(--rosa)}
-  .detalhe-card img{margin:0 auto .8rem}
+  .detalhe-card.show{
+    animation:fadeInUp 0.6s forwards;
+  }
+  .detalhe-card:hover{border-color:var(--dourado)}
+  .detalhe-card img{margin:0 auto .8rem;transition:transform .3s}
+  .detalhe-card:hover img{transform:scale(1.1) rotate(5deg)}
   .detalhe-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--amarelo)}
   .detalhe-card p{font-size:.85rem;color:#ccc}
 
-  /* CRONÔMETRO */
-  .cronometro{
-    text-align:center;
-    margin:2rem 0;
-    font-size:2.2rem;
-    color:var(--amarelo);
-    font-weight:900;
-    animation:pulse 1.2s infinite;
+  .divisoria-unica{
+    height:4px;
+    background:linear-gradient(90deg,var(--dourado),var(--amarelo));
+    border:none;
+    margin:2.5rem auto 1.5rem;
+    max-width:220px;
+    border-radius:3px;
+    opacity:0;
+    transform:scaleX(0);
+    transition:all .6s;
+    position:relative;
+    overflow:hidden;
+  }
+  .divisoria-unica.show{
+    opacity:1;
+    transform:scaleX(1);
+  }
+  .divisoria-unica::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,var(--dourado),transparent);
+    animation:snake 2s linear infinite;
+  }
+  @keyframes snake{
+    0%{left:-100%;}
+    100%{left:100%;}
   }
 
-  /* REVIEWS */
-  .reviews{
-    padding:4rem 1rem;
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:2rem;
-  }
-  .review-card{
-    background:var(--cinza);
-    border-radius:14px;
-    padding:1.5rem;
+  .texto-chamativo{
+    max-width:800px;
+    margin:1.5rem auto 2rem;
     text-align:center;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s;
   }
-  .review-card img{
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    margin:0 auto 1rem;
-    object-fit:cover;
+  .texto-chamativo.show{
+    opacity:1;
+    transform:translateY(0);
   }
-  .stars{
-    color:var(--amarelo);
-    font-size:1.2rem;
-    margin-bottom:.5rem;
+  .texto-chamativo h2{
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    margin-bottom:1rem;
+    background:linear-gradient(90deg,var(--dourado),var(--amarelo));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradient 3s ease infinite;
   }
-  .review-text{
-    font-size:.95rem;
+  @keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+  .texto-chamativo p{
+    font-size:clamp(1rem,2.5vw,1.3rem);
     color:#ccc;
-    margin-bottom:.8rem;
-  }
-  .review-name{
-    font-weight:700;
-    color:#fff;
+    line-height:1.6;
   }
 
-  /* AÇÕES */
-  .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+  .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+  .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
+  .fade-in.show{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1>Combo Família 4K</h1>
-    <p>4 telas simultâneas • 4K/HDR • Downloads ilimitados</p>
-    <div class="hero-actions">
-      <span class="preco-pulse">R$ 39,90/mês</span>
+    <div class="titulo-wrapper">
+      <h1>Combo Família 4K</h1>
+      <p>O PACOTE MAIS VENDIDO DO BRASIL</p>
+      <div class="preco-pulse">R$ 39,90/mês</div>
     </div>
   </div>
 </section>
 
-<!-- DETALHES -->
 <section style="padding:4rem 1rem;max-width:1200px;margin:auto">
-  <h2 style="text-align:center;margin-bottom:2rem">Por que escolher o Combo Família?</h2>
+  <div class="descricao-icones">
+    <div class="icone-card">
+      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+      <h3>4K + HDR</h3>
+      <p>Qualidade máxima</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/color/96/000000/family.png" alt="Família">
+      <h3>4 Telas</h3>
+      <p>Toda família</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
+      <h3>Downloads</h3>
+      <p>Offline ilimitado</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+      <h3>70% mais barato</h3>
+      <p>Economia real</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/fluency/96/000000/no-hidden-fee.png" alt="Sem fidelidade">
+      <h3>Sem fidelidade</h3>
+      <p>Cancela quando quiser</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/color/96/000000/clock.png" alt="Ativação">
+      <h3>Ativação imediata</h3>
+      <p>Começa agora</p>
+    </div>
+  </div>
+
+  <hr class="divisoria-unica">
 
   <div class="detalhes-grid">
     <div class="detalhe-card">
-      <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
-      <h3>4K + HDR</h3>
-      <p>Resolução máxima em até 4 telas</p>
+      <img src="https://img.icons8.com/color/96/000000/netflix.png" alt="Netflix">
+      <h3>Netflix 4K</h3>
+      <p>Catálogo completo em ultra alta definição</p>
     </div>
     <div class="detalhe-card">
-      <img src="https://img.icons8.com/color/96/000000/family.png" alt="Família">
-      <h3>4 Telas</h3>
-      <p>Assista todo mundo ao mesmo tempo</p>
+      <img src="https://img.icons8.com/color/96/000000/disney-plus.png" alt="Disney">
+      <h3>Disney+</h3>
+      <p>Disney, Marvel, Star Wars, National Geographic</p>
     </div>
     <div class="detalhe-card">
-      <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
-      <h3>Downloads</h3>
-      <p>Offline em até 10 dispositivos</p>
+      <img src="https://img.icons8.com/color/96/000000/hbo.png" alt="HBO">
+      <h3>HBO Max</h3>
+      <p>Séries premiadas e filmes de cinema</p>
     </div>
     <div class="detalhe-card">
-      <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
-      <h3>Economia 70%</h3>
-      <p>Mais barato que 4 assinaturas separadas</p>
+      <img src="https://img.icons8.com/color/96/000000/paramount.png" alt="Paramount">
+      <h3>Paramount+</h3>
+      <p>Conteúdo exclusivo e filmes blockbusters</p>
     </div>
   </div>
 
-  <!-- CRONÔMETRO -->
-  <div class="cronometro">
-    ⏱️ Oferta termina em: <span id="timer">30:00</span>
+  <div class="texto-chamativo">
+    <h2>O ÚNICO PACOTE QUE DOMINA TODAS AS TELAS DA CASA</h2>
+    <p>
+      <span style="color:var(--dourado)">MAIS VENDIDO POR UM MOTIVO:</span> 4 telas simultâneas em 4K + HDR, 
+      downloads ilimitados em até 10 dispositivos, acesso completo a Netflix, Disney+, HBO Max e Paramount+. 
+      Economize até <strong>70%</strong> comparado a assinar tudo separado. 
+      <span style="color:var(--amarelo)">Perfeito para famílias</span> que querem o melhor entretenimento 
+      sem pagar fortuna. Ativação imediata, sem fidelidade e com suporte 24/7. 
+      <strong>R$ 39,90/mês</strong> - menos de R$ 1,33 por dia por TODO esse conteúdo!
+    </p>
   </div>
 
-  <!-- AÇÕES (com botão Voltar idêntico ao Netflix Solo) -->
-  <div class="actions">
-    <button class="btn btn-roxo">Assinar Combo Família</button>
+  <div class="actions fade-in">
+    <button class="btn btn-dourado">Comprar Combo Família</button>
     <a href="index.html" class="btn btn-ghost">Voltar</a>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<div class="reviews">
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Review 1">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Economizamos muito e todo mundo assiste o que quer!"</p>
-    <p class="review-name">Carla M.</p>
-  </div>
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Review 2">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Ativação rápida, 4K liso na smart e no celular."</p>
-    <p class="review-name">Lucas R.</p>
-  </div>
-  <div class="review-card">
-    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Review 3">
-    <div class="stars">★★★★★</div>
-    <p class="review-text">"Melhor custo-benefício do mercado. Recomendo!"</p>
-    <p class="review-name">Fernanda K.</p>
-  </div>
-</div>
-
 <script>
-  // cronômetro 30:00
-  let tempo = 30 * 60;
-  const timer = document.getElementById('timer');
-  const interval = setInterval(() => {
-    const min = Math.floor(tempo / 60);
-    const seg = tempo % 60;
-    timer.textContent = `${String(min).padStart(2,'0')}:${String(seg).padStart(2,'0')}`;
-    tempo--;
-    if (tempo < 0) clearInterval(interval);
-  }, 1000);
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  },{threshold:0.15});
+
+  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-unica').forEach(el=>observer.observe(el));
+
+  const hero=document.querySelector('.hero');
+  const heroObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        heroObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.4});
+  heroObserver.observe(hero);
 </script>
 
 </body>
