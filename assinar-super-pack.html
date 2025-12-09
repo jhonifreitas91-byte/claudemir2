@@ -62,8 +62,14 @@
   .titulo-wrapper h1{
     font-size:clamp(3rem,7vw,6rem);
     letter-spacing:2px;
-    color:var(--dourado);
-    text-shadow:0 0 10px #ffd700;
+    background:linear-gradient(90deg,var(--dourado),#fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:glowDourado 2s infinite alternate;
+  }
+  @keyframes glowDourado{
+    from{text-shadow:0 0 4px #fff,0 0 8px var(--dourado);}
+    to{text-shadow:0 0 8px #fff,0 0 16px var(--dourado);}
   }
   .titulo-wrapper p{
     font-size:1.2rem;
@@ -191,42 +197,6 @@
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
   .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
   .fade-in.show{opacity:1;transform:translateY(0);}
-
-  .streaming-showcase{
-    max-width:1000px;
-    margin:3rem auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:1.5rem;
-    opacity:0;
-    transform:translateY(40px);
-    transition:all .8s;
-  }
-  .streaming-showcase.show{
-    opacity:1;
-    transform:translateY(0);
-  }
-  .stream-card{
-    background:rgba(0,0,0,0.7);
-    border-radius:14px;
-    padding:1.2rem;
-    border:2px solid transparent;
-    transition:.3s;
-  }
-  .stream-card:hover{
-    border-color:var(--dourado);
-    transform:translateY(-4px) scale(1.03);
-  }
-  .stream-card h3{
-    font-size:1.1rem;
-    margin-bottom:.5rem;
-    color:var(--dourado);
-  }
-  .stream-card p{
-    font-size:.85rem;
-    color:#ccc;
-    line-height:1.4;
-  }
 </style>
 </head>
 <body>
@@ -288,29 +258,29 @@
   <hr class="divisoria-unica">
 
   <div class="texto-chamativo">
-    <h2>O ÚNICO PACOTE QUE DOMINA TODAS AS TELAS E OS OUVINTES DO PLANETA</h2>
+    <h2>Por que comprar o Super Pack Premium?</h2>
     <p>
-      Tudo que existe em streaming – Netflix, Disney+, HBO Max, Paramount+, Spotify, YouTube Music, Apple Music, Amazon Music HD – em um só lugar. 
-      4 telas 4K, qualidade lossless, downloads ilimitados. 
-      Economize até <strong>85%</strong> comparado a assinar separado. 
-      Perfeito para famílias que querem séries, filmes e música sem pagar fortuna. 
-      Ativação imediata, sem fidelidade e com suporte 24/7. 
-      <strong>R$ 59,90/mês</strong> - menos de R$ 2 por dia por TODO o entretenimento do mundo!
+      Porque você recebe <strong style="color:var(--dourado)">TODOS os serviços premium</strong> em um só lugar – Netflix, Disney+, HBO Max, Paramount+, Spotify, YouTube Music, Apple Music, Amazon Music HD – 
+      por menos de <strong>R$ 2 por dia</strong>. 
+      São mais de <strong>R$ 400 em serviços</strong> por apenas <strong>R$ 59,90/mês</strong>. 
+      Economia de verdade, sem perder qualidade: 4 telas simultâneas, downloads ilimitados, qualidade studio. 
+      Ativação imediata, sem fidelidade, suporte 24/7. 
+      É o único pacote que domina <strong>todas as telas e os ouvintes do planeta</strong>.
     </p>
   </div>
 
   <div class="vantagens-lista">
     <div class="vantagem-item">
-      <h4>🎬 4 Telas Simultâneas 4K</h4>
-      <p>Assista na TV, celular, tablet e notebook ao mesmo tempo. Qualidade máxima em todos os dispositivos.</p>
+      <h4>💰 Economia Real</h4>
+      <p>De R$ 400+ por mês para apenas R$ 59,90. Economize até 85% sem perder qualidade.</p>
     </div>
     <div class="vantagem-item">
-      <h4>📱 Downloads Ilimitados</h4>
-      <p>Baixe séries, filmes e músicas para assistir offline. Perfeito para viagens e trânsito sem internet.</p>
+      <h4>⚡ Ativação Imediata</h4>
+      <p>Assine agora, use agora. Sem burocracia, sem espera, sem fidelidade.</p>
     </div>
     <div class="vantagem-item">
-      <h4>🎧 Qualidade Studio</h4>
-      <p>Lossless, Ultra HD, Dolby Atmos. A música exatamente como o artista gravou no estúdio.</p>
+      <h4>🎯 Tudo em 1 Só</h4>
+      <p>Um único pagamento, um único login, todos os serviços. Simples assim.</p>
     </div>
   </div>
 
