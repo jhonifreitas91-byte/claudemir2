@@ -2,21 +2,15 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Super Pack Premium – Tudo Que Existe em Streaming</title>
+<title>Super Pack Premium – TUDO QUE EXISTE EM STREAMING</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
     --netflix:#e50914;
-    --netflix-escuro:#b1060f;
     --familia:#ffd700;
-    --familia-escuro:#ffb700;
     --musica:#1db954;
-    --musica-escuro:#158a37;
     --preto:#0a0a0a;
     --cinza:#121212;
-    --vermelho:#e50914;
-    --amarelo:#ffd600;
-    --verde:#adff2f;
     --branco:#fff;
   }
   @font-face{
@@ -82,14 +76,6 @@
     inset:0;
     background:rgba(0,0,0,.6);
   }
-  .hero-bg{
-    position:absolute;
-    inset:0;
-    background:url("super-pack-bg.jpg") center/cover no-repeat;
-    transform:scale(1.1);
-    transition:transform 1.2s ease;
-  }
-  .hero.in-view .hero-bg{transform:scale(1);}
   .hero-content{z-index:2;opacity:0;transform:translateY(40px);transition:all .8s .4s;}
   .hero.in-view .hero-content{opacity:1;transform:translateY(0);}
 
@@ -108,10 +94,10 @@
   .titulo-wrapper h1{
     font-size:clamp(2.5rem,6vw,5rem);
     letter-spacing:2px;
-    animation:fadeIn 1.5s ease-out, glowMulti 2s infinite alternate;
     background:linear-gradient(90deg,var(--netflix),var(--familia),var(--musica));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+    animation:fadeIn 1.5s ease-out, glowMulti 2s infinite alternate;
   }
   @keyframes fadeIn{
     from{opacity:0;transform:translateY(-20px);}
@@ -355,12 +341,23 @@
     color:#ccc;
     line-height:1.5;
   }
+
+  .frase-impacto{
+    color:var(--familia) !important;
+    font-weight:900;
+    text-shadow:0 0 8px var(--familia);
+    animation:pulseAmarelo 1.5s infinite;
+  }
+  @keyframes pulseAmarelo{
+    0%{text-shadow:0 0 8px var(--familia);}
+    50%{text-shadow:0 0 16px var(--familia);}
+    100%{text-shadow:0 0 8px var(--familia);}
+  }
 </style>
 </head>
 <body>
 
 <section class="hero">
-  <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="titulo-wrapper">
       <h1>Super Pack Premium</h1>
@@ -419,18 +416,18 @@
   <div class="texto-chamativo">
     <h2>O ÚNICO PACOTE QUE DOMINA TODAS AS TELAS E OS OUVINTES DO PLANETA</h2>
     <p>
-      <span style="color:var(--netflix)">MAIS VENDIDO POR UM MOTIVO:</span> TUDO que existe em streaming – 
+      <span class="frase-impacto">MAIS VENDIDO POR UM MOTIVO:</span> TUDO que existe em streaming – 
       <span style="color:var(--netflix)">Netflix</span>, <span style="color:var(--familia)">Disney+</span>, 
       <span style="color:#ff7a00">HBO Max</span>, <span style="color:#0064c8">Paramount+</span>, 
       <span style="color:var(--musica)">Spotify</span>, <span style="color:#ff0000">YouTube Music</span>, 
       <span style="color:#fa57c1">Apple Music</span>, <span style="color:#00a8e1">Amazon Music HD</span> 
       – em um só lugar. <span style="color:var(--familia)">4 telas 4K</span>, 
       <span style="color:var(--musica)">qualidade lossless</span>, downloads ilimitados. 
-      Economize até <strong>85%</strong> comparado a assinar separado. 
-      <span style="color:var(--branco)">Perfeito para famílias</span> que querem 
+      Economize até <span class="frase-impacto">85%</span> comparado a assinar separado. 
+      Perfeito para famílias que querem 
       <span style="color:var(--netflix)">séries</span>, <span style="color:var(--familia)">filmes</span> e 
       <span style="color:var(--musica)">música</span> sem pagar fortuna. Ativação imediata, 
-      sem fidelidade e com suporte 24/7. <strong>R$ 59,90/mês</strong> - menos de R$ 2 por dia 
+      sem fidelidade e com suporte 24/7. <span class="frase-impacto">R$ 59,90/mês</span> - menos de R$ 2 por dia 
       por <span style="color:var(--branco)">TODO o entretenimento do mundo</span>!
     </p>
   </div>
@@ -475,16 +472,16 @@
 
   <div class="vantagens-lista">
     <div class="vantagem-item">
-      <h4>🎬 4 Telas Simultâneas 4K</h4>
-      <p>Assista na TV, celular, tablet e notebook ao mesmo tempo. Qualidade máxima em todos os dispositivos.</p>
+      <h4>💰 Economia Real</h4>
+      <p>De R$ 400+ por mês para apenas R$ 59,90. Economize até <span class="frase-impacto">85%</span> sem perder qualidade.</p>
     </div>
     <div class="vantagem-item">
-      <h4>📱 Downloads Ilimitados</h4>
-      <p>Baixe séries, filmes e músicas para assistir offline. Perfeito para viagens e trânsito sem internet.</p>
+      <h4>⚡ Ativação Imediata</h4>
+      <p>Assine agora, use agora. Sem burocracia, sem espera, sem fidelidade.</p>
     </div>
     <div class="vantagem-item">
-      <h4>🎧 Qualidade Studio</h4>
-      <p>Lossless, Ultra HD, Dolby Atmos. A música exatamente como o artista gravou no estúdio.</p>
+      <h4>🎯 Tudo em 1 Só</h4>
+      <p>Um único pagamento, um único login, todos os serviços. Simples assim.</p>
     </div>
   </div>
 
