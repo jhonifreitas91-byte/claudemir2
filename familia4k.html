@@ -39,7 +39,7 @@
   .hero{
     width:100%;
     height:100vh;
-    background:url("familia2.jpg") center/cover no-repeat;
+    background:url("bannerfamilia.jpg") center/cover no-repeat;
     position:relative;
     display:flex;
     align-items:center;
@@ -258,6 +258,63 @@
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
   .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
   .fade-in.show{opacity:1;transform:translateY(0);}
+
+  /* --- novos blocos de conteúdo --- */
+  .streaming-showcase{
+    max-width:1000px;
+    margin:3rem auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1.5rem;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s;
+  }
+  .streaming-showcase.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .stream-card{
+    background:#1a1a1a;
+    border-radius:14px;
+    padding:1.2rem;
+    border:2px solid transparent;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .stream-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--dourado),var(--amarelo));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
+  }
+  .stream-card:hover::before{opacity:.08;}
+  .stream-card:hover{
+    border-color:var(--dourado);
+    transform:translateY(-6px) scale(1.03);
+  }
+  .stream-card h3{
+    font-size:1.1rem;
+    color:var(--amarelo);
+    margin-bottom:.5rem;
+    position:relative;
+    z-index:1;
+  }
+  .stream-card p{
+    font-size:.85rem;
+    color:#ccc;
+    line-height:1.4;
+    position:relative;
+    z-index:1;
+  }
+  .stream-card .highlight{
+    color:var(--dourado);
+    font-weight:700;
+  }
 </style>
 </head>
 <body>
@@ -309,29 +366,6 @@
 
   <hr class="divisoria-unica">
 
-  <div class="detalhes-grid">
-    <div class="detalhe-card">
-      <img src="https://img.icons8.com/color/96/000000/netflix.png" alt="Netflix">
-      <h3>Netflix 4K</h3>
-      <p>Catálogo completo em ultra alta definição</p>
-    </div>
-    <div class="detalhe-card">
-      <img src="https://img.icons8.com/color/96/000000/disney-plus.png" alt="Disney">
-      <h3>Disney+</h3>
-      <p>Disney, Marvel, Star Wars, National Geographic</p>
-    </div>
-    <div class="detalhe-card">
-      <img src="https://img.icons8.com/color/96/000000/hbo.png" alt="HBO">
-      <h3>HBO Max</h3>
-      <p>Séries premiadas e filmes de cinema</p>
-    </div>
-    <div class="detalhe-card">
-      <img src="https://img.icons8.com/color/96/000000/paramount.png" alt="Paramount">
-      <h3>Paramount+</h3>
-      <p>Conteúdo exclusivo e filmes blockbusters</p>
-    </div>
-  </div>
-
   <div class="texto-chamativo">
     <h2>O ÚNICO PACOTE QUE DOMINA TODAS AS TELAS DA CASA</h2>
     <p>
@@ -342,6 +376,25 @@
       sem pagar fortuna. Ativação imediata, sem fidelidade e com suporte 24/7. 
       <strong>R$ 39,90/mês</strong> - menos de R$ 1,33 por dia por TODO esse conteúdo!
     </p>
+  </div>
+
+  <div class="streaming-showcase">
+    <div class="stream-card">
+      <h3>Netflix 4K</h3>
+      <p>Tem <span class="highlight">TODOS</span> os originais: Stranger Things, La Casa de Papel, Round 6, The Witcher, Sandman. <span class="highlight">240 milhões</span> de assinantes não mentem: aqui é o reino das temporadas inteiras. Baixe no celular e termine a série no avião – sem anúncios, sem limites.</p>
+    </div>
+    <div class="stream-card">
+      <h3>Disney+</h3>
+      <p>Magia que dá <span class="highlight">replay infinito</span>: Encanto, Frozen, todos os Marvels (Homem-Aranha 3, Thor: Amor e Trovão), Star Wars: Obi-Wan, Mandaloriano e NatGeo em 4K. Clica no perfil “Kids” e os pequenos ficam longe de conteúdo adulto.</p>
+    </div>
+    <div class="stream-card">
+      <h3>HBO Max</h3>
+      <p>Séries que <span class="highlight">QUEBRAM a internet</span>: The Last of Us, House of the Dragon, Succession, Euphoria, Friends inteiro, DC (The Batman, Aquaman). Lançamentos de cinema entram 45 dias após os cinemas – sem pagar ingresso.</p>
+    </div>
+    <div class="stream-card">
+      <h3>Paramount+</h3>
+      <p>Futebol <span class="highlight">SEM VUVUZELA</span> e com replay: Champions League, Brasileirão, NFL, novos South Park, Yellowstone, Top Gun: Maverick, Missão Impossível 7. Ao vivo ou on-demand, tudo em 4K com 5.1 surround.</p>
+    </div>
   </div>
 
   <div class="actions fade-in">
@@ -359,7 +412,7 @@
     });
   },{threshold:0.15});
 
-  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-unica').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-unica, .streaming-showcase').forEach(el=>observer.observe(el));
 
   const hero=document.querySelector('.hero');
   const heroObserver=new IntersectionObserver((entries)=>{
