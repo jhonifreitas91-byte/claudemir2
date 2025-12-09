@@ -12,6 +12,7 @@
     --cinza:#121212;
     --amarelo:#ffd600;
     --laranja:#ff7a00;
+    --saturado:#990000; /* cor de saturação */
   }
   @font-face{
     font-family:'Netflix';
@@ -39,7 +40,7 @@
   .hero{
     width:100%;
     height:100vh;
-    background:url("bannerfamilia.jpg") center/cover no-repeat;
+    background:url("familia2.jpg") center/cover no-repeat;
     position:relative;
     display:flex;
     align-items:center;
@@ -130,9 +131,16 @@
     position:relative;
     overflow:hidden;
   }
-  /* --- saturação no fundo dos cards 4K e 4 Telas --- */
-  .icone-card:nth-child(1){background:#0f0f0f;}
-  .icone-card:nth-child(2){background:#0a0a0a;}
+  /* saturação nos 6 cards */
+  .icone-card:nth-child(1),
+  .icone-card:nth-child(2),
+  .icone-card:nth-child(3),
+  .icone-card:nth-child(4),
+  .icone-card:nth-child(5),
+  .icone-card:nth-child(6){
+    background:var(--saturado);
+    color:#fff;
+  }
   /* ----------------------------------------- */
   .icone-card::before{
     content:"";
@@ -159,7 +167,6 @@
   .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
   .icone-card h3{
     font-size:.95rem;
-    color:var(--amarelo);
     margin-bottom:.3rem;
     position:relative;
     z-index:1;
@@ -279,7 +286,7 @@
     transform:translateY(0);
   }
   .stream-card{
-    background:#1a1a1a;
+    background:var(--saturado); /* mesma cor saturada */
     border-radius:14px;
     padding:1.2rem;
     border:2px solid transparent;
