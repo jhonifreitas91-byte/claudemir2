@@ -1,1 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Combo Música Premium – Stream de Áudio Sem Limites</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --verde:#1db954;
+    --verde-escuro:#158a37;
+    --preto:#0a0a0a;
+    --cinza:#121212;
+    --lime:#adff2f;
+    --neon:#39ff14;
+  }
+  @font-face{
+    font-family:'Netflix';
+    src:url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2') format('woff2');
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Netflix','Segoe UI',Helvetica,sans-serif;color:#fff}
+  body{background:#181818}
+  img{max-width:100%;display:block}
+  .btn{
+    padding:14px 32px;
+    border:none;
+    border-radius:30px;
+    font-size:1.1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    text-decoration:none;
+    display:inline-block;
+  }
+  .btn-verde{background:var(--verde);color:#000}
+  .btn-verde:hover{background:var(--verde-escuro);transform:scale(1.05)}
+  .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
+  .btn-ghost:hover{background:#fff;color:#111}
 
+  .hero{
+    width:100%;
+    height:100vh;
+    background:url("bannermusica.jpg") center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.6);
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    background:url("musica-bg.jpg") center/cover no-repeat;
+    transform:scale(1.1);
+    transition:transform 1.2s ease;
+  }
+  .hero.in-view .hero-bg{transform:scale(1);}
+  .hero-content{z-index:2;opacity:0;transform:translateY(40px);transition:all .8s .4s;}
+  .hero.in-view .hero-content{opacity:1;transform:translateY(0);}
+
+  .titulo-wrapper{
+    background:rgba(18,18,18,.65);
+    border-radius:12px;
+    padding:1.5rem 2rem;
+    display:inline-block;
+    border:2px solid var(--verde);
+    box-shadow:0 0 30px #1db95466;
+  }
+  .titulo-wrapper h1{
+    font-size:clamp(2.5rem,6vw,5rem);
+    letter-spacing:2px;
+    animation:fadeIn 1.5s ease-out, glowGreen 2s infinite alternate;
+    background:linear-gradient(90deg,var(--verde),var(--lime));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .titulo-wrapper h1::first-letter{
+    font-size:110%;
+    color:var(--verde);
+    text-shadow:0 0 8px var(--verde);
+  }
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(-20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes glowGreen{
+    from{text-shadow:0 0 4px #fff,0 0 8px var(--verde);}
+    to{text-shadow:0 0 8px #fff,0 0 16px var(--verde);}
+  }
+
+  .preco-pulse{
+    font-size:2.8rem;
+    color:var(--verde);
+    font-weight:900;
+    animation:pulseGreen 1.2s infinite;
+    text-shadow:0 0 10px var(--verde);
+  }
+  @keyframes pulseGreen{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
+  }
+
+  .descricao-icones{
+    max-width:900px;
+    margin:2rem auto 1.5rem;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:1.5rem;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s;
+  }
+  .descricao-icones.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .icone-card{
+    background:rgba(0,0,0,0.7);
+    border-radius:14px;
+    padding:1.2rem .8rem;
+    text-align:center;
+    border:2px solid transparent;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .icone-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--verde),var(--lime));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
+  }
+  .icone-card:hover::before{opacity:.08;}
+  .icone-card:hover{
+    border-color:var(--verde);
+    transform:translateY(-6px) scale(1.03);
+  }
+  .icone-card img{
+    width:64px;
+    height:64px;
+    margin:0 auto .6rem;
+    position:relative;
+    z-index:1;
+    transition:transform .4s;
+  }
+  .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
+  .icone-card h3{
+    font-size:.95rem;
+    margin-bottom:.3rem;
+    position:relative;
+    z-index:1;
+  }
+  .icone-card p{
+    font-size:.8rem;
+    color:#ccc;
+    position:relative;
+    z-index:1;
+  }
+
+  .divisoria-unica{
+    height:4px;
+    background:linear-gradient(90deg,var(--verde),var(--lime));
+    border:none;
+    margin:2.5rem auto 1.5rem;
+    max-width:220px;
+    border-radius:3px;
+    opacity:0;
+    transform:scaleX(0);
+    transition:all .6s;
+    position:relative;
+    overflow:hidden;
+  }
+  .divisoria-unica.show{
+    opacity:1;
+    transform:scaleX(1);
+  }
+  .divisoria-unica::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,var(--verde),transparent);
+    animation:snake 2s linear infinite;
+  }
+  @keyframes snake{
+    0%{left:-100%;}
+    100%{left:100%;}
+  }
+
+  .texto-chamativo{
+    max-width:800px;
+    margin:1.5rem auto 2rem;
+    text-align:center;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s;
+  }
+  .texto-chamativo.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .texto-chamativo h2{
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    margin-bottom:1rem;
+    background:linear-gradient(90deg,var(--verde),var(--lime));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradient 3s ease infinite;
+  }
+  @keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+  .texto-chamativo p{
+    font-size:clamp(1rem,2.5vw,1.3rem);
+    color:#ccc;
+    line-height:1.6;
+  }
+
+  .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+  .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
+  .fade-in.show{opacity:1;transform:translateY(0);}
+
+  .streaming-showcase{
+    max-width:1000px;
+    margin:3rem auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1.5rem;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s;
+  }
+  .streaming-showcase.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .stream-card{
+    background:rgba(0,0,0,0.7);
+    border-radius:14px;
+    padding:1.2rem;
+    border:2px solid transparent;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .stream-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,var(--verde),var(--lime));
+    opacity:0;
+    transition:opacity .4s;
+    z-index:0;
+  }
+  .stream-card:hover::before{opacity:.08;}
+  .stream-card:hover{
+    border-color:var(--verde);
+    transform:translateY(-6px) scale(1.03);
+  }
+  .stream-card h3{
+    font-size:1.1rem;
+    color:var(--verde);
+    margin-bottom:.5rem;
+    position:relative;
+    z-index:1;
+  }
+  .stream-card p{
+    font-size:.85rem;
+    color:#ccc;
+    line-height:1.4;
+    position:relative;
+    z-index:1;
+  }
+  .stream-card .highlight{
+    color:var(--verde);
+    font-weight:700;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="titulo-wrapper">
+      <h1>Combo Música Premium</h1>
+      <p>STREAM DE ÁUDIO SEM LIMITES</p>
+      <div class="preco-pulse">R$ 9,90/mês</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:4rem 1rem;max-width:1200px;margin:auto">
+  <div class="descricao-icones">
+    <div class="icone-card">
+      <img src="https://img.icons8.com/color/96/000000/spotify.png" alt="Spotify">
+      <h3>Spotify Premium</h3>
+      <p>Sem anúncios</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/fluency/96/000000/youtube-music.png" alt="YouTube Music">
+      <h3>YouTube Music</h3>
+      <p>Vídeos + música</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/dusk/96/000000/apple-music.png" alt="Apple Music">
+      <h3>Apple Music</h3>
+      <p>Qualidade lossless</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/plasticine/96/000000/amazon-music.png" alt="Amazon Music">
+      <h3>Amazon Music</h3>
+      <p>HD e Ultra HD</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/fluency/96/000000/deezer.png" alt="Deezer">
+      <h3>Deezer HiFi</h3>
+      <p>FLAC puro</p>
+    </div>
+    <div class="icone-card">
+      <img src="https://img.icons8.com/color/96/000000/tidal.png" alt="Tidal">
+      <h3>Tidal HiFi</h3>
+      <p>Master quality</p>
+    </div>
+  </div>
+
+  <hr class="divisoria-unica">
+
+  <div class="texto-chamativo">
+    <h2>O ÚNICO COMBO QUE FAZ SUA CASA INTEIRA TREMER DE SOM</h2>
+    <p>
+      <span style="color:var(--verde)">MAIS VENDIDO POR UM MOTIVO:</span> 6 serviços Premium em 1 só lugar – 
+      Spotify, YouTube Music, Apple Music, Amazon Music HD, Deezer HiFi e Tidal HiFi. 
+      Qualidade <span class="highlight">lossless e Master</span>, sem anúncios, downloads ilimitados. 
+      Economize até <strong>80%</strong> comparado a assinar separado. 
+      <span style="color:var(--lime)">Perfeito para quem ama música</span> em qualidade de estúdio. 
+      Ativação imediata, sem fidelidade e com suporte 24/7. 
+      <strong>R$ 9,90/mês</strong> - menos de R$ 0,33 por dia por TODO esse som!
+    </p>
+  </div>
+
+  <div class="streaming-showcase">
+    <div class="stream-card">
+      <h3>Spotify Premium</h3>
+      <p><span class="highlight">82 milhões</span> de músicas sem anúncios, podcasts exclusivos como <span class="highlight">O Nerdcast</span>, modo carro, equalizador personalizado. Baixe até <span class="highlight">10 mil músicas</span> e ouça offline no avião.</p>
+    </div>
+    <div class="stream-card">
+      <h3>YouTube Music</h3>
+      <p>Vídeos oficiais + áudio. Descubra versões raras, lives e covers. Reprodução em segundo plano, downloads em até <span class="highlight">500 músicas</span>. Perfeito para quem curte <span class="highlight">versões acústicas</span>.</p>
+    </div>
+    <div class="stream-card">
+      <h3>Apple Music</h3>
+      <p>Qualidade <span class="highlight">lossless</span> e <span class="highlight">Dolby Atmos</span> grátis. Exclusivos como <span class="highlight">Taylor Swift</span> e <span class="highlight">Billie Eilish</span>. Integração total com iPhone, Mac e HomePod. <span class="highlight">100 milhões</span> de faixas!</p>
+    </div>
+    <div class="stream-card">
+      <h3>Amazon Music HD</h3>
+      <p>Ultra HD com <span class="highlight">3730 kbps</span> – 10x melhor que MP3. Playlists <span class="highlight">3D</span> para fones com espacialização. Exclusivos como <span class="highlight">Muse</span> e <span class="highlight">Foo Fighters</span>. Funciona no Alexa: “Alexa, toca rock dos 90”.</p>
+    </div>
+    <div class="stream-card">
+      <h3>Deezer HiFi</h3>
+      <p>FLAC puro, <span class="highlight">Flow</span> que aprende seu gosto, letras em tempo real. Tem <span class="highlight">podcasts</span> nacionais e internacionais. Modo <span class="highlight">karaokê</span> com letra sincronizada – cante junto!</p>
+    </div>
+    <div class="stream-card">
+      <h3>Tidal HiFi</h3>
+      <p>Master Quality Authenticated – <span class="highlight">qualidade de estúdio</span>. Exclusivos como <span class="highlight">Beyoncé</span>, <span class="highlight">Jay-Z</span> e <span class="highlight">Rihanna</span>. Modo <span class="highlight">concerto virtual</span> com vídeos 360°. Os <span class="highlight">audiófilos</span> juram de pé junto.</p>
+    </div>
+  </div>
+
+  <div class="actions fade-in">
+    <button class="btn btn-verde">Comprar Combo Música Premium</button>
+    <a href="index.html" class="btn btn-ghost">Voltar</a>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  },{threshold:0.15});
+
+  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-unica, .streaming-showcase').forEach(el=>observer.observe(el));
+
+  const hero=document.querySelector('.hero');
+  const heroObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        heroObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.4});
+  heroObserver.observe(hero);
+</script>
+
+</body>
+</html>
