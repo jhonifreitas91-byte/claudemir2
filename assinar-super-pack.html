@@ -16,6 +16,13 @@
   body{background:#181818}
   img{max-width:100%;display:block}
 
+  /* Títulos em negrito → amarelo/branco */
+  h1,h2,h3,h4,h5,h6,b,strong{
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
   .btn{
     padding:14px 32px;
     border:none;
@@ -74,31 +81,13 @@
   .hero-content{z-index:2;opacity:0;transform:translateY(40px);transition:all .8s .4s;}
   .hero.in-view .hero-content{opacity:1;transform:translateY(0);}
 
-  /* TÍTULO VISÍVEL - cores do site */
-  .titulo-wrapper h1{
-    font-size:clamp(2.5rem,6vw,5rem);
-    letter-spacing:2px;
-    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:fadeIn 1.5s ease-out, glowDourado 2s infinite alternate;
-  }
-  @keyframes fadeIn{
-    from{opacity:0;transform:translateY(-20px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  @keyframes glowDourado{
-    from{text-shadow:0 0 4px #fff,0 0 8px var(--dourado);}
-    to{text-shadow:0 0 8px #fff,0 0 16px var(--dourado);}
-  }
-
   /* PREÇO PULSANTE - dourado com aura */
   .preco-pulse{
     font-size:2.8rem;
     color:var(--dourado);
     font-weight:900;
     animation:pulse 1.2s infinite;
-    text-shadow:0 0 10px var(--dourado), 0 0 20px var(--dourado), 0 0 30px var(--dourado);
+    text-shadow:0 0 10px var(--dourado),0 0 20px var(--dourado),0 0 30px var(--dourado);
     margin-top:1rem;
   }
   @keyframes pulse{
@@ -165,6 +154,15 @@
     color:#ccc;
     position:relative;
     z-index:1;
+  }
+
+  /* Palavras em negrito dentro dos cards → amarelo comum */
+  .stream-card .highlight,
+  .vantagem-item .frase-impacto,
+  .texto-chamativo .frase-impacto{
+    color:var(--dourado) !important;
+    -webkit-text-fill-color:var(--dourado) !important;
+    font-weight:700;
   }
 
   .divisoria-unica{
@@ -284,9 +282,6 @@
     position:relative;
     z-index:1;
   }
-  .stream-card .highlight{
-    font-weight:700;
-  }
 
   .vantagens-lista{
     max-width:900px;
@@ -318,18 +313,6 @@
     font-size:.9rem;
     color:#ccc;
     line-height:1.5;
-  }
-
-  .frase-impacto{
-    color:var(--dourado) !important;
-    font-weight:900;
-    text-shadow:0 0 8px var(--dourado);
-    animation:pulseAmarelo 1.5s infinite;
-  }
-  @keyframes pulseAmarelo{
-    0%{text-shadow:0 0 8px var(--dourado);}
-    50%{text-shadow:0 0 16px var(--dourado);}
-    100%{text-shadow:0 0 8px var(--dourado);}
   }
 </style>
 </head>
@@ -394,14 +377,14 @@
   <div class="texto-chamativo">
     <h2>O ÚNICO PACOTE QUE DOMINA TODAS AS TELAS E OS OUVINTES DO PLANETA</h2>
     <p>
-      <span class="frase-impacto">MAIS VENDIDO POR UM MOTIVO:</span> TUDO que existe em streaming – 
-      Netflix, Disney+, HBO Max, Paramount+, Spotify, YouTube Music, Apple Music, Amazon Music HD 
-      – em um só lugar. <span class="frase-impacto">4 telas 4K</span>, 
-      qualidade lossless, downloads ilimitados. 
-      Economize até <span class="frase-impacto">85%</span> comparado a assinar separado. 
-      Perfeito para famílias que querem 
-      séries, filmes e música sem pagar fortuna. Ativação imediata, 
-      sem fidelidade e com suporte 24/7. <span class="frase-impacto">R$ 59,90/mês</span> - menos de R$ 2 por dia 
+      <b>MAIS VENDIDO POR UM MOTIVO:</b> TUDO que existe em streaming –
+      Netflix, Disney+, HBO Max, Paramount+, Spotify, YouTube Music, Apple Music, Amazon Music HD
+      – em um só lugar. <b>4 telas 4K</b>,
+      qualidade lossless, downloads ilimitados.
+      Economize até <b>85%</b> comparado a assinar separado.
+      Perfeito para famílias que querem
+      séries, filmes e música sem pagar fortuna. Ativação imediata,
+      sem fidelidade e com suporte 24/7. <b>R$ 59,90/mês</b> - menos de R$ 2 por dia
       por TODO o entretenimento do mundo!
     </p>
   </div>
@@ -409,45 +392,45 @@
   <div class="streaming-showcase">
     <div class="stream-card">
       <h3>Netflix 4K</h3>
-      <p><span class="highlight">240 milhões</span> de assinantes. Originais como <span class="highlight">Stranger Things</span>, <span class="highlight">La Casa de Papel</span>, <span class="highlight">Round 6</span>, <span class="highlight">The Witcher</span>. Sem anúncios, temporadas inteiras. Baixe e assista offline.</p>
+      <p><b>240 milhões</b> de assinantes. Originais como <b>Stranger Things</b>, <b>La Casa de Papel</b>, <b>Round 6</b>, <b>The Witcher</b>. Sem anúncios, temporadas inteiras. Baixe e assista offline.</p>
     </div>
     <div class="stream-card">
       <h3>Disney+ 4K</h3>
-      <p><span class="highlight">Marvel</span>, <span class="highlight">Star Wars</span>, <span class="highlight">Pixar</span>, <span class="highlight">NatGeo</span>. Exclusivos como <span class="highlight">Encanto</span>, <span class="highlight">Frozen</span>, <span class="highlight">Mandaloriano</span>. Perfil Kids com controle parental.</p>
+      <p><b>Marvel</b>, <b>Star Wars</b>, <b>Pixar</b>, <b>NatGeo</b>. Exclusivos como <b>Encanto</b>, <b>Frozen</b>, <b>Mandaloriano</b>. Perfil Kids com controle parental.</p>
     </div>
     <div class="stream-card">
       <h3>HBO Max</h3>
-      <p>Lançamentos de cinema <span class="highlight">45 dias</span> após os cinemas. <span class="highlight">House of the Dragon</span>, <span class="highlight">The Last of Us</span>, <span class="highlight">Succession</span>, <span class="highlight">Euphoria</span>. DC completo: <span class="highlight">The Batman</span>, <span class="highlight">Aquaman</span>.</p>
+      <p>Lançamentos de cinema <b>45 dias</b> após os cinemas. <b>House of the Dragon</b>, <b>The Last of Us</b>, <b>Succession</b>, <b>Euphoria</b>. DC completo: <b>The Batman</b>, <b>Aquaman</b>.</p>
     </div>
     <div class="stream-card">
       <h3>Paramount+</h3>
-      <p><span class="highlight">Champions League</span>, <span class="highlight">Brasileirão</span>, <span class="highlight">NFL</span> ao vivo. Exclusivos como <span class="highlight">Top Gun: Maverick</span>, <span class="highlight">South Park</span>, <span class="highlight">Yellowstone</span>. Assista ao vivo ou on-demand.</p>
+      <p><b>Champions League</b>, <b>Brasileirão</b>, <b>NFL</b> ao vivo. Exclusivos como <b>Top Gun: Maverick</b>, <b>South Park</b>, <b>Yellowstone</b>. Assista ao vivo ou on-demand.</p>
     </div>
   </div>
 
   <div class="streaming-showcase">
     <div class="stream-card">
       <h3>Spotify Premium</h3>
-      <p><span class="highlight">82 milhões</span> de músicas sem anúncios. Podcasts como <span class="highlight">O Nerdcast</span>. Baixe <span class="highlight">10 mil músicas</span>. Modo carro, equalizador, playlists inteligentes.</p>
+      <p><b>82 milhões</b> de músicas sem anúncios. Podcasts como <b>O Nerdcast</b>. Baixe <b>10 mil músicas</b>. Modo carro, equalizador, playlists inteligentes.</p>
     </div>
     <div class="stream-card">
       <h3>YouTube Music</h3>
-      <p>Vídeos oficiais + áudio. Versões raras, lives, covers. Reprodução em segundo plano, downloads <span class="highlight">500 músicas</span>. Perfeito para <span class="highlight">versões acústicas</span>.</p>
+      <p>Vídeos oficiais + áudio. Versões raras, lives, covers. Reprodução em segundo plano, downloads <b>500 músicas</b>. Perfeito para <b>versões acústicas</b>.</p>
     </div>
     <div class="stream-card">
       <h3>Apple Music</h3>
-      <p><span class="highlight">Lossless</span> e <span class="highlight">Dolby Atmos</span> grátis. Exclusivos <span class="highlight">Taylor Swift</span>, <span class="highlight">Billie Eilish</span>. Integração com iPhone, Mac, HomePod. <span class="highlight">100 milhões</span> de faixas!</p>
+      <p><b>Lossless</b> e <b>Dolby Atmos</b> grátis. Exclusivos <b>Taylor Swift</b>, <b>Billie Eilish</b>. Integração com iPhone, Mac, HomePod. <b>100 milhões</b> de faixas!</p>
     </div>
     <div class="stream-card">
       <h3>Amazon Music HD</h3>
-      <p>Ultra HD <span class="highlight">3730 kbps</span> – 10x melhor que MP3. Playlists <span class="highlight">3D</span> para fones. Exclusivos <span class="highlight">Muse</span>, <span class="highlight">Foo Fighters</span>. Funciona no Alexa.</p>
+      <p>Ultra HD <b>3730 kbps</b> – 10x melhor que MP3. Playlists <b>3D</b> para fones. Exclusivos <b>Muse</b>, <b>Foo Fighters</b>. Funciona no Alexa.</p>
     </div>
   </div>
 
   <div class="vantagens-lista">
     <div class="vantagem-item">
       <h4>💰 Economia Real</h4>
-      <p>De R$ 400+ por mês para apenas R$ 59,90. Economize até <span class="frase-impacto">85%</span> sem perder qualidade.</p>
+      <p>De R$ 400+ por mês para apenas R$ 59,90. Economize até <b>85%</b> sem perder qualidade.</p>
     </div>
     <div class="vantagem-item">
       <h4>⚡ Ativação Imediata</h4>
@@ -489,4 +472,4 @@
 </script>
 
 </body>
-</html
+</html>
