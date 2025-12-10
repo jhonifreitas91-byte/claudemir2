@@ -13,6 +13,8 @@
     --amarelo:#ffd600;
     --dourado:#ffd700;
     --dourado-escuro:#ffb700;
+    --vermelho-netflix:#e50914;
+    --verde-musica:#1db954;
   }
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
   body{background:var(--preto);touch-action:pan-y}
@@ -287,6 +289,63 @@
     flex-wrap:wrap;
     margin-top:2rem;
   }
+
+  /* CORES PERSONALIZADAS PARA CADA MODAL */
+  /* COMBO FAMÍLIA - AMARELO */
+  #modalFamilia .modal-content{
+    border-color:var(--dourado);
+    box-shadow:0 0 30px rgba(255,215,0,.4);
+  }
+  #modalFamilia .close-btn{color:var(--dourado)}
+  #modalFamilia .modal-content h2{color:var(--dourado)}
+  #modalFamilia .subtitulo{color:var(--amarelo)}
+  #modalFamilia .detalhe-card{border-color:var(--dourado)}
+  #modalFamilia .detalhe-card h3{color:var(--dourado)}
+  #modalFamilia .detalhe-card img{filter:drop-shadow(0 0 6px var(--dourado))}
+  #modalFamilia .detalhe-card:hover{box-shadow:0 0 20px var(--dourado-escuro)}
+  #modalFamilia .preco-modal{color:var(--dourado);text-shadow:0 0 10px var(--dourado)}
+
+  /* NETFLIX SOLO - VERMELHO E BRANCO */
+  #modalSolo .modal-content{
+    border-color:var(--vermelho-netflix);
+    box-shadow:0 0 30px rgba(229,9,20,.4);
+  }
+  #modalSolo .close-btn{color:var(--vermelho-netflix)}
+  #modalSolo .modal-content h2{color:var(--vermelho-netflix)}
+  #modalSolo .subtitulo{color:#fff}
+  #modalSolo .detalhe-card{border-color:var(--vermelho-netflix)}
+  #modalSolo .detalhe-card h3{color:var(--vermelho-netflix)}
+  #modalSolo .detalhe-card img{filter:drop-shadow(0 0 6px var(--vermelho-netflix))}
+  #modalSolo .detalhe-card:hover{box-shadow:0 0 20px rgba(229,9,20,.6)}
+  #modalSolo .preco-modal{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix)}
+
+  /* COMBO MÚSICA - VERDE */
+  #modalMusica .modal-content{
+    border-color:var(--verde-musica);
+    box-shadow:0 0 30px rgba(29,185,84,.4);
+  }
+  #modalMusica .close-btn{color:var(--verde-musica)}
+  #modalMusica .modal-content h2{color:var(--verde-musica)}
+  #modalMusica .subtitulo{color:#fff}
+  #modalMusica .detalhe-card{border-color:var(--verde-musica)}
+  #modalMusica .detalhe-card h3{color:var(--verde-musica)}
+  #modalMusica .detalhe-card img{filter:drop-shadow(0 0 6px var(--verde-musica))}
+  #modalMusica .detalhe-card:hover{box-shadow:0 0 20px rgba(29,185,84,.6)}
+  #modalMusica .preco-modal{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica)}
+
+  /* SUPER PACK - AMARELO E BRANCO */
+  #modalSuper .modal-content{
+    border-color:var(--dourado);
+    box-shadow:0 0 30px rgba(255,215,0,.4);
+  }
+  #modalSuper .close-btn{color:var(--dourado)}
+  #modalSuper .modal-content h2{color:var(--dourado)}
+  #modalSuper .subtitulo{color:#fff}
+  #modalSuper .detalhe-card{border-color:var(--dourado)}
+  #modalSuper .detalhe-card h3{color:var(--dourado)}
+  #modalSuper .detalhe-card img{filter:drop-shadow(0 0 6px var(--dourado))}
+  #modalSuper .detalhe-card:hover{box-shadow:0 0 20px var(--dourado-escuro)}
+  #modalSuper .preco-modal{color:var(--dourado);text-shadow:0 0 10px var(--dourado)}
 
   /* DEPOIMENTOS */
   .depoimentos{
