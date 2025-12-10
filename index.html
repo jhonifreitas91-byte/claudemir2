@@ -417,6 +417,71 @@
     100%{transform:scale(1);}
   }
 
+  /* PREÇO PULSANTE DENTRO DOS BOTÕES DETALHES */
+  .preco{
+    animation:pulsePrice 2s infinite;
+  }
+  @keyframes pulsePrice{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.04);}
+    100%{transform:scale(1);}
+  }
+
+  /* TÍTULOS ANIMADOS DENTRO DOS BOTÕES DETALHES */
+  /* Combo Família - amarelo pulsante */
+  .card.dourado .card-body h3{
+    animation:pulseAmareloTitle 1.5s infinite;
+  }
+  @keyframes pulseAmareloTitle{
+    0%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
+    50%{color:var(--amarelo);text-shadow:0 0 20px var(--amarelo);}
+    100%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
+  }
+
+  /* Netflix Solo - vermelho pulsante */
+  .card:nth-child(2) .card-body h3{
+    animation:pulseVermelhoTitle 1.5s infinite;
+  }
+  @keyframes pulseVermelhoTitle{
+    0%{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix);}
+    50%{color:#fff;text-shadow:0 0 20px #fff;}
+    100%{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix);}
+  }
+
+  /* Combo Música - verde pulsante */
+  .card:nth-child(3) .card-body h3{
+    animation:pulseVerdeTitle 1.5s infinite;
+  }
+  @keyframes pulseVerdeTitle{
+    0%{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica);}
+    50%{color:#fff;text-shadow:0 0 20px #fff;}
+    100%{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica);}
+  }
+
+  /* Super Pack Premium - dourado brilhante */
+  .card:nth-child(4) .card-body h3{
+    animation:pulseDouradoTitle 1.2s infinite;
+  }
+  @keyframes pulseDouradoTitle{
+    0%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
+    50%{color:#fff;text-shadow:0 0 20px var(--dourado), 0 0 30px var(--dourado);}
+    100%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
+  }
+
+  /* DEGRADE ANIMADO NOS TÍTULOS DOS BOTÕES DETALHES */
+  .card-body h3{
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
+    background-size:200% 200%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+  @keyframes gradiente{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
 </style>
 </head>
 <body>
@@ -624,7 +689,6 @@
     </div>
   </div>
 </div>
-
 <!-- MODAL DETALHES MÚSICA -->
 <div id="modalMusica" class="modal-overlay">
   <div class="modal-content">
@@ -685,8 +749,8 @@
       <div class="detalhe-card">
         <img src="https://img.icons8.com/color/96/000000/hbo.png" alt="HBO">
         <h3>HBO Max</h3>
-        <p>Séries premiadas, filmes de cinema
-          </div>
+        <p>Séries premiadas, filmes de cinema e muito mais.</p>
+      </div>
       <div class="detalhe-card">
         <img src="https://img.icons8.com/color/96/000000/spotify.png" alt="Spotify">
         <h3>Spotify Premium</h3>
