@@ -281,12 +281,6 @@
     font-weight:900;
     margin:1.5rem 0;
     text-shadow:0 0 10px var(--laranja);
-    animation:pulsePrice 1s infinite;
-  }
-  @keyframes pulsePrice{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.08);}
-    100%{transform:scale(1);}
   }
   .modal-actions{
     display:flex;
@@ -303,29 +297,13 @@
     box-shadow:0 0 30px rgba(255,215,0,.4);
   }
   #modalFamilia .close-btn{color:var(--dourado)}
-  #modalFamilia .modal-content h2{
-    color:var(--dourado);
-    animation: glowAmarelo 2s infinite alternate;
-  }
-  @keyframes glowAmarelo{
-    from{text-shadow:0 0 4px #fff,0 0 8px var(--dourado);}
-    to{text-shadow:0 0 8px #fff,0 0 16px var(--dourado);}
-  }
+  #modalFamilia .modal-content h2{color:var(--dourado)}
   #modalFamilia .subtitulo{color:var(--amarelo)}
   #modalFamilia .detalhe-card{border-color:var(--dourado)}
   #modalFamilia .detalhe-card h3{color:var(--dourado)}
   #modalFamilia .detalhe-card img{filter:drop-shadow(0 0 6px var(--dourado))}
   #modalFamilia .detalhe-card:hover{box-shadow:0 0 20px var(--dourado-escuro)}
   #modalFamilia .preco-modal{color:var(--dourado);text-shadow:0 0 10px var(--dourado)}
-  #modalFamilia .modal-actions .btn:first-child{
-    background:var(--dourado);
-    color:#000;
-    font-weight:900;
-  }
-  #modalFamilia .modal-actions .btn:first-child:hover{
-    background:var(--dourado-escuro);
-    transform:scale(1.05);
-  }
 
   /* NETFLIX SOLO - VERMELHO E BRANCO */
   #modalSolo .modal-content{
@@ -333,29 +311,13 @@
     box-shadow:0 0 30px rgba(229,9,20,.4);
   }
   #modalSolo .close-btn{color:var(--vermelho-netflix)}
-  #modalSolo .modal-content h2{
-    color:var(--vermelho-netflix);
-    animation: glowVermelho 2s infinite alternate;
-  }
-  @keyframes glowVermelho{
-    from{text-shadow:0 0 4px #fff,0 0 8px var(--vermelho-netflix);}
-    to{text-shadow:0 0 8px #fff,0 0 16px var(--vermelho-netflix);}
-  }
+  #modalSolo .modal-content h2{color:var(--vermelho-netflix)}
   #modalSolo .subtitulo{color:#fff}
   #modalSolo .detalhe-card{border-color:var(--vermelho-netflix)}
   #modalSolo .detalhe-card h3{color:var(--vermelho-netflix)}
   #modalSolo .detalhe-card img{filter:drop-shadow(0 0 6px var(--vermelho-netflix))}
   #modalSolo .detalhe-card:hover{box-shadow:0 0 20px rgba(229,9,20,.6)}
   #modalSolo .preco-modal{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix)}
-  #modalSolo .modal-actions .btn:first-child{
-    background:var(--vermelho-netflix);
-    color:#fff;
-    font-weight:900;
-  }
-  #modalSolo .modal-actions .btn:first-child:hover{
-    background:#b1060f;
-    transform:scale(1.05);
-  }
 
   /* COMBO MÚSICA - VERDE */
   #modalMusica .modal-content{
@@ -363,70 +325,27 @@
     box-shadow:0 0 30px rgba(29,185,84,.4);
   }
   #modalMusica .close-btn{color:var(--verde-musica)}
-  #modalMusica .modal-content h2{
-    color:var(--verde-musica);
-    animation: glowVerde 2s infinite alternate;
-  }
-  @keyframes glowVerde{
-    from{text-shadow:0 0 4px #fff,0 0 8px var(--verde-musica);}
-    to{text-shadow:0 0 8px #fff,0 0 16px var(--verde-musica);}
-  }
+  #modalMusica .modal-content h2{color:var(--verde-musica)}
   #modalMusica .subtitulo{color:#fff}
   #modalMusica .detalhe-card{border-color:var(--verde-musica)}
   #modalMusica .detalhe-card h3{color:var(--verde-musica)}
   #modalMusica .detalhe-card img{filter:drop-shadow(0 0 6px var(--verde-musica))}
   #modalMusica .detalhe-card:hover{box-shadow:0 0 20px rgba(29,185,84,.6)}
   #modalMusica .preco-modal{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica)}
-  #modalMusica .modal-actions .btn:first-child{
-    background:var(--verde-musica);
-    color:#fff;
-    font-weight:900;
-  }
-  #modalMusica .modal-actions .btn:first-child:hover{
-    background:#169c46;
-    transform:scale(1.05);
-  }
 
-  /* SUPER PACK - DOURADO BRILHANTE */
+  /* SUPER PACK - AMARELO E BRANCO */
   #modalSuper .modal-content{
     border-color:var(--dourado);
     box-shadow:0 0 30px rgba(255,215,0,.4);
   }
   #modalSuper .close-btn{color:var(--dourado)}
-  #modalSuper .modal-content h2{
-    color:var(--dourado);
-    animation: glowDourado 2s infinite alternate;
-  }
-  @keyframes glowDourado{
-    from{text-shadow:0 0 4px #fff,0 0 8px var(--dourado);}
-    to{text-shadow:0 0 8px #fff,0 0 16px var(--dourado);}
-  }
+  #modalSuper .modal-content h2{color:var(--dourado)}
   #modalSuper .subtitulo{color:#fff}
   #modalSuper .detalhe-card{border-color:var(--dourado)}
   #modalSuper .detalhe-card h3{color:var(--dourado)}
   #modalSuper .detalhe-card img{filter:drop-shadow(0 0 6px var(--dourado))}
   #modalSuper .detalhe-card:hover{box-shadow:0 0 20px var(--dourado-escuro)}
-  #modalSuper .preco-modal{color:var(--dourado);text-shadow:0 0 10px var(--dourado);animation: pulseDourado 1s infinite;}
-  @keyframes pulseDourado{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.08);}
-    100%{transform:scale(1);}
-  }
-  #modalSuper .modal-actions .btn:first-child{
-    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
-    background-size:200% 200%;
-    color:#000;
-    font-weight:900;
-    animation: gradientShift 3s ease infinite;
-  }
-  @keyframes gradientShift{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-  }
-  #modalSuper .modal-actions .btn:first-child:hover{
-    transform:scale(1.05);
-  }
+  #modalSuper .preco-modal{color:var(--dourado);text-shadow:0 0 10px var(--dourado)}
 
   /* DEPOIMENTOS */
   .depoimentos{
@@ -591,6 +510,162 @@
     <div class="depo-stars">★★★★★</div>
     <p class="depo-text">"O combo família é perfeito, meus filhos assistem desenhos e eu vejo meus esportes."</p>
     <p class="depo-name">Ana C.</p>
+  </div>
+</div>
+
+<!-- MODAL DETALHES COMBO FAMÍLIA 4K -->
+<div id="modalFamilia" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="fecharModalFamilia()">&times;</button>
+    <h2>Combo Família 4K</h2>
+    <p class="subtitulo">Toda diversão da casa em um só lugar.</p>
+
+    <div class="detalhes-grid">
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+        <h3>4K + HDR</h3>
+        <p>Resolução ultra alta com cores reais e brilho dinâmico.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/family.png" alt="Família">
+        <h3>4 Telas Simultâneas</h3>
+        <p>Cada um assiste ao que quiser, onde estiver.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
+        <h3>Downloads Ilimitados</h3>
+        <p>Assista offline sem gastar dados.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+        <h3>Economia de 70%</h3>
+        <p>Menos de R$ 1,33 por dia por todo esse conteúdo.</p>
+      </div>
+    </div>
+
+    <div class="preco-modal">R$ 39,90/mês</div>
+
+    <div class="modal-actions">
+      <a href="familia4k.html" class="btn btn-laranja">Assinar Agora</a>
+      <button class="btn btn-ghost" onclick="fecharModalFamilia()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DETALHES NETFLIX SOLO -->
+<div id="modalSolo" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="fecharModalSolo()">&times;</button>
+    <h2>Netflix Solo 4K</h2>
+    <p class="subtitulo">Perfil único, preço mínimo.</p>
+
+    <div class="detalhes-grid">
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
+        <h3>4K + HDR</h3>
+        <p>Resolução ultra alta com cores reais e brilho dinâmico.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/1.png" alt="1 tela">
+        <h3>1 Tela Simultânea</h3>
+        <p>Perfil único, sem interferência.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/no-advertising.png" alt="Sem anúncios">
+        <h3>Sem Anúncios</h3>
+        <p>Filmes e séries sem interrupções.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+        <h3>Menor preço</h3>
+        <p>Menos de R$ 0,50 por dia por todo catálogo Netflix.</p>
+      </div>
+    </div>
+
+    <div class="preco-modal">R$ 14,90/mês</div>
+
+    <div class="modal-actions">
+      <a href="assinar-solo-4k.html" target="_blank" class="btn btn-laranja">Assinar Agora</a>
+      <button class="btn btn-ghost" onclick="fecharModalSolo()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DETALHES MÚSICA -->
+<div id="modalMusica" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="fecharModalMusica()">&times;</button>
+    <h2>Combo Música Premium</h2>
+    <p class="subtitulo">Três gigantes da música em um só pacote.</p>
+
+    <div class="detalhes-grid">
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/youtube.png" alt="YouTube">
+        <h3>YouTube Premium</h3>
+        <p>Sem anúncios, downloads e YouTube Music incluso.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/spotify.png" alt="Spotify">
+        <h3>Spotify Premium</h3>
+        <p>Música sem anúncios, modo offline e alta qualidade.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/amazon-music.png" alt="Amazon">
+        <h3>Amazon Music Unlimited</h3>
+        <p>100 milhões de músicas em HD e espaço 3D.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
+        <h3>Economia de 65%</h3>
+        <p>Menos de R$ 1 por dia por todo esse conteúdo.</p>
+      </div>
+    </div>
+
+    <div class="preco-modal">R$ 29,90/mês</div>
+
+    <div class="modal-actions">
+      <a href="assinar-musica.html" target="_blank" class="btn btn-laranja">Assinar Agora</a>
+      <button class="btn btn-ghost" onclick="fecharModalMusica()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DETALHES SUPER PACK -->
+<div id="modalSuper" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="fecharModalSuper()">&times;</button>
+    <h2>Super Pack Premium</h2>
+    <p class="subtitulo">Todos os streamings e músicas em um só lugar.</p>
+
+    <div class="detalhes-grid">
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/netflix.png" alt="Netflix">
+        <h3>Netflix 4K</h3>
+        <p>Filmes, séries e originais em ultra alta definição.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/disney-plus.png" alt="Disney">
+        <h3>Disney+</h3>
+        <p>Conteúdo da Disney, Marvel, Star Wars e National Geographic.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/hbo.png" alt="HBO">
+        <h3>HBO Max</h3>
+        <p>Séries premiadas, filmes de cinema e muito mais.</p>
+      </div>
+      <div class="detalhe-card">
+        <img src="https://img.icons8.com/color/96/000000/spotify.png" alt="Spotify">
+        <h3>Spotify Premium</h3>
+        <p>Música sem anúncios, modo offline e alta qualidade.</p>
+      </div>
+    </div>
+
+    <div class="preco-modal">R$ 59,90/mês</div>
+
+    <div class="modal-actions">
+      <a href="assinar-super-pack.html" target="_blank" class="btn btn-laranja">Assinar Agora</a>
+      <button class="btn btn-ghost" onclick="fecharModalSuper()">Fechar</button>
+    </div>
   </div>
 </div>
 
