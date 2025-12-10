@@ -141,6 +141,18 @@
     box-shadow:0 2px 8px rgba(0,0,0,.4);
   }
 
+  /* SUPER PACK BRILHANDO CONSTANTEMENTE */
+  .card:nth-child(4){
+    position:relative;
+    overflow:hidden;
+    animation:pulsarDourado 2s infinite;
+  }
+  @keyframes pulsarDourado{
+    0%  {box-shadow:0 0 20px var(--dourado),0 0 40px var(--dourado-escuro);}
+    50% {box-shadow:0 0 30px var(--dourado),0 0 60px var(--dourado-escuro);}
+    100%{box-shadow:0 0 20px var(--dourado),0 0 40px var(--dourado-escuro);}
+  }
+
   /* MODAL ESTILOS */
   .modal-overlay{
     position:fixed;inset:0;
@@ -576,7 +588,7 @@
     </div>
   </article>
 
-  <!-- CARD 4 -->
+  <!-- CARD 4 – SUPER PACK BRILHANDO -->
   <article class="card" data-cor="dourado">
     <img src="https://images.unsplash.com/photo-1611787640592-6afa28b815d7?auto=format&fit=crop&w=800&q=80" alt="Super Pack">
     <div class="card-body">
