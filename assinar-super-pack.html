@@ -81,6 +81,40 @@
   .hero-content{z-index:2;opacity:0;transform:translateY(40px);transition:all .8s .4s;}
   .hero.in-view .hero-content{opacity:1;transform:translateY(0);}
 
+  /* TÍTULO PRINCIPAL - fundo preto transparente */
+  .titulo-wrapper{
+    display:inline-block;
+    padding:2.5rem 4rem;
+    background:rgba(0,0,0,0.75);
+    border-radius:20px;
+    backdrop-filter:blur(6px);
+    border:2px solid var(--dourado);
+    box-shadow:0 0 30px rgba(255,215,0,0.35);
+  }
+  .titulo-wrapper h1{
+    font-size:clamp(3.5rem,8vw,6.5rem);
+    letter-spacing:3px;
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:fadeIn 1.5s ease-out, glowDourado 2s infinite alternate;
+    margin-bottom:.5rem;
+  }
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(-20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes glowDourado{
+    from{text-shadow:0 0 4px #fff,0 0 8px var(--dourado);}
+    to{text-shadow:0 0 8px #fff,0 0 16px var(--dourado);}
+  }
+  .titulo-wrapper p{
+    font-size:1.4rem;
+    color:#fff;
+    letter-spacing:1px;
+    margin-top:.5rem;
+  }
+
   /* PREÇO PULSANTE - dourado com aura */
   .preco-pulse{
     font-size:2.8rem;
@@ -463,4 +497,4 @@
 </script>
 
 </body>
-</html
+</html>
