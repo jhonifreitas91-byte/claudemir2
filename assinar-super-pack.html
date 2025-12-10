@@ -28,30 +28,12 @@
     display:inline-block;
   }
   .btn-super{
-    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
-    background-size:200% 200%;
+    background:var(--dourado);
     color:#000;
-    animation:gradientShift 3s ease infinite;
-    position:relative;
-    overflow:hidden;
-    z-index:1;
+    font-weight:900;
+    box-shadow:0 0 20px var(--dourado);
   }
-  .btn-super::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(45deg,#fff,var(--dourado),#fff);
-    opacity:0;
-    transition:opacity .4s;
-    z-index:-1;
-  }
-  .btn-super:hover::before{opacity:1;}
-  .btn-super:hover{transform:scale(1.05);}
-  @keyframes gradientShift{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-  }
+  .btn-super:hover{transform:scale(1.05);box-shadow:0 0 30px var(--dourado);}
   .btn-ghost{background:transparent;border:2px solid #fff;color:#fff}
   .btn-ghost:hover{background:#fff;color:#111}
 
@@ -71,67 +53,36 @@
     inset:0;
     background:rgba(0,0,0,.6);
   }
-  .hero-content{z-index:2;opacity:0;transform:translateY(40px);transition:all .8s .4s;}
-  .hero.in-view .hero-content{opacity:1;transform:translateY(0);}
+  .hero-content{z-index:2;}
 
-  .titulo-wrapper{
-    background:rgba(18,18,18,.65);
-    border-radius:12px;
-    padding:1.5rem 2rem;
-    display:inline-block;
-    border:2px solid transparent;
-    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado)) border-box;
-    -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
-    -webkit-mask-composite:destination-out;
-    mask-composite:exclude;
-    box-shadow:0 0 30px #ffd70066,0 0 30px #ffffff66;
-  }
-  .titulo-wrapper h1{
-    font-size:clamp(2.5rem,6vw,5rem);
-    letter-spacing:2px;
-    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:fadeIn 1.5s ease-out, glowDourado 2s infinite alternate;
-  }
-  @keyframes fadeIn{
-    from{opacity:0;transform:translateY(-20px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-  @keyframes glowDourado{
-    from{text-shadow:0 0 4px #fff,0 0 8px var(--dourado);}
-    to{text-shadow:0 0 8px #fff,0 0 16px var(--dourado);}
+  .titulo-principal{
+    font-size:clamp(2.8rem,7vw,5.5rem);
+    font-weight:900;
+    letter-spacing:1px;
+    color:var(--dourado);
+    text-shadow:0 0 8px var(--dourado);
+    margin-bottom:.5rem;
   }
 
   .preco-pulse{
-    font-size:2.8rem;
-    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    font-size:clamp(2rem,5vw,3.2rem);
     font-weight:900;
-    animation:pulseDourado 1.2s infinite;
+    color:var(--branco);
     text-shadow:0 0 10px var(--dourado);
-    margin-top:1rem;
+    animation:pulse 1.3s infinite;
   }
-  @keyframes pulseDourado{
+  @keyframes pulse{
     0%{transform:scale(1);}
-    50%{transform:scale(1.05);}
+    50%{transform:scale(1.04);}
     100%{transform:scale(1);}
   }
 
   .descricao-icones{
     max-width:900px;
-    margin:2rem auto 1.5rem;
+    margin:3rem auto 1.5rem;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
     gap:1.5rem;
-    opacity:0;
-    transform:translateY(40px);
-    transition:all .8s;
-  }
-  .descricao-icones.show{
-    opacity:1;
-    transform:translateY(0);
   }
   .icone-card{
     background:rgba(0,0,0,0.7);
@@ -140,101 +91,34 @@
     text-align:center;
     border:2px solid transparent;
     transition:.3s;
-    position:relative;
-    overflow:hidden;
   }
-  .icone-card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
-    opacity:0;
-    transition:opacity .4s;
-    z-index:0;
-  }
-  .icone-card:hover::before{opacity:.08;}
   .icone-card:hover{
     border-color:var(--dourado);
     transform:translateY(-6px) scale(1.03);
   }
-  .icone-card img{
-    width:64px;
-    height:64px;
-    margin:0 auto .6rem;
-    position:relative;
-    z-index:1;
-    transition:transform .4s;
-  }
-  .icone-card:hover img{transform:scale(1.15) rotate(-8deg);}
-  .icone-card h3{
-    font-size:.95rem;
-    margin-bottom:.3rem;
-    position:relative;
-    z-index:1;
-  }
-  .icone-card p{
-    font-size:.8rem;
-    color:#ccc;
-    position:relative;
-    z-index:1;
-  }
+  .icone-card img{width:64px;height:64px;margin:0 auto .6rem;}
+  .icone-card h3{font-size:.95rem;margin-bottom:.3rem;}
+  .icone-card p{font-size:.8rem;color:#ccc;}
 
   .divisoria-unica{
     height:4px;
-    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
+    background:var(--dourado);
     border:none;
     margin:2.5rem auto 1.5rem;
     max-width:220px;
     border-radius:3px;
-    opacity:0;
-    transform:scaleX(0);
-    transition:all .6s;
-    position:relative;
-    overflow:hidden;
-  }
-  .divisoria-unica.show{
-    opacity:1;
-    transform:scaleX(1);
-  }
-  .divisoria-unica::after{
-    content:'';
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:100%;
-    height:100%;
-    background:linear-gradient(90deg,transparent,var(--dourado),#fff,var(--dourado),transparent);
-    animation:snake 2s linear infinite;
-  }
-  @keyframes snake{
-    0%{left:-100%;}
-    100%{left:100%;}
   }
 
   .texto-chamativo{
     max-width:800px;
     margin:1.5rem auto 2rem;
     text-align:center;
-    opacity:0;
-    transform:translateY(40px);
-    transition:all .8s;
-  }
-  .texto-chamativo.show{
-    opacity:1;
-    transform:translateY(0);
   }
   .texto-chamativo h2{
     font-size:clamp(1.8rem,4vw,2.8rem);
     margin-bottom:1rem;
-    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    animation:gradient 3s ease infinite;
-  }
-  @keyframes gradient{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+    color:var(--dourado);
+    text-shadow:0 0 8px var(--dourado);
   }
   .texto-chamativo p{
     font-size:clamp(1rem,2.5vw,1.3rem);
@@ -243,8 +127,6 @@
   }
 
   .actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem}
-  .fade-in{opacity:0;transform:translateY(30px);transition:all .6s;}
-  .fade-in.show{opacity:1;transform:translateY(0);}
 
   .streaming-showcase{
     max-width:1000px;
@@ -252,13 +134,6 @@
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:1.5rem;
-    opacity:0;
-    transform:translateY(40px);
-    transition:all .8s;
-  }
-  .streaming-showcase.show{
-    opacity:1;
-    transform:translateY(0);
   }
   .stream-card{
     background:rgba(0,0,0,0.7);
@@ -266,39 +141,14 @@
     padding:1.2rem;
     border:2px solid transparent;
     transition:.3s;
-    position:relative;
-    overflow:hidden;
   }
-  .stream-card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
-    opacity:0;
-    transition:opacity .4s;
-    z-index:0;
-  }
-  .stream-card:hover::before{opacity:.08;}
   .stream-card:hover{
     border-color:var(--dourado);
     transform:translateY(-6px) scale(1.03);
   }
-  .stream-card h3{
-    font-size:1.1rem;
-    margin-bottom:.5rem;
-    position:relative;
-    z-index:1;
-  }
-  .stream-card p{
-    font-size:.85rem;
-    color:#ccc;
-    line-height:1.4;
-    position:relative;
-    z-index:1;
-  }
-  .stream-card .highlight{
-    font-weight:700;
-  }
+  .stream-card h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--dourado);}
+  .stream-card p{font-size:.85rem;color:#ccc;line-height:1.4;}
+  .stream-card .highlight{font-weight:700;color:var(--branco);}
 
   .vantagens-lista{
     max-width:900px;
@@ -306,54 +156,25 @@
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:1.5rem;
-    opacity:0;
-    transform:translateY(40px);
-    transition:all .8s;
-  }
-  .vantagens-lista.show{
-    opacity:1;
-    transform:translateY(0);
   }
   .vantagem-item{
     background:rgba(0,0,0,0.7);
     border-radius:14px;
     padding:1.2rem;
     border-left:4px solid var(--dourado);
-    transition:.3s;
   }
-  .vantagem-item h4{
-    font-size:1.1rem;
-    margin-bottom:.5rem;
-    color:var(--branco);
-  }
-  .vantagem-item p{
-    font-size:.9rem;
-    color:#ccc;
-    line-height:1.5;
-  }
+  .vantagem-item h4{font-size:1.1rem;margin-bottom:.5rem;color:var(--branco);}
+  .vantagem-item p{font-size:.9rem;color:#ccc;line-height:1.5;}
 
-  .frase-impacto{
-    color:var(--dourado) !important;
-    font-weight:900;
-    text-shadow:0 0 8px var(--dourado);
-    animation:pulseAmarelo 1.5s infinite;
-  }
-  @keyframes pulseAmarelo{
-    0%{text-shadow:0 0 8px var(--dourado);}
-    50%{text-shadow:0 0 16px var(--dourado);}
-    100%{text-shadow:0 0 8px var(--dourado);}
-  }
+  .frase-impacto{color:var(--dourado) !important;font-weight:900;text-shadow:0 0 8px var(--dourado);}
 </style>
 </head>
 <body>
 
 <section class="hero">
   <div class="hero-content">
-    <div class="titulo-wrapper">
-      <h1>Super Pack Premium</h1>
-      <p>TUDO QUE EXISTE EM STREAMING</p>
-      <div class="preco-pulse">R$ 59,90/mês</div>
-    </div>
+    <h1 class="titulo-principal">Super Pack Premium</h1>
+    <div class="preco-pulse">R$ 59,90/mês</div>
   </div>
 </section>
 
@@ -471,34 +292,11 @@
     </div>
   </div>
 
-  <div class="actions fade-in">
+  <div class="actions">
     <button class="btn btn-super">Comprar Super Pack Premium</button>
     <a href="index.html" class="btn btn-ghost">Voltar</a>
   </div>
 </section>
-
-<script>
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-      }
-    });
-  },{threshold:0.15});
-
-  document.querySelectorAll('.detalhe-card, .fade-in, .descricao-icones, .texto-chamativo, .divisoria-unica, .streaming-showcase, .vantagens-lista').forEach(el=>observer.observe(el));
-
-  const hero=document.querySelector('.hero');
-  const heroObserver=new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        heroObserver.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.4});
-  heroObserver.observe(hero);
-</script>
 
 </body>
 </html>
