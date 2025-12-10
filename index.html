@@ -212,7 +212,7 @@
     margin-top:2rem;
   }
 
-  /* CORES PERSONALIZADAS PARA CADA MODAL */
+  /* CORES PRÓPRIAS PARA CADA MODAL */
   /* COMBO FAMÍLIA - AMARELO */
   #modalFamilia .modal-content{
     border-color:var(--dourado);
@@ -268,35 +268,6 @@
   #modalSuper .detalhe-card img{filter:drop-shadow(0 0 6px var(--dourado))}
   #modalSuper .detalhe-card:hover{box-shadow:0 0 20px var(--dourado-escuro)}
   #modalSuper .preco-modal{color:var(--dourado);text-shadow:0 0 10px var(--dourado)}
-
-  /* DEPOIMENTOS */
-  .depoimentos{
-    padding:4rem 1rem;
-    max-width:1200px;margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:2rem;
-  }
-  .depo{
-    background:var(--cinza);
-    border-radius:14px;padding:1.5rem;
-    text-align:center;
-  }
-  .depo img{
-    width:80px;height:80px;border-radius:50%;
-    margin:0 auto 1rem;object-fit:cover;
-  }
-  .depo-stars{
-    color:var(--amarelo);font-size:1.2rem;
-    margin-bottom:.5rem;
-  }
-  .depo-text{
-    font-size:.95rem;color:#ccc;
-    margin-bottom:.8rem;
-  }
-  .depo-name{
-    font-weight:700;color:#fff;
-  }
 
   /* ACESSIBILIDADE – REDUZ MOVIMENTO */
   @media (prefers-reduced-motion: reduce){
@@ -400,6 +371,95 @@
     animation:gradiente 3s ease infinite;
   }
 
+  /* CORES DOS BOTÕES ASSINAR POR CARD */
+  /* Combo Família - amarelo */
+  .card.dourado .btn-laranja{
+    background:var(--dourado);
+    color:#000;
+    font-weight:900;
+  }
+  .card.dourado .btn-laranja:hover{
+    background:var(--amarelo);
+    transform:scale(1.05);
+  }
+
+  /* Netflix Solo - vermelho */
+  .card:nth-child(2) .btn-laranja{
+    background:var(--vermelho-netflix);
+    color:#fff;
+    font-weight:900;
+  }
+  .card:nth-child(2) .btn-laranja:hover{
+    background:#ff1a1a;
+    transform:scale(1.05);
+  }
+
+  /* Combo Música - verde */
+  .card:nth-child(3) .btn-laranja{
+    background:var(--verde-musica);
+    color:#fff;
+    font-weight:900;
+  }
+  .card:nth-child(3) .btn-laranja:hover{
+    background:#1ed760;
+    transform:scale(1.05);
+  }
+
+  /* Super Pack - dourado com aura */
+  .card:nth-child(4) .btn-laranja{
+    background:var(--dourado);
+    color:#000;
+    font-weight:900;
+    position:relative;
+    overflow:hidden;
+  }
+  .card:nth-child(4) .btn-laranja::before{
+    content:'';
+    position:absolute;
+    inset:-4px;
+    background:conic-gradient(
+      from 0deg,
+      var(--dourado),
+      #fff,
+      var(--dourado),
+      #fff,
+      var(--dourado)
+    );
+    filter:blur(8px);
+    z-index:-1;
+    animation:aura 2s linear infinite;
+  }
+  @keyframes aura{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+  }
+  .card:nth-child(4) .btn-laranja:hover{
+    background:var(--amarelo);
+    transform:scale(1.05);
+  }
+
+  /* SELEÇÃO DO CARD COM COR PRÓPRIA */
+  .card.selecionado{
+    border-color:var(--laranja);
+    box-shadow:0 0 30px var(--laranja);
+  }
+  .card.dourado.selecionado{
+    border-color:var(--dourado);
+    box-shadow:0 0 30px var(--dourado);
+  }
+  .card:nth-child(2).selecionado{
+    border-color:var(--vermelho-netflix);
+    box-shadow:0 0 30px var(--vermelho-netflix);
+  }
+  .card:nth-child(3).selecionado{
+    border-color:var(--verde-musica);
+    box-shadow:0 0 30px var(--verde-musica);
+  }
+  .card:nth-child(4).selecionado{
+    border-color:var(--dourado);
+    box-shadow:0 0 30px var(--dourado);
+  }
+
 </style>
 </head>
 <body>
@@ -428,7 +488,7 @@
 <div id="produtos" class="produtos">
 
   <!-- CARD 1 – COMBO FAMÍLIA (NOVA COR + ETIQUETA) -->
-  <article class="card dourado">
+  <article class="card dourado" data-cor="dourado">
     <!-- ETIQUETA MAIS VENDIDO -->
     <span class="etiqueta">MAIS VENDIDO</span>
 
@@ -450,7 +510,7 @@
   </article>
 
   <!-- CARD 2 -->
-  <article class="card">
+  <article class="card" data-cor="vermelho">
     <img src="card2banner.jpg" alt="Solo Premium">
     <div class="card-body">
       <h3>Netflix Solo 4K</h3>
@@ -469,7 +529,7 @@
   </article>
 
   <!-- CARD 3 – MÚSICA -->
-  <article class="card">
+  <article class="card" data-cor="verde">
     <img src="card3banner.jpg" alt="Combo Música">
     <div class="card-body">
       <h3>Combo Música Premium</h3>
@@ -488,7 +548,7 @@
   </article>
 
   <!-- CARD 4 -->
-  <article class="card">
+  <article class="card" data-cor="dourado">
     <img src="https://images.unsplash.com/photo-1611787640592-6afa28b815d7?auto=format&fit=crop&w=800&q=80" alt="Super Pack">
     <div class="card-body">
       <h3>Super Pack Premium</h3>
@@ -530,162 +590,6 @@
   </div>
 </div>
 
-<!-- MODAL DETALHES COMBO FAMÍLIA 4K -->
-<div id="modalFamilia" class="modal-overlay">
-  <div class="modal-content">
-    <button class="close-btn" onclick="fecharModalFamilia()">&times;</button>
-    <h2>Combo Família 4K</h2>
-    <p class="subtitulo">Toda diversão da casa em um só lugar.</p>
-
-    <div class="detalhes-grid">
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
-        <h3>4K + HDR</h3>
-        <p>Resolução ultra alta com cores reais e brilho dinâmico.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/family.png" alt="Família">
-        <h3>4 Telas Simultâneas</h3>
-        <p>Cada um assiste ao que quiser, onde estiver.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/dusk/96/000000/download.png" alt="Download">
-        <h3>Downloads Ilimitados</h3>
-        <p>Assista offline sem gastar dados.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
-        <h3>Economia de 70%</h3>
-        <p>Menos de R$ 1,33 por dia por todo esse conteúdo.</p>
-      </div>
-    </div>
-
-    <div class="preco-modal">R$ 39,90/mês</div>
-
-    <div class="modal-actions">
-      <a href="familia4k.html" class="btn btn-laranja">Assinar Agora</a>
-      <button class="btn btn-ghost" onclick="fecharModalFamilia()">Fechar</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DETALHES NETFLIX SOLO -->
-<div id="modalSolo" class="modal-overlay">
-  <div class="modal-content">
-    <button class="close-btn" onclick="fecharModalSolo()">&times;</button>
-    <h2>Netflix Solo 4K</h2>
-    <p class="subtitulo">Perfil único, preço mínimo.</p>
-
-    <div class="detalhes-grid">
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/fluency/96/000000/4k.png" alt="4K">
-        <h3>4K + HDR</h3>
-        <p>Resolução ultra alta com cores reais e brilho dinâmico.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/1.png" alt="1 tela">
-        <h3>1 Tela Simultânea</h3>
-        <p>Perfil único, sem interferência.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/no-advertising.png" alt="Sem anúncios">
-        <h3>Sem Anúncios</h3>
-        <p>Filmes e séries sem interrupções.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
-        <h3>Menor preço</h3>
-        <p>Menos de R$ 0,50 por dia por todo catálogo Netflix.</p>
-      </div>
-    </div>
-
-    <div class="preco-modal">R$ 14,90/mês</div>
-
-    <div class="modal-actions">
-      <a href="assinar-solo-4k.html" target="_blank" class="btn btn-laranja">Assinar Agora</a>
-      <button class="btn btn-ghost" onclick="fecharModalSolo()">Fechar</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DETALHES MÚSICA -->
-<div id="modalMusica" class="modal-overlay">
-  <div class="modal-content">
-    <button class="close-btn" onclick="fecharModalMusica()">&times;</button>
-    <h2>Combo Música Premium</h2>
-    <p class="subtitulo">Três gigantes da música em um só pacote.</p>
-
-    <div class="detalhes-grid">
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/youtube.png" alt="YouTube">
-        <h3>YouTube Premium</h3>
-        <p>Sem anúncios, downloads e YouTube Music incluso.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/spotify.png" alt="Spotify">
-        <h3>Spotify Premium</h3>
-        <p>Música sem anúncios, modo offline e alta qualidade.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/amazon-music.png" alt="Amazon">
-        <h3>Amazon Music Unlimited</h3>
-        <p>100 milhões de músicas em HD e espaço 3D.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/plasticine/96/000000/cheap.png" alt="Economia">
-        <h3>Economia de 65%</h3>
-        <p>Menos de R$ 1 por dia por todo esse conteúdo.</p>
-      </div>
-    </div>
-
-    <div class="preco-modal">R$ 29,90/mês</div>
-
-    <div class="modal-actions">
-      <a href="assinar-musica.html" target="_blank" class="btn btn-laranja">Assinar Agora</a>
-      <button class="btn btn-ghost" onclick="fecharModalMusica()">Fechar</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL DETALHES SUPER PACK -->
-<div id="modalSuper" class="modal-overlay">
-  <div class="modal-content">
-    <button class="close-btn" onclick="fecharModalSuper()">&times;</button>
-    <h2>Super Pack Premium</h2>
-    <p class="subtitulo">Todos os streamings e músicas em um só lugar.</p>
-
-    <div class="detalhes-grid">
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/netflix.png" alt="Netflix">
-        <h3>Netflix 4K</h3>
-        <p>Filmes, séries e originais em ultra alta definição.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/disney-plus.png" alt="Disney">
-        <h3>Disney+</h3>
-        <p>Conteúdo da Disney, Marvel, Star Wars e National Geographic.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/hbo.png" alt="HBO">
-        <h3>HBO Max</h3>
-        <p>Séries premiadas, filmes de cinema e muito mais.</p>
-      </div>
-      <div class="detalhe-card">
-        <img src="https://img.icons8.com/color/96/000000/spotify.png" alt="Spotify">
-        <h3>Spotify Premium</h3>
-        <p>Música sem anúncios, modo offline e alta qualidade.</p>
-      </div>
-    </div>
-
-    <div class="preco-modal">R$ 59,90/mês</div>
-
-    <div class="modal-actions">
-      <a href="assinar-super-pack.html" target="_blank" class="btn btn-laranja">Assinar Agora</a>
-      <button class="btn btn-ghost" onclick="fecharModalSuper()">Fechar</button>
-    </div>
-  </div>
-</div>
-
 <!-- RODAPÉ -->
 <footer style="text-align:center;padding:2rem 1rem;background:#0a0a0a">
   <p>Streaming Total © 2025 | Todos os direitos reservados</p>
@@ -709,6 +613,7 @@
     dotsContainer.appendChild(dot);
   }
   const dots = document.querySelectorAll('.dot');
+
   function atualizar(){
     slider.style.transform = `translateX(-${idx*100}%)`;
     dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
@@ -790,6 +695,20 @@
     document.getElementById('modalSuper').classList.remove('ativo');
     document.body.style.overflow = '';
   }
+
+  // SELEÇÃO DO CARD COM COR PRÓPRIA
+  document.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('click',function(e){
+      // Não selecionar se clicar em link ou botão
+      if(e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+      
+      // Remove seleção de outros cards
+      document.querySelectorAll('.card').forEach(c=>c.classList.remove('selecionado'));
+      
+      // Adiciona seleção no card clicado
+      this.classList.add('selecionado');
+    });
+  });
 </script>
 
 </body>
