@@ -100,14 +100,6 @@
     transform:translateY(-8px);
     box-shadow:0 0 20px var(--laranja);
   }
-  .card.dourado{
-    border-color:var(--dourado);
-    box-shadow:0 0 20px #ffd70088;
-  }
-  .card.dourado:hover{
-    border-color:var(--dourado-escuro);
-    box-shadow:0 0 30px #ffb700aa;
-  }
   .card img{height:180px;object-fit:cover;width:100%}
   .card-body{padding:1.2rem}
   .card-body h3{font-size:1.3rem;margin-bottom:.5rem}
@@ -116,12 +108,6 @@
   .preco{
     font-size:2rem;color:var(--amarelo);
     font-weight:900;margin-bottom:.8rem;
-    animation:pulsePrice 2s infinite;
-  }
-  @keyframes pulsePrice{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.04);}
-    100%{transform:scale(1);}
   }
   .tags{
     display:flex;gap:.4rem;flex-wrap:wrap;
@@ -269,7 +255,7 @@
   #modalMusica .detalhe-card:hover{box-shadow:0 0 20px rgba(29,185,84,.6)}
   #modalMusica .preco-modal{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica)}
 
-  /* SUPER PACK - AMARELO E BRANCO */
+  /* SUPER PACK - AMARELO */
   #modalSuper .modal-content{
     border-color:var(--dourado);
     box-shadow:0 0 30px rgba(255,215,0,.4);
@@ -317,161 +303,10 @@
     *{animation:none!important;transition:none!important}
   }
 
-  /* TÍTULOS ANIMADOS DENTRO DOS MODAIS */
-  /* Combo Família - amarelo pulsante */
-  #modalFamilia .modal-content h2{
-    animation:pulseAmarelo 1.5s infinite;
-  }
-  @keyframes pulseAmarelo{
-    0%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
-    50%{color:var(--amarelo);text-shadow:0 0 20px var(--amarelo);}
-    100%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
-  }
-
-  /* Netflix Solo - vermelho pulsante */
-  #modalSolo .modal-content h2{
-    animation:pulseVermelho 1.5s infinite;
-  }
-  @keyframes pulseVermelho{
-    0%{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix);}
-    50%{color:#fff;text-shadow:0 0 20px #fff;}
-    100%{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix);}
-  }
-
-  /* Combo Música - verde pulsante */
-  #modalMusica .modal-content h2{
-    animation:pulseVerde 1.5s infinite;
-  }
-  @keyframes pulseVerde{
-    0%{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica);}
-    50%{color:#fff;text-shadow:0 0 20px #fff;}
-    100%{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica);}
-  }
-
-  /* Super Pack Premium - dourado brilhante */
-  #modalSuper .modal-content h2{
-    animation:pulseDourado 1.2s infinite;
-  }
-  @keyframes pulseDourado{
-    0%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
-    50%{color:#fff;text-shadow:0 0 20px var(--dourado), 0 0 30px var(--dourado);}
-    100%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
-  }
-
-  /* BOTÕES ASSINAR DENTRO DOS MODAIS */
-  /* Botão dentro do modal Família - amarelo */
-  #modalFamilia .modal-actions .btn:first-child{
-    background:var(--dourado);
-    color:#111;
-    animation:pulseAmareloBtn 1.5s infinite;
-  }
-  @keyframes pulseAmareloBtn{
-    0%{background:var(--dourado);box-shadow:0 0 10px var(--dourado);}
-    50%{background:var(--amarelo);box-shadow:0 0 20px var(--amarelo);}
-    100%{background:var(--dourado);box-shadow:0 0 10px var(--dourado);}
-  }
-
-  /* Botão dentro do modal Netflix Solo - vermelho */
-  #modalSolo .modal-actions .btn:first-child{
-    background:var(--vermelho-netflix);
-    color:#fff;
-    animation:pulseVermelhoBtn 1.5s infinite;
-  }
-  @keyframes pulseVermelhoBtn{
-    0%{background:var(--vermelho-netflix);box-shadow:0 0 10px var(--vermelho-netflix);}
-    50%{background:#fff;color:var(--vermelho-netflix);box-shadow:0 0 20px #fff;}
-    100%{background:var(--vermelho-netflix);box-shadow:0 0 10px var(--vermelho-netflix);}
-  }
-
-  /* Botão dentro do modal Música - verde */
-  #modalMusica .modal-actions .btn:first-child{
-    background:var(--verde-musica);
-    color:#fff;
-    animation:pulseVerdeBtn 1.5s infinite;
-  }
-  @keyframes pulseVerdeBtn{
-    0%{background:var(--verde-musica);box-shadow:0 0 10px var(--verde-musica);}
-    50%{background:#fff;color:var(--verde-musica);box-shadow:0 0 20px #fff;}
-    100%{background:var(--verde-musica);box-shadow:0 0 10px var(--verde-musica);}
-  }
-
-  /* Botão dentro do modal Super Pack - dourado brilhante */
-  #modalSuper .modal-actions .btn:first-child{
-    background:var(--dourado);
-    color:#111;
-    animation:pulseDouradoBtn 1.2s infinite;
-  }
-  @keyframes pulseDouradoBtn{
-    0%{background:var(--dourado);box-shadow:0 0 10px var(--dourado);}
-    50%{background:#fff;color:var(--dourado-escuro);box-shadow:0 0 20px var(--dourado), 0 0 30px var(--dourado);}
-    100%{background:var(--dourado);box-shadow:0 0 10px var(--dourado);}
-  }
-
-  /* PREÇO PULSANTE DENTRO DOS MODAIS */
-  .preco-modal{
-    animation:pulsePriceModal 1.5s infinite;
-  }
-  @keyframes pulsePriceModal{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.08);}
-    100%{transform:scale(1);}
-  }
-
-  /* PREÇO PULSANTE DENTRO DOS BOTÕES DETALHES */
-  .preco{
-    animation:pulsePrice 2s infinite;
-  }
-  @keyframes pulsePrice{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.04);}
-    100%{transform:scale(1);}
-  }
-
-  /* TÍTULOS ANIMADOS DENTRO DOS BOTÕES DETALHES */
-  /* Combo Família - amarelo pulsante */
-  .card.dourado .card-body h3{
-    animation:pulseAmareloTitle 1.5s infinite;
-  }
-  @keyframes pulseAmareloTitle{
-    0%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
-    50%{color:var(--amarelo);text-shadow:0 0 20px var(--amarelo);}
-    100%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
-  }
-
-  /* Netflix Solo - vermelho pulsante */
-  .card:nth-child(2) .card-body h3{
-    animation:pulseVermelhoTitle 1.5s infinite;
-  }
-  @keyframes pulseVermelhoTitle{
-    0%{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix);}
-    50%{color:#fff;text-shadow:0 0 20px #fff;}
-    100%{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix);}
-  }
-
-  /* Combo Música - verde pulsante */
-  .card:nth-child(3) .card-body h3{
-    animation:pulseVerdeTitle 1.5s infinite;
-  }
-  @keyframes pulseVerdeTitle{
-    0%{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica);}
-    50%{color:#fff;text-shadow:0 0 20px #fff;}
-    100%{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica);}
-  }
-
-  /* Super Pack Premium - dourado brilhante */
-  .card:nth-child(4) .card-body h3{
-    animation:pulseDouradoTitle 1.2s infinite;
-  }
-  @keyframes pulseDouradoTitle{
-    0%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
-    50%{color:#fff;text-shadow:0 0 20px var(--dourado), 0 0 30px var(--dourado);}
-    100%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
-  }
-
-  /* DEGRADE ANIMADO NOS TÍTULOS DOS BOTÕES DETALHES */
+  /* GRADIENTE ANIMADO NOS TÍTULOS DOS CARDS */
   .card-body h3{
-    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
-    background-size:200% 200%;
+    background:linear-gradient(90deg, #e50914 0%, #ff7a00 50%, #fff 100%);
+    background-size:200% 100%;
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     animation:gradiente 3s ease infinite;
@@ -480,6 +315,89 @@
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
+  }
+
+  /* GRADIENTE ANIMADO NOS TÍTULOS DOS MODAIS */
+  .modal-content h2{
+    background:linear-gradient(90deg, #e50914 0%, #ff7a00 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+
+  /* CORES PRÓPRIAS PARA CADA CARD */
+  /* Combo Família - amarelo */
+  .card.dourado .card-body h3{
+    background:linear-gradient(90deg, var(--dourado) 0%, var(--amarelo) 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+
+  /* Netflix Solo - vermelho */
+  .card:nth-child(2) .card-body h3{
+    background:linear-gradient(90deg, var(--vermelho-netflix) 0%, #ff7a00 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+
+  /* Combo Música - verde */
+  .card:nth-child(3) .card-body h3{
+    background:linear-gradient(90deg, var(--verde-musica) 0%, #1ed760 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+
+  /* Super Pack - dourado */
+  .card:nth-child(4) .card-body h3{
+    background:linear-gradient(90deg, var(--dourado) 0%, var(--amarelo) 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+
+  /* CORES PRÓPRIAS PARA CADA MODAL */
+  /* Combo Família - amarelo */
+  #modalFamilia .modal-content h2{
+    background:linear-gradient(90deg, var(--dourado) 0%, var(--amarelo) 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+
+  /* Netflix Solo - vermelho */
+  #modalSolo .modal-content h2{
+    background:linear-gradient(90deg, var(--vermelho-netflix) 0%, #ff7a00 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+
+  /* Combo Música - verde */
+  #modalMusica .modal-content h2{
+    background:linear-gradient(90deg, var(--verde-musica) 0%, #1ed760 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
+  }
+
+  /* Super Pack - dourado */
+  #modalSuper .modal-content h2{
+    background:linear-gradient(90deg, var(--dourado) 0%, var(--amarelo) 50%, #fff 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradiente 3s ease infinite;
   }
 
 </style>
@@ -689,6 +607,7 @@
     </div>
   </div>
 </div>
+
 <!-- MODAL DETALHES MÚSICA -->
 <div id="modalMusica" class="modal-overlay">
   <div class="modal-content">
@@ -790,7 +709,6 @@
     dotsContainer.appendChild(dot);
   }
   const dots = document.querySelectorAll('.dot');
-
   function atualizar(){
     slider.style.transform = `translateX(-${idx*100}%)`;
     dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
