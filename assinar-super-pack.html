@@ -16,11 +16,11 @@
   body{background:#181818}
   img{max-width:100%;display:block}
 
-  /* Títulos em negrito → amarelo/branco */
-  h1,h2,h3,h4,h5,h6,b,strong{
-    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+  /* todas as palavras em negrito → amarelo normal */
+  b,strong{
+    color:var(--dourado) !important;
+    -webkit-text-fill-color:var(--dourado) !important;
+    background:none !important;
   }
 
   .btn{
@@ -154,15 +154,6 @@
     color:#ccc;
     position:relative;
     z-index:1;
-  }
-
-  /* Palavras em negrito dentro dos cards → amarelo comum */
-  .stream-card .highlight,
-  .vantagem-item .frase-impacto,
-  .texto-chamativo .frase-impacto{
-    color:var(--dourado) !important;
-    -webkit-text-fill-color:var(--dourado) !important;
-    font-weight:700;
   }
 
   .divisoria-unica{
@@ -472,4 +463,4 @@
 </script>
 
 </body>
-</html>
+</html
