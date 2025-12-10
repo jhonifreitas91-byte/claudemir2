@@ -2,22 +2,18 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Super Pack Premium – TUDO QUE EXISTE EM STREAMING</title>
+<title>Super Pack Premium – Tudo em 1 Só</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
-    --netflix:#e50914;
-    --familia:#ffd700;
-    --musica:#1db954;
+    --dourado:#ffd700;
+    --dourado-escuro:#ffb700;
     --preto:#0a0a0a;
     --cinza:#121212;
     --branco:#fff;
+    --roxo:#9b59b6;
   }
-  @font-face{
-    font-family:'Netflix';
-    src:url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2') format('woff2');
-  }
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Netflix','Segoe UI',Helvetica,sans-serif;color:#fff}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Helvetica,sans-serif;color:#fff}
   body{background:#181818}
   img{max-width:100%;display:block}
 
@@ -33,7 +29,7 @@
     display:inline-block;
   }
   .btn-super{
-    background:linear-gradient(45deg,var(--netflix),var(--familia),var(--musica));
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
     background-size:200% 200%;
     color:#000;
     animation:gradientShift 3s ease infinite;
@@ -45,7 +41,7 @@
     content:'';
     position:absolute;
     inset:0;
-    background:linear-gradient(45deg,var(--musica),var(--familia),var(--netflix));
+    background:linear-gradient(45deg,#fff,var(--dourado),#fff);
     opacity:0;
     transition:opacity .4s;
     z-index:-1;
@@ -85,39 +81,39 @@
     padding:1.5rem 2rem;
     display:inline-block;
     border:2px solid transparent;
-    background:linear-gradient(45deg,var(--netflix),var(--familia),var(--musica)) border-box;
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado)) border-box;
     -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
     -webkit-mask-composite:destination-out;
     mask-composite:exclude;
-    box-shadow:0 0 30px #e5091466,0 0 30px #ffd70066,0 0 30px #1db95466;
+    box-shadow:0 0 30px #ffd70066,0 0 30px #ffffff66;
   }
   .titulo-wrapper h1{
     font-size:clamp(2.5rem,6vw,5rem);
     letter-spacing:2px;
-    background:linear-gradient(90deg,var(--netflix),var(--familia),var(--musica));
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-    animation:fadeIn 1.5s ease-out, glowMulti 2s infinite alternate;
+    animation:fadeIn 1.5s ease-out, glowDourado 2s infinite alternate;
   }
   @keyframes fadeIn{
     from{opacity:0;transform:translateY(-20px);}
     to{opacity:1;transform:translateY(0);}
   }
-  @keyframes glowMulti{
-    from{text-shadow:0 0 4px #fff,0 0 8px var(--netflix),0 0 8px var(--familia),0 0 8px var(--musica);}
-    to{text-shadow:0 0 8px #fff,0 0 16px var(--netflix),0 0 16px var(--familia),0 0 16px var(--musica);}
+  @keyframes glowDourado{
+    from{text-shadow:0 0 4px #fff,0 0 8px var(--dourado);}
+    to{text-shadow:0 0 8px #fff,0 0 16px var(--dourado);}
   }
 
   .preco-pulse{
     font-size:2.8rem;
-    background:linear-gradient(45deg,var(--netflix),var(--familia),var(--musica));
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     font-weight:900;
-    animation:pulseMulti 1.2s infinite;
-    text-shadow:0 0 10px var(--netflix),0 0 10px var(--familia),0 0 10px var(--musica);
+    animation:pulseDourado 1.2s infinite;
+    text-shadow:0 0 10px var(--dourado);
   }
-  @keyframes pulseMulti{
+  @keyframes pulseDourado{
     0%{transform:scale(1);}
     50%{transform:scale(1.05);}
     100%{transform:scale(1);}
@@ -151,14 +147,14 @@
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(45deg,var(--netflix),var(--familia),var(--musica));
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
     opacity:0;
     transition:opacity .4s;
     z-index:0;
   }
   .icone-card:hover::before{opacity:.08;}
   .icone-card:hover{
-    border-color:var(--musica);
+    border-color:var(--dourado);
     transform:translateY(-6px) scale(1.03);
   }
   .icone-card img{
@@ -185,7 +181,7 @@
 
   .divisoria-unica{
     height:4px;
-    background:linear-gradient(90deg,var(--netflix),var(--familia),var(--musica));
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
     border:none;
     margin:2.5rem auto 1.5rem;
     max-width:220px;
@@ -207,7 +203,7 @@
     left:-100%;
     width:100%;
     height:100%;
-    background:linear-gradient(90deg,transparent,var(--netflix),var(--familia),var(--musica),transparent);
+    background:linear-gradient(90deg,transparent,var(--dourado),#fff,var(--dourado),transparent);
     animation:snake 2s linear infinite;
   }
   @keyframes snake{
@@ -230,7 +226,7 @@
   .texto-chamativo h2{
     font-size:clamp(1.8rem,4vw,2.8rem);
     margin-bottom:1rem;
-    background:linear-gradient(90deg,var(--netflix),var(--familia),var(--musica));
+    background:linear-gradient(90deg,var(--dourado),#fff,var(--dourado));
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     animation:gradient 3s ease infinite;
@@ -277,14 +273,14 @@
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(45deg,var(--netflix),var(--familia),var(--musica));
+    background:linear-gradient(45deg,var(--dourado),#fff,var(--dourado));
     opacity:0;
     transition:opacity .4s;
     z-index:0;
   }
   .stream-card:hover::before{opacity:.08;}
   .stream-card:hover{
-    border-color:var(--musica);
+    border-color:var(--dourado);
     transform:translateY(-6px) scale(1.03);
   }
   .stream-card h3{
@@ -304,10 +300,6 @@
     font-weight:700;
   }
 
-  .combo-netflix .stream-card h3{color:var(--netflix);}
-  .combo-familia .stream-card h3{color:var(--familia);}
-  .combo-musica .stream-card h3{color:var(--musica);}
-
   .vantagens-lista{
     max-width:900px;
     margin:2rem auto;
@@ -326,11 +318,9 @@
     background:rgba(0,0,0,0.7);
     border-radius:14px;
     padding:1.2rem;
-    border-left:4px solid var(--netflix);
+    border-left:4px solid var(--dourado);
     transition:.3s;
   }
-  .vantagem-item:nth-child(2){border-left-color:var(--familia);}
-  .vantagem-item:nth-child(3){border-left-color:var(--musica);}
   .vantagem-item h4{
     font-size:1.1rem;
     margin-bottom:.5rem;
@@ -343,15 +333,15 @@
   }
 
   .frase-impacto{
-    color:var(--familia) !important;
+    color:var(--dourado) !important;
     font-weight:900;
-    text-shadow:0 0 8px var(--familia);
+    text-shadow:0 0 8px var(--dourado);
     animation:pulseAmarelo 1.5s infinite;
   }
   @keyframes pulseAmarelo{
-    0%{text-shadow:0 0 8px var(--familia);}
-    50%{text-shadow:0 0 16px var(--familia);}
-    100%{text-shadow:0 0 8px var(--familia);}
+    0%{text-shadow:0 0 8px var(--dourado);}
+    50%{text-shadow:0 0 16px var(--dourado);}
+    100%{text-shadow:0 0 8px var(--dourado);}
   }
 </style>
 </head>
@@ -417,56 +407,52 @@
     <h2>O ÚNICO PACOTE QUE DOMINA TODAS AS TELAS E OS OUVINTES DO PLANETA</h2>
     <p>
       <span class="frase-impacto">MAIS VENDIDO POR UM MOTIVO:</span> TUDO que existe em streaming – 
-      <span style="color:var(--netflix)">Netflix</span>, <span style="color:var(--familia)">Disney+</span>, 
-      <span style="color:#ff7a00">HBO Max</span>, <span style="color:#0064c8">Paramount+</span>, 
-      <span style="color:var(--musica)">Spotify</span>, <span style="color:#ff0000">YouTube Music</span>, 
-      <span style="color:#fa57c1">Apple Music</span>, <span style="color:#00a8e1">Amazon Music HD</span> 
-      – em um só lugar. <span style="color:var(--familia)">4 telas 4K</span>, 
-      <span style="color:var(--musica)">qualidade lossless</span>, downloads ilimitados. 
+      Netflix, Disney+, HBO Max, Paramount+, Spotify, YouTube Music, Apple Music, Amazon Music HD 
+      – em um só lugar. <span class="frase-impacto">4 telas 4K</span>, 
+      qualidade lossless, downloads ilimitados. 
       Economize até <span class="frase-impacto">85%</span> comparado a assinar separado. 
       Perfeito para famílias que querem 
-      <span style="color:var(--netflix)">séries</span>, <span style="color:var(--familia)">filmes</span> e 
-      <span style="color:var(--musica)">música</span> sem pagar fortuna. Ativação imediata, 
+      séries, filmes e música sem pagar fortuna. Ativação imediata, 
       sem fidelidade e com suporte 24/7. <span class="frase-impacto">R$ 59,90/mês</span> - menos de R$ 2 por dia 
-      por <span style="color:var(--branco)">TODO o entretenimento do mundo</span>!
+      por TODO o entretenimento do mundo!
     </p>
   </div>
 
-  <div class="streaming-showcase combo-netflix">
+  <div class="streaming-showcase">
     <div class="stream-card">
       <h3>Netflix 4K</h3>
-      <p><span class="highlight" style="color:var(--netflix)">240 milhões</span> de assinantes. Originais como <span class="highlight" style="color:var(--netflix)">Stranger Things</span>, <span class="highlight" style="color:var(--netflix)">La Casa de Papel</span>, <span class="highlight" style="color:var(--netflix)">Round 6</span>, <span class="highlight" style="color:var(--netflix)">The Witcher</span>. Sem anúncios, temporadas inteiras. Baixe e assista offline.</p>
+      <p><span class="highlight">240 milhões</span> de assinantes. Originais como <span class="highlight">Stranger Things</span>, <span class="highlight">La Casa de Papel</span>, <span class="highlight">Round 6</span>, <span class="highlight">The Witcher</span>. Sem anúncios, temporadas inteiras. Baixe e assista offline.</p>
     </div>
     <div class="stream-card">
       <h3>Disney+ 4K</h3>
-      <p><span class="highlight" style="color:var(--familia)">Marvel</span>, <span class="highlight" style="color:var(--familia)">Star Wars</span>, <span class="highlight" style="color:var(--familia)">Pixar</span>, <span class="highlight" style="color:var(--familia)">NatGeo</span>. Exclusivos como <span class="highlight" style="color:var(--familia)">Encanto</span>, <span class="highlight" style="color:var(--familia)">Frozen</span>, <span class="highlight" style="color:var(--familia)">Mandaloriano</span>. Perfil Kids com controle parental.</p>
+      <p><span class="highlight">Marvel</span>, <span class="highlight">Star Wars</span>, <span class="highlight">Pixar</span>, <span class="highlight">NatGeo</span>. Exclusivos como <span class="highlight">Encanto</span>, <span class="highlight">Frozen</span>, <span class="highlight">Mandaloriano</span>. Perfil Kids com controle parental.</p>
     </div>
     <div class="stream-card">
       <h3>HBO Max</h3>
-      <p>Lançamentos de cinema <span class="highlight" style="color:#ff7a00">45 dias</span> após os cinemas. <span class="highlight" style="color:#ff7a00">House of the Dragon</span>, <span class="highlight" style="color:#ff7a00">The Last of Us</span>, <span class="highlight" style="color:#ff7a00">Succession</span>, <span class="highlight" style="color:#ff7a00">Euphoria</span>. DC completo: <span class="highlight" style="color:#ff7a00">The Batman</span>, <span class="highlight" style="color:#ff7a00">Aquaman</span>.</p>
+      <p>Lançamentos de cinema <span class="highlight">45 dias</span> após os cinemas. <span class="highlight">House of the Dragon</span>, <span class="highlight">The Last of Us</span>, <span class="highlight">Succession</span>, <span class="highlight">Euphoria</span>. DC completo: <span class="highlight">The Batman</span>, <span class="highlight">Aquaman</span>.</p>
     </div>
     <div class="stream-card">
       <h3>Paramount+</h3>
-      <p><span class="highlight" style="color:#0064c8">Champions League</span>, <span class="highlight" style="color:#0064c8">Brasileirão</span>, <span class="highlight" style="color:#0064c8">NFL</span> ao vivo. Exclusivos como <span class="highlight" style="color:#0064c8">Top Gun: Maverick</span>, <span class="highlight" style="color:#0064c8">South Park</span>, <span class="highlight" style="color:#0064c8">Yellowstone</span>. Assista ao vivo ou on-demand.</p>
+      <p><span class="highlight">Champions League</span>, <span class="highlight">Brasileirão</span>, <span class="highlight">NFL</span> ao vivo. Exclusivos como <span class="highlight">Top Gun: Maverick</span>, <span class="highlight">South Park</span>, <span class="highlight">Yellowstone</span>. Assista ao vivo ou on-demand.</p>
     </div>
   </div>
 
-  <div class="streaming-showcase combo-musica">
+  <div class="streaming-showcase">
     <div class="stream-card">
       <h3>Spotify Premium</h3>
-      <p><span class="highlight" style="color:var(--musica)">82 milhões</span> de músicas sem anúncios. Podcasts como <span class="highlight" style="color:var(--musica)">O Nerdcast</span>. Baixe <span class="highlight" style="color:var(--musica)">10 mil músicas</span>. Modo carro, equalizador, playlists inteligentes.</p>
+      <p><span class="highlight">82 milhões</span> de músicas sem anúncios. Podcasts como <span class="highlight">O Nerdcast</span>. Baixe <span class="highlight">10 mil músicas</span>. Modo carro, equalizador, playlists inteligentes.</p>
     </div>
     <div class="stream-card">
       <h3>YouTube Music</h3>
-      <p>Vídeos oficiais + áudio. Versões raras, lives, covers. Reprodução em segundo plano, downloads <span class="highlight" style="color:#ff0000">500 músicas</span>. Perfeito para <span class="highlight" style="color:#ff0000">versões acústicas</span>.</p>
+      <p>Vídeos oficiais + áudio. Versões raras, lives, covers. Reprodução em segundo plano, downloads <span class="highlight">500 músicas</span>. Perfeito para <span class="highlight">versões acústicas</span>.</p>
     </div>
     <div class="stream-card">
       <h3>Apple Music</h3>
-      <p><span class="highlight" style="color:#fa57c1">Lossless</span> e <span class="highlight" style="color:#fa57c1">Dolby Atmos</span> grátis. Exclusivos <span class="highlight" style="color:#fa57c1">Taylor Swift</span>, <span class="highlight" style="color:#fa57c1">Billie Eilish</span>. Integração com iPhone, Mac, HomePod. <span class="highlight" style="color:#fa57c1">100 milhões</span> de faixas!</p>
+      <p><span class="highlight">Lossless</span> e <span class="highlight">Dolby Atmos</span> grátis. Exclusivos <span class="highlight">Taylor Swift</span>, <span class="highlight">Billie Eilish</span>. Integração com iPhone, Mac, HomePod. <span class="highlight">100 milhões</span> de faixas!</p>
     </div>
     <div class="stream-card">
       <h3>Amazon Music HD</h3>
-      <p>Ultra HD <span class="highlight" style="color:#00a8e1">3730 kbps</span> – 10x melhor que MP3. Playlists <span class="highlight" style="color:#00a8e1">3D</span> para fones. Exclusivos <span class="highlight" style="color:#00a8e1">Muse</span>, <span class="highlight" style="color:#00a8e1">Foo Fighters</span>. Funciona no Alexa.</p>
+      <p>Ultra HD <span class="highlight">3730 kbps</span> – 10x melhor que MP3. Playlists <span class="highlight">3D</span> para fones. Exclusivos <span class="highlight">Muse</span>, <span class="highlight">Foo Fighters</span>. Funciona no Alexa.</p>
     </div>
   </div>
 
