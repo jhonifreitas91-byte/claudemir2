@@ -316,6 +316,107 @@
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;transition:none!important}
   }
+
+  /* TÍTULOS ANIMADOS DENTRO DOS MODAIS */
+  /* Combo Família - amarelo pulsante */
+  #modalFamilia .modal-content h2{
+    animation:pulseAmarelo 1.5s infinite;
+  }
+  @keyframes pulseAmarelo{
+    0%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
+    50%{color:var(--amarelo);text-shadow:0 0 20px var(--amarelo);}
+    100%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
+  }
+
+  /* Netflix Solo - vermelho pulsante */
+  #modalSolo .modal-content h2{
+    animation:pulseVermelho 1.5s infinite;
+  }
+  @keyframes pulseVermelho{
+    0%{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix);}
+    50%{color:#fff;text-shadow:0 0 20px #fff;}
+    100%{color:var(--vermelho-netflix);text-shadow:0 0 10px var(--vermelho-netflix);}
+  }
+
+  /* Combo Música - verde pulsante */
+  #modalMusica .modal-content h2{
+    animation:pulseVerde 1.5s infinite;
+  }
+  @keyframes pulseVerde{
+    0%{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica);}
+    50%{color:#fff;text-shadow:0 0 20px #fff;}
+    100%{color:var(--verde-musica);text-shadow:0 0 10px var(--verde-musica);}
+  }
+
+  /* Super Pack Premium - dourado brilhante */
+  #modalSuper .modal-content h2{
+    animation:pulseDourado 1.2s infinite;
+  }
+  @keyframes pulseDourado{
+    0%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
+    50%{color:#fff;text-shadow:0 0 20px var(--dourado), 0 0 30px var(--dourado);}
+    100%{color:var(--dourado);text-shadow:0 0 10px var(--dourado);}
+  }
+
+  /* BOTÕES ASSINAR DENTRO DOS MODAIS */
+  /* Botão dentro do modal Família - amarelo */
+  #modalFamilia .modal-actions .btn:first-child{
+    background:var(--dourado);
+    color:#111;
+    animation:pulseAmareloBtn 1.5s infinite;
+  }
+  @keyframes pulseAmareloBtn{
+    0%{background:var(--dourado);box-shadow:0 0 10px var(--dourado);}
+    50%{background:var(--amarelo);box-shadow:0 0 20px var(--amarelo);}
+    100%{background:var(--dourado);box-shadow:0 0 10px var(--dourado);}
+  }
+
+  /* Botão dentro do modal Netflix Solo - vermelho */
+  #modalSolo .modal-actions .btn:first-child{
+    background:var(--vermelho-netflix);
+    color:#fff;
+    animation:pulseVermelhoBtn 1.5s infinite;
+  }
+  @keyframes pulseVermelhoBtn{
+    0%{background:var(--vermelho-netflix);box-shadow:0 0 10px var(--vermelho-netflix);}
+    50%{background:#fff;color:var(--vermelho-netflix);box-shadow:0 0 20px #fff;}
+    100%{background:var(--vermelho-netflix);box-shadow:0 0 10px var(--vermelho-netflix);}
+  }
+
+  /* Botão dentro do modal Música - verde */
+  #modalMusica .modal-actions .btn:first-child{
+    background:var(--verde-musica);
+    color:#fff;
+    animation:pulseVerdeBtn 1.5s infinite;
+  }
+  @keyframes pulseVerdeBtn{
+    0%{background:var(--verde-musica);box-shadow:0 0 10px var(--verde-musica);}
+    50%{background:#fff;color:var(--verde-musica);box-shadow:0 0 20px #fff;}
+    100%{background:var(--verde-musica);box-shadow:0 0 10px var(--verde-musica);}
+  }
+
+  /* Botão dentro do modal Super Pack - dourado brilhante */
+  #modalSuper .modal-actions .btn:first-child{
+    background:var(--dourado);
+    color:#111;
+    animation:pulseDouradoBtn 1.2s infinite;
+  }
+  @keyframes pulseDouradoBtn{
+    0%{background:var(--dourado);box-shadow:0 0 10px var(--dourado);}
+    50%{background:#fff;color:var(--dourado-escuro);box-shadow:0 0 20px var(--dourado), 0 0 30px var(--dourado);}
+    100%{background:var(--dourado);box-shadow:0 0 10px var(--dourado);}
+  }
+
+  /* PREÇO PULSANTE DENTRO DOS MODAIS */
+  .preco-modal{
+    animation:pulsePriceModal 1.5s infinite;
+  }
+  @keyframes pulsePriceModal{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+    100%{transform:scale(1);}
+  }
+
 </style>
 </head>
 <body>
@@ -584,8 +685,8 @@
       <div class="detalhe-card">
         <img src="https://img.icons8.com/color/96/000000/hbo.png" alt="HBO">
         <h3>HBO Max</h3>
-        <p>Séries premiadas, filmes de cinema e muito mais.</p>
-      </div>
+        <p>Séries premiadas, filmes de cinema
+          </div>
       <div class="detalhe-card">
         <img src="https://img.icons8.com/color/96/000000/spotify.png" alt="Spotify">
         <h3>Spotify Premium</h3>
